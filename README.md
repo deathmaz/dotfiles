@@ -61,6 +61,9 @@ stow -v -R -t ~ */
 # Env variables [Sat, 17.07.2021 16:55]
 
 For `kitty` it's better to set some global env vars in `/etc/environment`:
+
+<details>
+
 ```sh
 #
 # This file is parsed by pam_env module
@@ -76,10 +79,15 @@ FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
 FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 FZF_CTRL_T_OPTS="--bind ctrl-j:preview-down,ctrl-l:preview-up --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 ```
+
+</details>
+
 ---
 
 
 # Config example for xmouseless
+
+<details>
 
 ```c
 /* the rate at which the mouse moves in Hz
@@ -150,6 +158,8 @@ static KeySym exit_keys[] = {
     XK_Escape, XK_q
 };
 ```
+
+</details>
 
 # Clear yay cache [Mon, 27.06.2022 22:33]
 

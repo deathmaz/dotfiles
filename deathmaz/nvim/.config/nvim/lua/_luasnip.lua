@@ -44,5 +44,16 @@ ls.add_snippets('markdown', {
       '',
       '---'
     })
-  })
+  }),
+  s('details', {
+    t({
+      '<details>',
+      ''
+    }),
+    i(1),
+    t({
+      '',
+      '</details>',
+    })
+  }),
 })
