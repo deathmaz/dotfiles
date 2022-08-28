@@ -1,0 +1,66 @@
+browser ~/.newsboat/piper
+scrolloff 10
+auto-reload yes
+reload-time 150
+player mpv
+confirm-exit yes
+save-path "~/Downloads
+download-path		"~/Downloads/%n"
+max-downloads		2
+# highlight article "^(Feed|Title|Author|Link|Date):" blue blue underline
+# highlight feedlist "https?://[^ ]+" yellow red bold
+# color listfocus_unread yellow black protect
+feedlist-format " %n %4i %11u %t -- %T"
+# show-read-feeds no
+# show-read-articles no
+
+keep-articles-days 120
+reload-threads 4
+
+# add video or audio to play queue using mpv (requires: task-spooler, mpv, youtube-dl)
+# task-spooler: https://www.youtube.com/watch?v=wv8D8wT20ZY
+# youtube-dl: https://www.youtube.com/watch?v=MFxlwVhwayg
+# macro w set browser "ts mpv --ytdl-format='bestvideo[height<=360]+bestaudio/best[height<=360]' --force-window --autofit=500x280 --geometry=-15-10 %u"; open-in-browser ; set browser "$BROWSER %u"
+# macro P set browser "ts mpv --ytdl-format='bestvideo[height<=480]+bestaudio/best[height<=480]' --force-window --autofit=500x280 --geometry=-15-10 %u"; open-in-browser ; set browser "$BROWSER %u"
+# macro p set browser "ts mpv --ytdl-format='bestvideo[height<=1080]+bestaudio/best[height<=1080]' %u"; open-in-browser ; set browser "$BROWSER %u"
+
+# read reddit comments with rtv (reddit terminal viewer)
+# rtv: https://www.youtube.com/watch?v=jc2ZVSof5-g
+# macro r set browser "rtv -l %u"; open-in-browser ; set browser "$BROWSER %u"
+# macro r set browser "tmux split-window -h && tmux send-keys 'rtv -l %u && tmux kill-pane\n'"; open-in-browser ; set browser "$BROWSER %u"
+macro r set browser "readable %u -p title,text-content | xclip -selection clipboard && notify-send -t 5000 'Readable done!'"; open-in-browser; set browser ~/.newsboat/piper
+macro w set browser "readable %u -p html-title,html-content > /tmp/readable.html && w3m /tmp/readable.html"; open-in-browser; set browser ~/.newsboat/piper
+macro W set browser "w3m %u"; open-in-browser; set browser ~/.newsboat/piper
+
+# open in cli web browser
+# w3m: https://www.youtube.com/watch?v=Z22cFTB-uqg
+# tmux: https://www.youtube.com/watch?v=ZNM1KfqpyGo
+# macro o set browser "$BROWSERCLI %u"; open-in-browser ; set browser "$BROWSER %u"
+# macro o set browser "tmux split-window -h && tmux send-keys '$MAZ_CLI_BROWSER %u && tmux kill-pane\n'"; open-in-browser ; set browser "$BROWSER %u"
+
+# copy url to clipboard "yank"
+# xclip: https://www.youtube.com/watch?v=fKP0FLp3uW0
+macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser ~/.newsboat/piper
+
+# macro e set browser "tmux split-window -h && tmux send-keys '$MAZ_CLI_BROWSER %u && tmux kill-pane\n'"; open-in-browser ; set browser "$BROWSER %u"
+
+# vim like navigation
+bind-key j down
+bind-key k up
+bind-key m toggle-show-read-feeds
+bind-key ^D pagedown
+bind-key ^U pageup
+bind-key / open-search tagselection
+
+include ~/.newsboat/themes/deathmaz.theme
+
+bind-key i sort
+bind-key I rev-sort
+
+bind-key g home all
+bind-key G end all
+
+unbind-key l
+bind-key l open
+bind-key h quit
+# bind-key ESC hard-quit

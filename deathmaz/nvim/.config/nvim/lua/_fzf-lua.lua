@@ -1,0 +1,124 @@
+local ok, fzf_lua = pcall(require, 'fzf-lua')
+if not ok then
+  return
+end
+
+local project_ok, project = pcall(require, 'project_nvim')
+
+local opts = { noremap = true, silent = true }
+
+fzf_lua.setup {
+  files = {
+    git_icons = false,
+    file_icons = false,
+  },
+  grep = {
+    git_icons  = false,
+    file_icons = false,
+    rg_opts    = "--column --hidden --glob '!.git' --line-number --no-heading --color=always --smart-case --max-columns=512",
+    --[[ winopts = {
+      preview = {
+        horizontal = 'hidden'
+      },
+    }, ]]
+  },
+  winopts = {
+    height  = 0.95,
+    width   = 0.95,
+    preview = {
+      default = 'bat',
+      horizontal = 'right:40%'
+    },
+  },
+  previewers = {
+    git_diff = {
+      pager = "delta",
+    },
+  },
+  -- fzf_opts = {
+  --   ['--layout'] = 'reverse-list',
+  -- }
+}
+
+vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
+
+vim.keymap.set('n', '<leader>f', fzf_lua.files, opts)
+
+vim.keymap.set('n', '<leader>ss', fzf_lua.blines, opts)
+
+vim.keymap.set('n', '<leader>L', fzf_lua.grep_project, opts)
+
+vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
+
+vim.keymap.set('n', '\\f', fzf_lua.git_status, opts)
+
+vim.keymap.set('n', '\\h', fzf_lua.help_tags, opts)
+
+vim.keymap.set('n', '<leader>ag', fzf_lua.grep_cword, opts)
+
+vim.keymap.set('x', '<leader>ag', fzf_lua.grep_visual, opts)
+
+vim.keymap.set('n', '<leader>ef',
+  function()
+    fzf_lua.files({ cwd = vim.fn.expand('%:p:h') })
+    --[[ fzf_lua.fzf_exec("rg --files --color=always --hidden --no-ignore " .. vim.fn.expand('%:h'), {
+      previewer = 'bat',
+      actions = {
+        ['default'] = fzf_lua.actions.file_edit,
+        ["ctrl-s"]  = fzf_lua.actions.file_split,
+        ["ctrl-v"]  = fzf_lua.actions.file_vsplit,
+        ["ctrl-t"]  = fzf_lua.actions.file_tabedit,
+      }
+    }) ]]
+  end,
+  opts)
+
+vim.keymap.set('n', '\\t', function()
+  fzf_lua.asynctasks()
+end, opts)
+
+if project_ok then
+  vim.keymap.set('n', '\\p',
+    function()
+      local history = require("project_nvim.utils.history")
+      fzf_lua.fzf_exec(function(cb)
+        local results = history.get_recent_projects()
+        for _, e in ipairs(results) do
+          cb(e)
+        end
+        cb()
+      end,
+        {
+          actions = {
+            ['default'] = {
+              function(selected)
+                fzf_lua.files({ cwd = selected[1] })
+              end,
+            },
+            ['ctrl-d'] = {
+              function(selected)
+                history.delete_project({ value = selected[1] })
+              end,
+              fzf_lua.actions.resume
+            }
+          }
+        })
+    end,
+    opts)
+end
+
+vim.keymap.set('i', '<c-x><c-f>',
+  function()
+    fzf_lua.files({
+      actions = {
+        ["default"] = function(selected)
+          local pos = vim.api.nvim_win_get_cursor(0)[2]
+          local line = vim.api.nvim_get_current_line()
+          local nline = line:sub(0, pos) .. selected[1] .. line:sub(pos + 1)
+          vim.api.nvim_set_current_line(nline)
+        end,
+      }
+    })
+  end, opts)
+
+vim.cmd [[ command! Rg execute 'lua require("fzf-lua").grep_project()' ]]

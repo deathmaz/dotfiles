@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Simple script to redirect url's opened from termite.
+
+# A function containing a case list of options
+Open() {
+  case "$1" in
+    # *youtube.com*|*gfycat.com*|*v.redd.it*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi) TS_SOCKET=/tmp/newsboat ts mpv-custom "$1";;
+    # *reddit.com*) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "tuir -l $1 && tmux kill-pane " 'Enter';;
+    # *i.imgur.com*\.gifv) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "mpv-custom ${1/gifv/mp4} && tmux kill-pane" 'Enter';;
+    *reddit.com*) tuir -l $1;;
+    *youtube.com*|*twitch.tv*|*gfycat.com*|*v.redd.it*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi|*.gif*|*.mp3*) TS_SOCKET=/tmp/newsboat $MAZ_TASK_SPOOLER_COMMAND mpv-custom "${1}";;
+    *.jpg*|*.png*|*.jpeg*) feh "$1";;
+    # *) readable "$1" -p html-title,html-content > /tmp/readable.html ; $MAZ_CLI_BROWSER -no-connect /tmp/readable.html;
+    *) xdg-open "$1";
+  esac
+}
+
+# Now a for loop to iterate the list of options,
+for url; do
+  Open "$url"
+done

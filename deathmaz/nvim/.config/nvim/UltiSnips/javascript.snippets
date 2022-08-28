@@ -1,0 +1,25 @@
+snippet todo "This is a todo reminder" b
+// TODO: `echo $USER` ${1:desc} - `echo $(date -R)`
+endsnippet
+
+snippet fix "This is a fix reminder" b
+// FIXME: `echo $USER` ${1:desc} - `echo $(date -R)`
+endsnippet
+
+snippet jq "Jquery placeholder"
+$('${1}').${2};
+endsnippet
+
+snippet method "js method"
+${1:methodName}: function(${2:params}) {
+    ${3:}
+},
+endsnippet
+
+snippet tc "try catch for voice api"
+try {
+	${1}
+} catch (error) {
+	console.error(error);
+}
+endsnippet

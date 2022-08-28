@@ -1,0 +1,31 @@
+snippet vuets "Vue template" b
+<script lang="ts">
+import {
+  Vue, Component,
+} from 'vue-property-decorator';
+@Component({})
+export default class ${1} extends Vue {
+
+}
+</script>
+
+<template>
+	${2}
+</template>
+endsnippet
+
+snippet vuec "Vue composition api template" b
+<script lang="ts">
+import {
+  defineComponent,
+} from '@vue/composition-api';
+
+export default defineComponent({${2}});
+</script>
+
+<template>
+  <div>
+    ${1}
+  </div>
+</template>
+endsnippet

@@ -1,0 +1,11 @@
+**/.DS_Store
+/.idea
+*.sql
+sftp-config.json
+phpunit.phar
+*.psd
+*.tags
+node_modules
+.tags_sorted_by_file
+laradock-*
+.asynctask

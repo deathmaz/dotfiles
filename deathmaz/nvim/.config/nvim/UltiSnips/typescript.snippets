@@ -1,0 +1,88 @@
+snippet storem "Add store module"
+import $1 from '@store/modules/$2';
+endsnippet
+
+snippet storei "Create store module index" b
+import $1Actions from '@store/modules/$2/actions.ts';
+import $1Getters from '@store/modules/$2/getters.ts';
+import $1Mutations from '@store/modules/$2/mutations.ts';
+import {
+	Module, createMapper,
+} from 'vuex-smart-module';
+import $1 from '@store/modules/$2/$3.ts';
+
+export class $1State {
+	items: $1[] = [];
+}
+
+const module = new Module({
+	namespaced: false,
+	state: $1State,
+	getters: $1Getters,
+	mutations: $1Mutations,
+	actions: $1Actions,
+});
+export default module;
+export const $4Mapper = createMapper(module);
+endsnippet
+
+snippet storeg "Create store getter" b
+import {
+	$1State,
+} from '@store/modules/$2/index.ts';
+import {
+	Getters,
+} from 'vuex-smart-module';
+
+export default class $1Getters extends Getters<$1State> {
+	$3
+}
+endsnippet
+
+snippet mut "Create store module mutations" b
+import {
+	Mutations,
+} from 'vuex-smart-module';
+import {
+	$1State,
+} from '@store/modules/$2/index.ts';
+import $1 from '@store/modules/$2/$3.ts';
+import {
+	updateOrCreate, guardModel, remove,
+} from '@store/helper.js';
+import I$1Resource from '@api-resources/$4.ts';
+
+export default class $1Mutations extends Mutations<$1State> {
+	$5
+}
+endsnippet
+
+snippet act "Create store module actions" b
+import $1Getters from '@store/modules/$2/getters.ts';
+import {
+	$1State,
+} from '@store/modules/$2/index.ts';
+import $1Mutations from '@store/modules/$2/mutations.ts';
+import {
+	logError,
+} from '@utility/log-error.js';
+import {
+	Actions,
+} from 'vuex-smart-module';
+import I$1Resource from '@api-resources/$3.ts';
+
+export default class $1Actions extends Actions<
+	$1State,
+	$1Getters,
+	$1Mutations,
+	$1Actions
+> {
+	$4
+}
+endsnippet
+	
+snippet inter "Create interface" b
+export ${1:default} interface $2 {
+	$0
+}
+endsnippet

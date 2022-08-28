@@ -1,0 +1,50 @@
+[user]
+  name = deathmaz
+  email = 00maz1987@gmail.com
+[core]
+  excludesfile = ~/.gitexcludes
+  pager        = delta
+
+[fetch]
+  prune = true
+
+[branch]
+  autosetuprebase = always
+
+[delta]
+  features = side-by-side line-numbers decorations styles
+  hyperlinks = true
+  dark = true
+  navigate = true
+  ; syntax-theme = Dracula
+  ; width = 250
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red bold
+  new = green
+  plain = white
+
+[color "branch"]
+  current = red reverse
+  local = blue
+  remote = green
+
+[alias]
+  elog = ! git log --oneline --all --color | emojify | less
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    # list all aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+  wdiff = diff --word-diff
+  dsf = "!f() { [ \"$GIT_PREFIX\" != \"\" ] && cd "$GIT_PREFIX"; git diff --color $@ | diff-so-fancy | less --tabs=4 -RFX; }; f"
+  is-update = remote -v update
+  delete-merged-branches = !git branch --merged | grep -v \\* | xargs -I % git branch -d %
+  uncommit = reset --soft HEAD^
+[init]
+  defaultBranch = main

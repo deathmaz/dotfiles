@@ -1,0 +1,6 @@
+player=mpv
+player-args="--profile=compressed"
+default-stream=720p60,720p,480p
+title="{title} -- {author} -- {category}"
+twitch-disable-reruns
+twitch-disable-ads

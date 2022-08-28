@@ -1,0 +1,12 @@
+# open current url (default: Shift+M)
+# e.g 2+Shift+M
+keymap e EXTERN
+
+# open url under cursor (default: Esc+Shift+M)
+# e.g 2+Esc+Shift+M
+keymap f EXTERN_LINK
+
+# https://github.com/gotbletu/shownotes/blob/master/w3m-readability-cli.md
+keymap  L       NEXT
+keymap  H       PREV
+keymap  \\\r    COMMAND "SHELL 'readable $W3M_URL -p html-title,html-content > /tmp/readable.html' ; LOAD /tmp/readable.html"
