@@ -3,4 +3,6 @@ if not ok then
   return
 end
 
-autopairs.setup()
+autopairs.setup({
+  check_ts = true,
+})
