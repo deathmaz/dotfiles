@@ -139,7 +139,7 @@ vim.g.loaded_perl_provider   = 0
 vim.g.loaded_node_provider   = 0
 
 local disabled_built_ins = {
-  -- 'netrw', -- required by :GBrowse
+  'netrw',
   'netrwPlugin',
   'netrwSettings',
   'netrwFileHandlers',

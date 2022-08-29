@@ -127,10 +127,6 @@ let g:gitgutter_grep = 'rg'
 "}}}
 "
 
-"---- Fugitive {{{
-map \gs :Git<CR>
-"}}}
-
 "---- NerdCommenter {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -604,6 +600,8 @@ let g:mergetool_prefer_revision = 'local'
 " {{{ vim-matchup
 let g:matchup_matchparen_deferred = 1
 " }}}
+
+lua require('_fugitive')
 
 lua require('_winbar')
 
