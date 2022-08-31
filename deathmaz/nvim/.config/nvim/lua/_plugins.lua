@@ -23,6 +23,17 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'kyazdani42/nvim-web-devicons'
+
+    use {
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = function()
+        require('_nvim-tree')
+      end
+    }
+
     use 'andymass/vim-matchup'
     use 'whiteinge/diffconflicts'
     use {
@@ -153,12 +164,12 @@ return packer.startup({
       end
     }
 
-    use {
+    --[[ use {
       'lambdalisue/fern.vim',
       branch = 'main',
     }
     use 'lambdalisue/fern-git-status.vim'
-    use 'lambdalisue/fern-hijack.vim'
+    use 'lambdalisue/fern-hijack.vim' ]]
     use {
       'lambdalisue/suda.vim',
       config = function()
@@ -226,7 +237,7 @@ return packer.startup({
 
     use {
       'L3MON4D3/LuaSnip',
-      config = function ()
+      config = function()
         require('_luasnip')
       end
     }
@@ -314,7 +325,7 @@ return packer.startup({
     use {
       'wincent/command-t',
       run = 'cd lua/wincent/commandt/lib && make',
-      setup = function ()
+      setup = function()
         vim.g.CommandTPreferredImplementation = 'lua'
       end,
       config = function()
@@ -373,7 +384,7 @@ return packer.startup({
     }
     use {
       'windwp/nvim-autopairs',
-      config = function ()
+      config = function()
         require('_autopairs')
       end
     }
