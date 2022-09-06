@@ -255,6 +255,11 @@ table.insert(components.active[2], {
   },
 })
 
+local ctp_ok, ctp_feline = pcall(require, 'catppuccin.groups.integrations.feline')
+if ctp_ok then
+  components = ctp_feline.get()
+end
+
 feline.setup({
   components = components,
   force_inactive = {

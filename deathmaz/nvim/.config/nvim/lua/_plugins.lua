@@ -538,6 +538,7 @@ return packer.startup({
       config = function()
         require('_monokai')
       end,
+      disable = true,
     }
     use {
       'folke/tokyonight.nvim',
@@ -556,12 +557,13 @@ return packer.startup({
     use {
       "catppuccin/nvim",
       as = "catppuccin",
-      config = function()
-        require("catppuccin").setup()
-        vim.g.catppuccin_flavour = "mocha"
-        vim.cmd [[colorscheme catppuccin]]
+      setup = function()
+        vim.g.catppuccin_flavour = "macchiato"
       end,
-      disable = true,
+      config = function()
+        require('_catppuccin')
+      end,
+      disable = false,
     }
     use {
       'Mofiqul/dracula.nvim',
