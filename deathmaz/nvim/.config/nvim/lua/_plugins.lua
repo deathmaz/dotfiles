@@ -25,6 +25,13 @@ return packer.startup({
     use 'kyazdani42/nvim-web-devicons'
 
     use {
+      'gaoDean/autolist.nvim',
+      config = function()
+        require('_autolist')
+      end
+    }
+
+    use {
       'kyazdani42/nvim-tree.lua',
       requires = {
         'kyazdani42/nvim-web-devicons',
