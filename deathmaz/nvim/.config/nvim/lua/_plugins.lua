@@ -80,6 +80,9 @@ return packer.startup({
     use {
       "SmiteshP/nvim-navic",
       requires = "neovim/nvim-lspconfig",
+      config = function()
+        require('_navic')
+      end
     }
 
     use {
