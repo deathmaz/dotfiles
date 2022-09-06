@@ -160,7 +160,8 @@ return packer.startup({
     use {
       'fatih/vim-go',
       run = ':GoUpdateBinaries',
-      ft = { 'go' }
+      ft = { 'go' },
+      disable = true,
     }
     use {
       'potamides/pantran.nvim',

@@ -21,6 +21,7 @@ local servers = {
   "volar",
   "eslint",
   "stylelint_lsp",
+  "gopls",
 }
 
 local settings = {
