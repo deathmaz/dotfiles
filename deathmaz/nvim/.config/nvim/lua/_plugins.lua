@@ -131,7 +131,7 @@ return packer.startup({
     use 'ThePrimeagen/harpoon'
     use 'bfredl/nvim-miniyank'
     use {
-      'B4mbus/todo-comments.nvim',
+      'folke/todo-comments.nvim',
       -- cmd = { 'TodoQuickFix', 'TodoTrouble', 'TodoTelescope' },
       config = function()
         require('_todo-comments')
