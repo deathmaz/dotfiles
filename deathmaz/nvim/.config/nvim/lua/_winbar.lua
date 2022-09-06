@@ -80,15 +80,16 @@ function M.winbar()
   local val = " " ..
       "%#" ..
       hl_group .. "#" .. icon .. "%*" .. " " .. "%#Normal#" .. filename .. "%*" .. " " .. modified_str .. " " .. win_val
-  vim.wo.winbar = val
+  return val
+  -- vim.wo.winbar = val
 end
 
--- vim.o.winbar = "%{%v:lua.require'_winbar'.winbar()%}"
-vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
+vim.o.winbar = "%{%v:lua.require'_winbar'.winbar()%}"
+--[[ vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
   callback = function()
     M.winbar()
   end,
-})
+}) ]]
 
 -- Lsp saga
 --[[ vim.api.nvim_create_autocmd('User', {
