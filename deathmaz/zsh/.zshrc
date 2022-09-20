@@ -78,6 +78,10 @@ w3m-img() {
     $HOME/w3m/w3m -sixel -o display_image=1 $1
 }
 
+readAndCopy() {
+  readable $1 -p title,text-content | xclip -selection clipboard
+}
+
 fzf-surfraw() { surfraw "$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n | fzf)" }
 fzf-kill() { zle -I; ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9} ; }; zle -N fzf_killps;
 
