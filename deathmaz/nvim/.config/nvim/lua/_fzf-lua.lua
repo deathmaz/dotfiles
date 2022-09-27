@@ -44,7 +44,7 @@ vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
 vim.keymap.set('n', '<leader>f', fzf_lua.files, opts)
 
-vim.keymap.set('n', '<leader>ss', fzf_lua.blines, opts)
+vim.keymap.set('n', '<leader>bb', fzf_lua.blines, opts)
 
 vim.keymap.set('n', '<leader>L', fzf_lua.grep_project, opts)
 
@@ -53,6 +53,8 @@ vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
 vim.keymap.set('n', '\\f', fzf_lua.git_status, opts)
 
 vim.keymap.set('n', '\\h', fzf_lua.help_tags, opts)
+
+vim.keymap.set('n', '<leader>o', fzf_lua.oldfiles, opts)
 
 vim.keymap.set('n', '<leader>ag', fzf_lua.grep_cword, opts)
 

@@ -56,4 +56,13 @@ ls.add_snippets('markdown', {
       '</details>',
     })
   }),
+  s('date:list:item', {
+    t('-'),
+    t(' [' .. os.date("%a, %d.%m.%Y %H:%M") .. ']'),
+    t('('),
+    i(1),
+    t(')'),
+    t(' - '),
+    i(2),
+  }),
 })

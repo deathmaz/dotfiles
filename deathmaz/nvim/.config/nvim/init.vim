@@ -702,8 +702,8 @@ nnoremap vaa ggvGg_
 " nnoremap Vaa ggVG
 
 " Source
-vnoremap <leader>S y:@"<CR>
-nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
+" vnoremap <leader>S y:@"<CR>
+" nnoremap <leader>S ^vg_y:execute @@<cr>:echo 'Sourced line.'<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " nnoremap <leader>sv :source $MYVIMRC<cr>
 

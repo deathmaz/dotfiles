@@ -48,7 +48,7 @@ vim.opt.cursorlineopt = 'number,line'
 vim.opt.timeoutlen = 500
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 10
-vim.opt.updatetime = 250
+vim.opt.updatetime = 100
 
 vim.opt.termguicolors = true
 vim.opt.expandtab = true
