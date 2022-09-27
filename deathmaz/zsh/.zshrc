@@ -184,6 +184,13 @@ path+=/usr/local/opt/node@12/bin
 path+=$HOME/.cargo/bin
 
 alias download-video='yt-dlp -S "height:1080"'
+function downloadAudio() {
+  yt-dlp -x --audio-format mp3 --audio-quality 1 -o "%(title)s.%(ext)s" $1
+}
+
+function downloadAudioPlaylist() {
+  yt-dlp -x --audio-format mp3 --audio-quality 1 -o "%(playlist_index)s %(title)s.%(ext)s" $1
+}
 
 alias music-kill='TS_SOCKET=/tmp/yt-music $MAZ_TASK_SPOOLER_COMMAND -k'
 alias music-Kill='music-kill && TS_SOCKET=/tmp/yt-music $MAZ_TASK_SPOOLER_COMMAND -K'
