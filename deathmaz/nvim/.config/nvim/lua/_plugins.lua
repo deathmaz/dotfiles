@@ -273,24 +273,18 @@ return packer.startup({
     }
     use { 'saadparwaiz1/cmp_luasnip' }
 
-    use({
-      'lewis6991/spellsitter.nvim',
-      config = function()
-        require('spellsitter').setup({ enable = true })
-      end,
-    })
     use({ 'psliwka/vim-dirtytalk', run = ':DirtytalkUpdate' })
 
     use({
       'gbprod/substitute.nvim',
       config = function()
         require('substitute').setup()
-        vim.keymap.set("n", "T", function()
+        --[[ vim.keymap.set("n", "T", function()
           require('substitute').operator()
         end, { noremap = true })
         vim.keymap.set("x", "T", function()
           require('substitute').visual()
-        end, { noremap = true })
+        end, { noremap = true }) ]]
         vim.keymap.set("n", "X", function()
           require('substitute.exchange').operator()
         end, { noremap = true })
@@ -304,7 +298,7 @@ return packer.startup({
     })
 
     -- due to https://github.com/neovim/neovim/issues/12587
-    use 'antoinemadec/FixCursorHold.nvim'
+    -- use 'antoinemadec/FixCursorHold.nvim'
 
     use {
       'neoclide/coc.nvim',
@@ -342,6 +336,7 @@ return packer.startup({
       config = function()
         require('wincent.commandt').setup()
       end,
+      disable = true,
     }
 
     use 'gpanders/editorconfig.nvim'
@@ -566,6 +561,32 @@ return packer.startup({
       end,
       disable = false,
     }
+
+    use {
+      'Lokaltog/vim-monotone',
+      disable = false,
+    }
+
+    use({
+      'cranberry-clockworks/coal.nvim',
+    })
+
+    use {
+      'kvrohit/rasmus.nvim',
+      setup = function()
+        -- vim.g.rasmus_variant = "monochrome"
+      end,
+      config = function()
+        vim.cmd [[colorscheme rasmus]]
+      end,
+      disable = true,
+    }
+
+    use {
+      'danth/pathfinder.vim',
+      disable = true,
+    }
+
     use {
       'Mofiqul/dracula.nvim',
       config = function()
