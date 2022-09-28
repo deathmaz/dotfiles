@@ -1,4 +1,4 @@
-vim.g.asyncrun_rootmarks = { '.git', '.svn', '.root', '.project', '.hg' }
+vim.g.asyncrun_rootmarks = { '.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml' }
 vim.g.asynctasks_term_pos = 'tab'
 vim.g.asynctasks_term_focus = true
 vim.g.asynctasks_confirm = false

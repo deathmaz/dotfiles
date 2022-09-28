@@ -93,6 +93,10 @@ return packer.startup({
     }
 
     use {
+      'simrat39/rust-tools.nvim',
+    }
+
+    use {
       "ahmedkhalf/project.nvim",
       config = function()
         require('_project')
@@ -392,8 +396,14 @@ return packer.startup({
       'windwp/nvim-autopairs',
       config = function()
         require('_autopairs')
-      end
+      end,
+      disable = true,
     }
+
+    use {
+      'LunarWatcher/auto-pairs',
+    }
+
     use 'mhinz/vim-startify'
     use {
       'mhinz/vim-sayonara',
@@ -480,7 +490,7 @@ return packer.startup({
         require('_tabout')
       end,
       requires = { 'nvim-treesitter/nvim-treesitter' },
-      after = { 'coc.nvim' },
+      after = { 'nvim-cmp' },
       disable = true,
     }
 
@@ -553,6 +563,7 @@ return packer.startup({
     use {
       "catppuccin/nvim",
       as = "catppuccin",
+      run = ":lua require('catppuccin').compile()",
       setup = function()
         vim.g.catppuccin_flavour = "macchiato"
       end,

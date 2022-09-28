@@ -83,6 +83,9 @@ vim.opt.listchars = {
   trail = '•', -- BULLET (U+2022, UTF-8: E2 80 A2)
 }
 
+vim.opt.winminwidth = 10
+vim.opt.winwidth = 10
+
 vim.opt.wrap = false
 vim.opt.colorcolumn = ""
 vim.opt.signcolumn = "yes"

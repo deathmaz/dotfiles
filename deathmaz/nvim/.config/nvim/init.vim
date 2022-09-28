@@ -394,7 +394,7 @@ let g:ctrlsf_auto_close = 0
 "}}}
 
 "{{{ ---- AsyncRun
-nnoremap <F9> :AsyncRun -mode=term -focus=0 
+nnoremap <F9> :AsyncRun -mode=term -focus=1 
 
 let g:asyncrun_open = 8
 

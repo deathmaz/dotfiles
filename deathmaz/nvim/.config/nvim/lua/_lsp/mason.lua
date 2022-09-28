@@ -22,6 +22,7 @@ local servers = {
   "eslint",
   "stylelint_lsp",
   "gopls",
+  "rust_analyzer",
 }
 
 local settings = {
@@ -134,17 +135,22 @@ for _, server in pairs(servers) do
     goto continue
   end ]]
 
-  --[[ if server == "rust_analyzer" then
-    local rust_opts = require "user.lsp.settings.rust"
+  if server == "rust_analyzer" then
+    -- local rust_opts = require "user.lsp.settings.rust"
     -- opts = vim.tbl_deep_extend("force", rust_opts, opts)
     local rust_tools_status_ok, rust_tools = pcall(require, "rust-tools")
     if not rust_tools_status_ok then
       return
     end
 
-    rust_tools.setup(rust_opts)
+    rust_tools.setup({
+      server = {
+        on_attach = opts.on_attach,
+        capabilities = opts.capabilities,
+      }
+    })
     goto continue
-  end ]]
+  end
 
   lspconfig[server].setup(opts)
   ::continue::
