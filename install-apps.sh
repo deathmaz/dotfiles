@@ -7,7 +7,6 @@ sudo pacman -S \
   zsh \
   redshift \
   docker \
-  birdcount \
   kitty \
   feh \
   bat \
