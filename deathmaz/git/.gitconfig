@@ -19,6 +19,9 @@
   ; syntax-theme = Dracula
   ; width = 250
 
+[push]
+  autoSetupRemote = true
+
 [color "status"]
   added = yellow
   changed = green
