@@ -1,6 +1,7 @@
 browser ~/.newsboat/piper
 scrolloff 10
-auto-reload yes
+refresh-on-startup yes
+auto-reload no
 reload-time 150
 player mpv
 confirm-exit yes
