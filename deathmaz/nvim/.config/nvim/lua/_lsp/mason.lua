@@ -84,10 +84,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end ]]
 
-  if server == "sumneko_lua" then
+  --[[ if server == "sumneko_lua" then
     local sumneko_opts = require "_lsp.settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  end
+  end ]]
 
   --[[ if server == "tsserver" then
     local tsserver_opts = require "user.lsp.settings.tsserver"
