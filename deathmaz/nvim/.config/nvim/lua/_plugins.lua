@@ -212,12 +212,12 @@ return packer.startup({
     }
     use({ 'RRethy/nvim-treesitter-endwise' })
 
+    use { "folke/neodev.nvim" }
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
     use { "neovim/nvim-lspconfig" }
     use { "ray-x/lsp_signature.nvim" }
     use { "b0o/SchemaStore.nvim" }
-    use { "folke/lua-dev.nvim" }
     use {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       config = function()

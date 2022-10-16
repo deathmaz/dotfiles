@@ -44,6 +44,11 @@ mason_lspconfig.setup {
   automatic_installation = true,
 }
 
+local ok, neodev = pcall(require, "neodev")
+if ok then
+  neodev.setup({})
+end
+
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status_ok then
   return
@@ -80,30 +85,8 @@ for _, server in pairs(servers) do
   end ]]
 
   if server == "sumneko_lua" then
-    local l_status_ok, lua_dev = pcall(require, "lua-dev")
-    if not l_status_ok then
-      return
-    end
-    -- local sumneko_opts = require "user.lsp.settings.sumneko_lua"
-    -- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-    -- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
-    local luadev = lua_dev.setup {
-      --   -- add any options here, or leave empty to use the default settings
-      -- lspconfig = opts,
-      lspconfig = {
-        on_attach = opts.on_attach,
-        capabilities = opts.capabilities,
-        telemetry = {
-          enable = false
-        }
-        --   -- settings = opts.settings,
-      },
-      telemetry = {
-        enable = false
-      },
-    }
-    lspconfig.sumneko_lua.setup(luadev)
-    goto continue
+    local sumneko_opts = require "_lsp.settings.sumneko_lua"
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
   --[[ if server == "tsserver" then
@@ -155,6 +138,3 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(opts)
   ::continue::
 end
-
--- TODO: add something to installer later
--- require("lspconfig").motoko.setup {}
