@@ -50,7 +50,6 @@ configs.setup {
     'jsdoc',
     'vue',
     'rust',
-    'c',
     'go',
     'dockerfile',
     'vim',

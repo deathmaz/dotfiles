@@ -23,6 +23,12 @@ return packer.startup({
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'kyazdani42/nvim-web-devicons'
+    use {
+      'ibhagwan/smartyank.nvim',
+      config = function()
+        require('_smartyank')
+      end
+    }
 
     use {
       'gaoDean/autolist.nvim',
@@ -350,6 +356,9 @@ return packer.startup({
     use 'tpope/vim-eunuch'
     use 'tpope/vim-unimpaired'
     use {
+      'tpope/vim-rsi'
+    }
+    use {
       'ron89/thesaurus_query.vim',
       cmd = {
         'Thesaurus',
@@ -402,9 +411,11 @@ return packer.startup({
 
     use {
       'LunarWatcher/auto-pairs',
+      config = function()
+        require('_vim-autopairs')
+      end
     }
 
-    use 'mhinz/vim-startify'
     use {
       'mhinz/vim-sayonara',
       cmd = 'Sayonara'
