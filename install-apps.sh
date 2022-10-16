@@ -22,12 +22,13 @@ sudo pacman -S \
   youtube-dl \
   ncdu \
   discord \
+  ttf-sourcecodepro-nerd \
   calibre \
   rustup \
   aria2 \
   wine \
   xorg-xbacklight \
-  bpytop \
+  btop \
   base-devel \
   elinks \
   rofi \
@@ -88,7 +89,6 @@ yay -S \
   task-spooler \
   protonmail-bridge-bin \
   aur/teams \
-  nerd-fonts-source-code-pro \
   gofumpt \
   vscode-codicons-git \
   indicator-sound-switcher \
