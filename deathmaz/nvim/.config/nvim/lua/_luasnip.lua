@@ -62,6 +62,8 @@ ls.add_snippets('markdown', {
     t('('),
     i(1),
     t(')'),
+    t(' <- '),
+    i(3),
     t(' - '),
     i(2),
   }),
