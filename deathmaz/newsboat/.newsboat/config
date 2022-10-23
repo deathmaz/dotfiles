@@ -29,9 +29,9 @@ reload-threads 4
 # rtv: https://www.youtube.com/watch?v=jc2ZVSof5-g
 # macro r set browser "rtv -l %u"; open-in-browser ; set browser "$BROWSER %u"
 # macro r set browser "tmux split-window -h && tmux send-keys 'rtv -l %u && tmux kill-pane\n'"; open-in-browser ; set browser "$BROWSER %u"
-macro r set browser "readable %u -p title,text-content | xclip -selection clipboard && notify-send -t 5000 'Readable done!'"; open-in-browser; set browser ~/.newsboat/piper
-macro w set browser "readable %u -p html-title,html-content > /tmp/readable.html && w3m /tmp/readable.html"; open-in-browser; set browser ~/.newsboat/piper
-macro W set browser "w3m %u"; open-in-browser; set browser ~/.newsboat/piper
+macro r set browser "readable %u -p title,text-content | xclip -selection clipboard && notify-send -t 5000 'Readable done!'"; open-in-browser-and-mark-read; set browser ~/.newsboat/piper
+macro w set browser "readable %u -p html-title,html-content > /tmp/readable.html && w3m /tmp/readable.html"; open-in-browser-and-mark-read; set browser ~/.newsboat/piper
+macro W set browser "w3m %u"; open-in-browser-and-mark-read; set browser ~/.newsboat/piper
 
 # open in cli web browser
 # w3m: https://www.youtube.com/watch?v=Z22cFTB-uqg
