@@ -12,7 +12,8 @@ vim.opt.diffopt = {
   'filler',
   'internal',
   'algorithm:histogram',
-  'indent-heuristic'
+  'indent-heuristic',
+  'linematch:60',
 }
 
 -- emoji is true by default but makes (n)vim treat all emoji as double width
