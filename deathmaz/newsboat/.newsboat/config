@@ -8,12 +8,7 @@ confirm-exit yes
 save-path "~/Downloads
 download-path		"~/Downloads/%n"
 max-downloads		2
-# highlight article "^(Feed|Title|Author|Link|Date):" blue blue underline
-# highlight feedlist "https?://[^ ]+" yellow red bold
-# color listfocus_unread yellow black protect
 feedlist-format " %n %4i %11u %t -- %T"
-# show-read-feeds no
-# show-read-articles no
 
 keep-articles-days 120
 reload-threads 4

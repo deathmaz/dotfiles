@@ -574,7 +574,7 @@ return packer.startup({
     use {
       "catppuccin/nvim",
       as = "catppuccin",
-      run = ":lua require('catppuccin').compile()",
+      run = ":CatppuccinCompile",
       setup = function()
         vim.g.catppuccin_flavour = "macchiato"
       end,
