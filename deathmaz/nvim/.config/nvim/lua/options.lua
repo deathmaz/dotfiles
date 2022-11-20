@@ -96,12 +96,12 @@ vim.opt.synmaxcol = 1024 -- don't syntax highlight long lines
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- vim.opt.foldmethod = "marker"
--- vim.opt.foldtext = "v:lua.require'_folds'.folds()"
--- vim.opt.foldopen = vim.opt.foldopen + 'search'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldmethod = 'expr'
-vim.opt.foldlevelstart = 99
+vim.opt.foldmethod = "marker"
+vim.opt.foldtext = "v:lua.require'_folds'.folds()"
+vim.opt.foldopen = vim.opt.foldopen + 'search'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldlevelstart = 99
 
 -- vim.wo.foldcolumn = '1'
 -- vim.wo.foldlevel = 99
