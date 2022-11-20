@@ -6,9 +6,19 @@ reload-time 150
 player mpv
 confirm-exit yes
 save-path "~/Downloads
-download-path		"~/Downloads/%n"
-max-downloads		2
+download-path "~/Downloads/%n"
+max-downloads 2
+text-width 80
 feedlist-format " %n %4i %11u %t -- %T"
+# feed-sort-order unreadarticlecount-asc
+
+# ignore-mode "display"
+# ignore-argicle "*" "age > 30"
+
+# freshrss-passwordfile "~/dotfiles/deathmaz/newsboat/.newsboat/freshrss-pw.txt"
+# freshrss-url "http://127.0.0.1:5858/api/greader.php"
+# urls-source "freshrss"
+# freshrss-login "maz"
 
 keep-articles-days 120
 reload-threads 4
@@ -39,6 +49,8 @@ macro W set browser "w3m %u"; open-in-browser-and-mark-read; set browser ~/.news
 macro y set browser "echo -n %u | xclip -selection clipboard"; open-in-browser ; set browser ~/.newsboat/piper
 
 # macro e set browser "tmux split-window -h && tmux send-keys '$MAZ_CLI_BROWSER %u && tmux kill-pane\n'"; open-in-browser ; set browser "$BROWSER %u"
+
+goto-next-feed no
 
 # vim like navigation
 bind-key j down

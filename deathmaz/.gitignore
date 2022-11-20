@@ -11,12 +11,6 @@ gh/.config/gh/hosts.yml
 
 mpv/.config/mpv/watch_later
 
-newsboat/.newsboat/cache.db
-newsboat/.newsboat/cache.db.lock
-newsboat/.newsboat/history.search
-newsboat/.newsboat/history.cmdline
-newsboat/.newsboat/urls
-
 w3m/.w3m/w3mtmp*
 w3m/.w3m/w3mcache*
 w3m/.w3m/w3msrc*
