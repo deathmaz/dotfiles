@@ -1,17 +1,51 @@
 #!/usr/bin/env bash
 # Simple script to redirect url's opened from termite.
 
+LINK="$1"
 # A function containing a case list of options
 Open() {
-  case "$1" in
+  case "$LINK" in
     # *youtube.com*|*gfycat.com*|*v.redd.it*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi) TS_SOCKET=/tmp/newsboat ts mpv-custom "$1";;
     # *reddit.com*) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "tuir -l $1 && tmux kill-pane " 'Enter';;
     # *i.imgur.com*\.gifv) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "mpv-custom ${1/gifv/mp4} && tmux kill-pane" 'Enter';;
-    *reddit.com*) tuir -l $1;;
-    *youtube.com*|*twitch.tv*|*gfycat.com*|*v.redd.it*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi|*.gif*|*.mp3*) TS_SOCKET=/tmp/newsboat $MAZ_TASK_SPOOLER_COMMAND mpv-custom "${1}";;
-    *.jpg*|*.png*|*.jpeg*) feh "$1";;
+    *reddit.com*)
+      kitty @ launch --type=tab tuir -l "$LINK"
+      ;;
+    *gfycat.com/*)
+      nohup mpv-custom "${LINK/.gifv/.webm}" > /dev/null 2>&1 &
+      ;;
+    *giphy.com*)
+      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      ;;
+    *imgur.com/*.gifv|*imgur.com/*.mp4|*imgur.com/*.webm|*imgur.com/*.gif)
+      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      ;;
+    *v.redd.it/*)
+      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      ;;
+    *.mp3)
+      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      ;;
+    *.gif)
+      nohup mpv-custom "${LINK/.gifv/.webm}" > /dev/null 2>&1 &
+      ;;
+    *.mp4|*.mkv|*.avi|*.wmv|*.m4v|*.mpg|*.mpeg|*.flv|*.ogm|*.ogv|*.gifv)
+      $MAZ_TASK_SPOOLER_COMMAND mpv-custom "$LINK"
+      ;;
+    *instagram.com/p/*)
+      LINK="$(curl -s "$LINK" | grep -oP '<meta property="og:image" content="\K[^"]+')"
+      nohup feh "$LINK" > /dev/null 2>&1 &
+      ;;
+    *youtube.com*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*)
+       $MAZ_TASK_SPOOLER_COMMAND mpv-custom "$LINK"
+      ;;
+    *.jpg|*.png|*.jpeg)
+      nohup feh "$LINK" > /dev/null 2>&1 &
+      ;;
     # *) readable "$1" -p html-title,html-content > /tmp/readable.html ; $MAZ_CLI_BROWSER -no-connect /tmp/readable.html;
-    *) xdg-open "$1";
+    *)
+    xdg-open "$LINK"
+    ;;
   esac
 }
 
