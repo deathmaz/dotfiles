@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
-# Simple script to redirect url's opened from termite.
+
+read_w3m() {
+  readable "$1" -p html-title,html-content > /tmp/readable.html && kitty @ launch --type=tab w3m /tmp/readable.html
+}
+
+w3m_tab() {
+  kitty @ launch --type=tab w3m "$1"
+}
+
+media() {
+  nohup mpv-custom "$1" > /dev/null 2>&1 &
+}
+
+media_queue() {
+  $MAZ_TASK_SPOOLER_COMMAND mpv-custom "$1"
+}
+
+image() {
+  nohup feh "$1" > /dev/null 2>&1 &
+}
 
 LINK="$1"
 # A function containing a case list of options
@@ -8,39 +27,64 @@ Open() {
     # *youtube.com*|*gfycat.com*|*v.redd.it*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*|*.mp4*|*.avi) TS_SOCKET=/tmp/newsboat ts mpv-custom "$1";;
     # *reddit.com*) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "tuir -l $1 && tmux kill-pane " 'Enter';;
     # *i.imgur.com*\.gifv) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "mpv-custom ${1/gifv/mp4} && tmux kill-pane" 'Enter';;
+    *life.pravda.com.ua*)
+      read_w3m "$LINK"
+      ;;
+    *pravda.com.ua*)
+      read_w3m "$LINK"
+      ;;
+    *forbes.com*)
+      read_w3m "$LINK"
+      ;;
+    *independent.co*)
+      read_w3m "$LINK"
+      ;;
+    *news.liga.net*)
+      w3m_tab "$LINK"
+      ;;
+    *preview.redd.it*)
+      image "$LINK"
+      ;;
+    *reddit.com/link/*/video*)
+      LINK="$(lynx -source "$LINK" | grep -oP 'data-mpd-url="\K[^"]+')"
+      media "$LINK"
+      ;;
     *reddit.com*)
       kitty @ launch --type=tab tuir -l "$LINK"
       ;;
-    *gfycat.com/*)
+    *gfycat.com/*|*.gif)
       nohup mpv-custom "${LINK/.gifv/.webm}" > /dev/null 2>&1 &
       ;;
     *giphy.com*)
-      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      media "$LINK"
       ;;
     *imgur.com/*.gifv|*imgur.com/*.mp4|*imgur.com/*.webm|*imgur.com/*.gif)
-      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      media "$LINK"
       ;;
     *v.redd.it/*)
-      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      media "$LINK"
       ;;
     *.mp3)
-      nohup mpv-custom "$LINK" > /dev/null 2>&1 &
+      media "$LINK"
       ;;
-    *.gif)
-      nohup mpv-custom "${LINK/.gifv/.webm}" > /dev/null 2>&1 &
+    *telegram-cdn.org/file*)
+      media "$LINK"
       ;;
     *.mp4|*.mkv|*.avi|*.wmv|*.m4v|*.mpg|*.mpeg|*.flv|*.ogm|*.ogv|*.gifv)
-      $MAZ_TASK_SPOOLER_COMMAND mpv-custom "$LINK"
+      media_queue "$LINK"
       ;;
     *instagram.com/p/*)
       LINK="$(curl -s "$LINK" | grep -oP '<meta property="og:image" content="\K[^"]+')"
-      nohup feh "$LINK" > /dev/null 2>&1 &
+      image "$LINK"
       ;;
     *youtube.com*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*)
-       $MAZ_TASK_SPOOLER_COMMAND mpv-custom "$LINK"
+      media_queue "$LINK"
       ;;
-    *.jpg|*.png|*.jpeg)
-      nohup feh "$LINK" > /dev/null 2>&1 &
+    *.jpg|*.png|*.jpeg|*nitter.net/pic*)
+      image "$LINK"
+      ;;
+    *nitter.net*)
+      w3m_tab "$LINK"
       ;;
     # *) readable "$1" -p html-title,html-content > /tmp/readable.html ; $MAZ_CLI_BROWSER -no-connect /tmp/readable.html;
     *)
