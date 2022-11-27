@@ -3,6 +3,7 @@
 sudo pacman -S \
   yay \
   pass \
+  lynx \
   go \
   zsh \
   redshift \
@@ -76,6 +77,8 @@ gh extension install dlvhdr/gh-dash
 gh extension install seachicken/gh-poi
 
 yay -S \
+  nodejs-readability-cli \
+  keymapper \
   tuir \
   viddy \
   urlview \
@@ -95,4 +98,7 @@ yay -S \
   --noconfirm \
   --needed
 
-npm install -g readability-cli eslint eslint-plugin-vue prettier prettier-eslint
+systemctl enable keymapperd
+systemctl start keymapperd
+
+npm install -g eslint eslint-plugin-vue prettier prettier-eslint
