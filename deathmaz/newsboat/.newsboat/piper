@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 read_w3m() {
-  readable "$1" -p html-title,html-content > /tmp/readable.html && kitty @ launch --type=tab w3m /tmp/readable.html
+  readable "$1" -p html-title,html-content > /tmp/readable.html \
+    && kitty @ launch --type=tab w3m /tmp/readable.html \
+    && kitty @ launch \
+    && kitty @ focus-window --match 'title:^w3m'
 }
 
 w3m_tab() {
@@ -30,19 +33,79 @@ Open() {
     *life.pravda.com.ua*)
       read_w3m "$LINK"
       ;;
+    *politico*)
+      read_w3m "$LINK"
+      ;;
+    *economist.com*)
+      read_w3m "$LINK"
+      ;;
+    *theguardian.com*)
+      read_w3m "$LINK"
+      ;;
+    *tverezo.info*)
+      read_w3m "$LINK"
+      ;;
+    *defence-ua.com*)
+      read_w3m "$LINK"
+      ;;
+    *19fortyfive.com*)
+      read_w3m "$LINK"
+      ;;
+    *jpost.com*)
+      w3m_tab "$LINK"
+      ;;
+    *radiosvoboda.org*)
+      read_w3m "$LINK"
+      ;;
     *pravda.com.ua*)
+      read_w3m "$LINK"
+      ;;
+    *wsj.com*)
+      read_w3m "$LINK"
+      ;;
+    *usnews.com*)
+      read_w3m "$LINK"
+      ;;
+    *dw.com*)
+      read_w3m "$LINK"
+      ;;
+    *aljazeera.com*)
+      read_w3m "$LINK"
+      ;;
+    *dailymail.co*)
+      read_w3m "$LINK"
+      ;;
+    *telegraph.co*)
       read_w3m "$LINK"
       ;;
     *forbes.com*)
       read_w3m "$LINK"
       ;;
+    *19fortyfive.com*)
+      read_w3m "$LINK"
+      ;;
+    *bbc.co*)
+      read_w3m "$LINK"
+      ;;
+    *washingtonpost.com*)
+      read_w3m "$LINK"
+      ;;
+    *rbc.ua*)
+      read_w3m "$LINK"
+      ;;
     *independent.co*)
       read_w3m "$LINK"
       ;;
-    *news.liga.net*)
+    *huffpost.com*)
+      read_w3m "$LINK"
+      ;;
+    *liga.net*)
       w3m_tab "$LINK"
       ;;
     *preview.redd.it*)
+      image "$LINK"
+      ;;
+    *img.thedailybeast.com/image*)
       image "$LINK"
       ;;
     *reddit.com/link/*/video*)
@@ -70,17 +133,23 @@ Open() {
     *telegram-cdn.org/file*)
       media "$LINK"
       ;;
+    *video.twimg.com*)
+      media "$LINK"
+      ;;
     *.mp4|*.mkv|*.avi|*.wmv|*.m4v|*.mpg|*.mpeg|*.flv|*.ogm|*.ogv|*.gifv)
       media_queue "$LINK"
       ;;
     *instagram.com/p/*)
-      LINK="$(curl -s "$LINK" | grep -oP '<meta property="og:image" content="\K[^"]+')"
-      image "$LINK"
+      media "$LINK"
       ;;
+    # *instagram.com/p/*)
+    #   LINK="$(curl -s "$LINK" | grep -oP '<meta property="og:image" content="\K[^"]+')"
+    #   image "$LINK"
+    #   ;;
     *youtube.com*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*)
       media_queue "$LINK"
       ;;
-    *.jpg|*.png|*.jpeg|*nitter.net/pic*)
+    *.jpg|*.png|*.jpeg|*nitter.net/pic*|*pbs.twimg.com/media*)
       image "$LINK"
       ;;
     *nitter.net*)

@@ -2,7 +2,7 @@ browser ~/.newsboat/piper
 scrolloff 10
 refresh-on-startup no
 suppress-first-reload yes
-auto-reload yes
+auto-reload no
 reload-time 150
 player mpv
 confirm-exit yes
@@ -12,7 +12,7 @@ max-downloads 4
 text-width 80
 feedlist-format " %n %4i %11u %t -- %T"
 reload-only-visible-feeds yes
-prepopulate-query-feeds yes
+prepopulate-query-feeds no
 
 # feed-sort-order unreadarticlecount-asc
 
