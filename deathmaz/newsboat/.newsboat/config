@@ -13,6 +13,9 @@ text-width 80
 feedlist-format " %n %4i %11u %t -- %T"
 reload-only-visible-feeds yes
 prepopulate-query-feeds no
+keep-articles-days 120
+reload-threads 4
+mark-as-read-on-hover no
 
 # feed-sort-order unreadarticlecount-asc
 
@@ -23,9 +26,6 @@ prepopulate-query-feeds no
 # freshrss-url "http://127.0.0.1:5858/api/greader.php"
 # urls-source "freshrss"
 # freshrss-login "maz"
-
-keep-articles-days 120
-reload-threads 4
 
 # add video or audio to play queue using mpv (requires: task-spooler, mpv, youtube-dl)
 # task-spooler: https://www.youtube.com/watch?v=wv8D8wT20ZY

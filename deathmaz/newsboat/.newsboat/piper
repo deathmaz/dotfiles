@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-read_w3m() {
-  readable "$1" -p html-title,html-content > /tmp/readable.html \
-    && kitty @ launch --type=tab w3m /tmp/readable.html \
+w3m_tab() {
+  kitty @ launch --type=tab w3m "$1" \
     && kitty @ launch \
     && kitty @ focus-window --match 'title:^w3m'
 }
 
-w3m_tab() {
-  kitty @ launch --type=tab w3m "$1"
+read_w3m() {
+  readable "$1" -p html-title,html-content > /tmp/readable.html \
+    && w3m_tab /tmp/readable.html
 }
 
 media() {
@@ -48,8 +48,35 @@ Open() {
     *defence-ua.com*)
       read_w3m "$LINK"
       ;;
+    *reuters*)
+      read_w3m "$LINK"
+      ;;
+    *nypost*)
+      read_w3m "$LINK"
+      ;;
+    *news.yahoo*)
+      read_w3m "$LINK"
+      ;;
+    *polygraph*)
+      read_w3m "$LINK"
+      ;;
+    *pics.livejournal.com*)
+      image "$LINK"
+      ;;
+    *livejournal.com*)
+      read_w3m "$LINK"
+      ;;
+    *ndtv.com*)
+      read_w3m "$LINK"
+      ;;
+    *nytimes.com*)
+      w3m_tab "$LINK"
+      ;;
     *19fortyfive.com*)
       read_w3m "$LINK"
+      ;;
+    *images.jpost.com*)
+      image "$LINK"
       ;;
     *jpost.com*)
       w3m_tab "$LINK"
@@ -99,7 +126,13 @@ Open() {
     *huffpost.com*)
       read_w3m "$LINK"
       ;;
+    *unian*)
+      read_w3m "$LINK"
+      ;;
     *liga.net*)
+      w3m_tab "$LINK"
+      ;;
+    *rusi.org*)
       w3m_tab "$LINK"
       ;;
     *preview.redd.it*)
@@ -149,10 +182,10 @@ Open() {
     *youtube.com*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*)
       media_queue "$LINK"
       ;;
-    *.jpg|*.png|*.jpeg|*nitter.net/pic*|*pbs.twimg.com/media*)
+    *.jpg|*.png|*.jpeg|*nitter.*/pic*|*pbs.twimg.com/media*)
       image "$LINK"
       ;;
-    *nitter.net*)
+    *nitter.*)
       w3m_tab "$LINK"
       ;;
     # *) readable "$1" -p html-title,html-content > /tmp/readable.html ; $MAZ_CLI_BROWSER -no-connect /tmp/readable.html;
