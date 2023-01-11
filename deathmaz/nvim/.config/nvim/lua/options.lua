@@ -3,7 +3,7 @@ vim.opt.mousefocus = true
 -- vim.o.cmdheight = 0
 vim.opt.sidescroll = 1
 vim.opt.sidescrolloff = 10
-vim.opt.splitkeep = 'screen'
+-- vim.opt.splitkeep = 'screen'
 vim.opt.tags:append({ './.tags' })
 vim.opt.inccommand = 'split'
 vim.opt.diffopt = {

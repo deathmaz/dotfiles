@@ -349,7 +349,6 @@ return packer.startup({
       disable = true,
     }
 
-    use 'gpanders/editorconfig.nvim'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
     use 'tpope/vim-surround'
