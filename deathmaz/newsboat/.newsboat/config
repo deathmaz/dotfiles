@@ -12,13 +12,18 @@ max-downloads 4
 text-width 80
 feedlist-format " %n %4i %11u %t -- %T"
 reload-only-visible-feeds yes
+
+# rigth now newsboat panics with this option enabled due to utf-8 char issue
 prepopulate-query-feeds no
+
 keep-articles-days 120
 reload-threads 4
 mark-as-read-on-hover no
 
 # feed-sort-order unreadarticlecount-asc
 
+freshrss-flag-star "s"
+freshrss-min-items 100
 # ignore-mode "display"
 # ignore-argicle "*" "age > 30"
 

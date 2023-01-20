@@ -4,6 +4,7 @@ if not ok then
 end
 
 catppuccin.setup({
+  flavour = "macchiato",
   compile = {
     enable = true,
   },

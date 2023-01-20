@@ -111,10 +111,12 @@ return packer.startup({
 
     use({
       "glepnir/lspsaga.nvim",
-      branch = "main",
+      -- branch = "main",
+      commit = "b7b4777369b441341b2dcd45c738ea4167c11c9e",
       config = function()
         require('_lsp-saga')
-      end
+      end,
+      disable = false,
     })
 
     use {
@@ -574,9 +576,6 @@ return packer.startup({
       "catppuccin/nvim",
       as = "catppuccin",
       run = ":CatppuccinCompile",
-      setup = function()
-        vim.g.catppuccin_flavour = "macchiato"
-      end,
       config = function()
         require('_catppuccin')
       end,
