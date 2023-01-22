@@ -23,7 +23,7 @@ catppuccin.setup({
       enabled = true,
     },
     navic = {
-      enabled = true,
+      enabled = false,
       custom_bg = "NONE",
     },
   }

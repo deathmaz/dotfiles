@@ -537,7 +537,7 @@ let g:matchup_matchparen_deferred = 1
 
 lua require('_fugitive')
 
-lua require('_winbar')
+" lua require('_winbar')
 
 " see https://github.com/neovim/neovim/issues/19458
 " lua require('_winbar-gps')

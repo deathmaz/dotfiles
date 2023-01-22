@@ -95,7 +95,8 @@ return packer.startup({
       requires = "neovim/nvim-lspconfig",
       config = function()
         require('_navic')
-      end
+      end,
+      disable = true,
     }
 
     use {
@@ -111,8 +112,7 @@ return packer.startup({
 
     use({
       "glepnir/lspsaga.nvim",
-      -- branch = "main",
-      commit = "b7b4777369b441341b2dcd45c738ea4167c11c9e",
+      branch = "main",
       config = function()
         require('_lsp-saga')
       end,

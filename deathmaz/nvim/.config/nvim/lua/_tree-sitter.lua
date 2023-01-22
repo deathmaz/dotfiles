@@ -55,6 +55,7 @@ configs.setup {
     'vim',
     'yaml',
     'gitignore',
+    'markdown',
     -- 'scss',
   } -- one of 'all', 'language', or a list of languages
 }
