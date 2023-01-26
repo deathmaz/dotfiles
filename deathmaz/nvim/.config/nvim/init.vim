@@ -1,12 +1,8 @@
 " vim:foldmethod=marker
-lua require('_plugins')
 
-" Should be placed before plugin load
-let g:ale_disable_lsp = 1
+lua require('options')
+lua require('_lazy')
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" ---- {{{ Variables
 let s:signes = {
             \   'branch': emoji#available() ? emoji#for('trident') : '',
             \   'lock': emoji#available() ? emoji#for('lock') : '',
@@ -14,7 +10,8 @@ let s:signes = {
             \   'warning': emoji#for('zap'),
             \   'ok': emoji#for('+1')
             \ }
-" }}}
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " https://github.com/vim/vim/issues/4738
 function! OpenURLUnderCursor()
@@ -66,7 +63,6 @@ augroup END
 " Automatically equalize splits when Vim is resized
 autocmd VimResized * wincmd =
 
-lua require('options')
 " lua require('lsp')
 
 
@@ -282,18 +278,6 @@ noremap <plug>(slash-after) zz
 nnoremap <silent><leader>q  :Sayonara<cr>
 nnoremap <silent><leader>Q  :Sayonara!<cr>
 "}}}
-
-" ---- Readline-style key bindings in command-line (excerpt from rsi.vim) {{{
-" ----------------------------------------------------------------------------
-cnoremap        <C-B> <Left>
-cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
-cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
-cnoremap        <M-b> <S-Left>
-cnoremap        <M-f> <S-Right>
-silent! exe "set <S-Left>=\<Esc>b"
-silent! exe "set <S-Right>=\<Esc>f"
-"}}}
-
 
 "---- lightline {{{
 
@@ -749,10 +733,11 @@ vnoremap < <gv
 noremap gV `[v`]
 
 " Yank and paste from clipboard
-nnoremap \y "+y
-vnoremap \y "+y
-nnoremap \yy "+yy
-nnoremap \p "+p
+" NOTE: not used right now due to ibhagwan/smartyank.nvim
+" nnoremap \y "+y
+" vnoremap \y "+y
+" nnoremap \yy "+yy
+" nnoremap \p "+p
 
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
