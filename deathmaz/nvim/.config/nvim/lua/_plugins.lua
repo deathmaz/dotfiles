@@ -10,9 +10,16 @@ return {
 
   {
     'gaoDean/autolist.nvim',
+    ft = {
+      "markdown",
+      "text",
+      "tex",
+      "plaintex",
+    },
     config = function()
       require('_autolist')
-    end
+    end,
+    enabled = false,
   },
 
   {
@@ -389,9 +396,11 @@ return {
 
   {
     'LunarWatcher/auto-pairs',
+    lazy = false,
     config = function()
       require('_vim-autopairs')
     end,
+    enabled = true,
   },
 
   {
