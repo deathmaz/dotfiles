@@ -28,8 +28,6 @@ export BROWSER='xdg-open'
 
 autoload -Uz compinit
 compinit
-# Completion for kitty
-kitty + complete setup zsh | source /dev/stdin
 
 if [ "$(uname)" = "Darwin" ]; then
   [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
