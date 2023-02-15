@@ -87,6 +87,12 @@ Open() {
     *pravda.com.ua*)
       read_w3m "$LINK"
       ;;
+    *zn.ua*)
+      read_w3m "$LINK"
+      ;;
+    *focus.ua*)
+      read_w3m "$LINK"
+      ;;
     *wsj.com*)
       read_w3m "$LINK"
       ;;
@@ -140,6 +146,9 @@ Open() {
       ;;
     *img.thedailybeast.com/image*)
       image "$LINK"
+      ;;
+    *zn.ua/img*)
+      media "$LINK"
       ;;
     *reddit.com/link/*/video*)
       LINK="$(lynx -source "$LINK" | grep -oP 'data-mpd-url="\K[^"]+')"
