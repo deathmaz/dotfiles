@@ -41,13 +41,6 @@ return {
     end,
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('_nvim-treesitter-context')
-    end
-  },
-  {
     'lewis6991/gitsigns.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
@@ -146,6 +139,9 @@ return {
     config = function()
       require('bqf').setup({
         auto_resize_height = false,
+        preview = {
+          auto_preview = false,
+        }
       })
     end,
   },
@@ -195,6 +191,21 @@ return {
     config = function()
       require('_tree-sitter')
     end,
+    dependencies = {
+      {
+        'abecodes/tabout.nvim',
+        config = function()
+          require('_tabout')
+        end,
+        enabled = false,
+      },
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require('_nvim-treesitter-context')
+        end
+      },
+    },
   },
   { 'RRethy/nvim-treesitter-endwise' },
 
@@ -254,20 +265,27 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
     end
   },
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-buffer", -- buffer completions,
-  "hrsh7th/cmp-path", -- path completions,
-  "hrsh7th/cmp-cmdline", -- cmdline completions,
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-emoji",
-  "hrsh7th/cmp-nvim-lua",
+  {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require("_cmp")
+    end,
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-buffer', -- buffer completions,
+      'hrsh7th/cmp-path', -- path completions,
+      'hrsh7th/cmp-cmdline', -- cmdline completions,
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-emoji',
+      'hrsh7th/cmp-nvim-lua',
+    }
+  },
   {
     'https://gitlab.com/yorickpeterse/nvim-dd.git',
     config = function()
       require('dd').setup()
     end
   },
-  { 'saadparwaiz1/cmp_luasnip' },
 
   { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
 
@@ -410,7 +428,9 @@ return {
   'mattn/webapi-vim',
   'wellle/targets.vim',
   'elzr/vim-json',
-  'fladson/vim-kitty',
+  {
+    'fladson/vim-kitty',
+  },
   {
     'iamcco/markdown-preview.nvim',
     build = 'cd app & yarn install',
@@ -486,14 +506,6 @@ return {
         -- module = 'ts_context_commentstring',
       },
     },
-  },
-  {
-    'abecodes/tabout.nvim',
-    config = function()
-      require('_tabout')
-    end,
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    enabled = false,
   },
 
   {

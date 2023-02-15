@@ -529,7 +529,6 @@ lua require('_fugitive')
 lua require('_lorem-picsum')
 
 lua require('_lsp/init')
-lua require('_cmp')
 
 lua require('_autocmd')
 
