@@ -44,7 +44,7 @@ vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
 vim.keymap.set('n', '<leader>f', fzf_lua.files, opts)
 
-vim.keymap.set('n', '<leader>bb', fzf_lua.blines, opts)
+vim.keymap.set('n', '<leader><leader>l', fzf_lua.blines, opts)
 
 vim.keymap.set('n', '<leader>L', fzf_lua.grep_project, opts)
 

@@ -5,5 +5,11 @@ return {
     'scss',
     'sass',
     'vue',
+  },
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+    }
   }
 }
