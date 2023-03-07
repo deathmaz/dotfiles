@@ -35,6 +35,16 @@ configs.setup {
     enable = true,
     enable_autocmd = false,
   },
+  textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["in"] = "@property.name",
+        ["iv"] = "@property.value",
+      },
+    },
+  },
   ensure_installed = {
     'javascript',
     'typescript',

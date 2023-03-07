@@ -5,7 +5,8 @@ return {
     'ibhagwan/smartyank.nvim',
     config = function()
       require('_smartyank')
-    end
+    end,
+    event = 'VeryLazy',
   },
 
   {
@@ -24,6 +25,7 @@ return {
 
   {
     'kyazdani42/nvim-tree.lua',
+    event = 'VeryLazy',
     dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
@@ -32,13 +34,18 @@ return {
     end
   },
 
-  'andymass/vim-matchup',
-  'whiteinge/diffconflicts',
+  {
+    'andymass/vim-matchup',
+  },
+  {
+    'whiteinge/diffconflicts',
+  },
   {
     'deathmaz/fzf-lua-asynctasks',
     config = function()
       require('_fzf-lua-asynctasks')
     end,
+    event = 'VeryLazy',
   },
   {
     'lewis6991/gitsigns.nvim',
@@ -46,6 +53,7 @@ return {
     config = function()
       require('_gitsigns')
     end,
+    event = 'VeryLazy',
   },
   {
     'sindrets/diffview.nvim',
@@ -94,6 +102,7 @@ return {
     config = function()
       require('_lsp-saga')
     end,
+    event = 'VeryLazy',
   },
 
   {
@@ -117,8 +126,14 @@ return {
     end,
     enabled = false,
   },
-  'ThePrimeagen/harpoon',
-  'bfredl/nvim-miniyank',
+  {
+    'ThePrimeagen/harpoon',
+    event = 'VeryLazy'
+  },
+  {
+    'bfredl/nvim-miniyank',
+    event = 'VeryLazy'
+  },
   {
     'folke/todo-comments.nvim',
     -- cmd = { 'TodoQuickFix', 'TodoTrouble', 'TodoTelescope' },
@@ -131,7 +146,8 @@ return {
     build = "make hexokinase",
     config = function()
       require('_hexokinase')
-    end
+    end,
+    event = 'VeryLazy'
   },
   {
     'kevinhwang91/nvim-bqf',
@@ -147,7 +163,8 @@ return {
   },
   'windwp/nvim-ts-autotag',
   {
-    'arthurxavierx/vim-caser'
+    'arthurxavierx/vim-caser',
+    event = 'VeryLazy'
   },
   {
     'fatih/vim-go',
@@ -164,7 +181,8 @@ return {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('_indent-blankline')
-    end
+    end,
+    event = 'VeryLazy'
   },
 
   --[[  {
@@ -188,10 +206,14 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    event = 'VeryLazy',
     config = function()
       require('_tree-sitter')
     end,
     dependencies = {
+      {
+        'nvim-treesitter/nvim-treesitter-textobjects'
+      },
       {
         'abecodes/tabout.nvim',
         config = function()
@@ -207,19 +229,27 @@ return {
       },
     },
   },
-  { 'RRethy/nvim-treesitter-endwise' },
+  {
+    'RRethy/nvim-treesitter-endwise',
+  },
 
   { "folke/neodev.nvim" },
-  { "williamboman/mason.nvim" },
+  {
+    "williamboman/mason.nvim",
+  },
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
-  { "ray-x/lsp_signature.nvim" },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = 'VeryLazy',
+  },
   { "b0o/SchemaStore.nvim" },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
       require('_lsp-lines')
-    end
+    end,
+    event = 'VeryLazy',
   },
   {
     "j-hui/fidget.nvim",
@@ -232,7 +262,8 @@ return {
     'onsails/lspkind.nvim',
     config = function()
       require('_lspkind')
-    end
+    end,
+    event = 'VeryLazy',
   },
   {
     'nvim-lua/lsp-status.nvim',
@@ -243,14 +274,14 @@ return {
     'axelvc/template-string.nvim',
     config = function()
       require('_template-string')
-    end
+    end,
   },
 
   {
     'AndrewRadev/splitjoin.vim',
     config = function()
       require('_splitjoin')
-    end
+    end,
   },
 
   {
@@ -270,6 +301,7 @@ return {
     config = function()
       require("_cmp")
     end,
+    event = 'InsertEnter',
     dependencies = {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer', -- buffer completions,
@@ -291,6 +323,7 @@ return {
 
   {
     'gbprod/substitute.nvim',
+    event = 'VeryLazy',
     config = function()
       require('substitute').setup()
       --[[ vim.keymap.set("n", "T", function()
@@ -334,13 +367,16 @@ return {
     enabled = false,
   },
   {
-    'feline-nvim/feline.nvim',
+    'freddiehaddad/feline.nvim',
     config = function()
       require('_feline')
     end,
     dependencies = { 'kyazdani42/nvim-web-devicons' }
   },
-  'wincent/ferret',
+  {
+    'wincent/ferret',
+    event = 'VeryLazy',
+  },
   {
     'wincent/command-t',
     build = 'cd lua/wincent/commandt/lib && make',
@@ -376,6 +412,11 @@ return {
     config = function()
       require('_fzf-lua')
     end,
+    event = 'VeryLazy',
+  },
+  {
+    'chaoren/vim-wordmotion',
+    enabled = false,
   },
 
   {
@@ -394,9 +435,14 @@ return {
     'junegunn/limelight.vim',
     cmd = 'Limelight'
   },
-  'junegunn/vim-easy-align',
+  {
+    'junegunn/vim-easy-align',
+    event = 'VeryLazy',
+  },
   'junegunn/vim-slash',
-  'junegunn/vim-emoji',
+  {
+    'junegunn/vim-emoji',
+  },
   {
     'othree/html5.vim',
     enabled = false
@@ -451,6 +497,7 @@ return {
     config = function()
       require('_window-picker')
     end,
+    event = 'VeryLazy',
   },
   'kana/vim-textobj-user',
   {
@@ -516,6 +563,7 @@ return {
 
   {
     'anuvyklack/hydra.nvim',
+    event = 'VeryLazy',
     dependencies = 'anuvyklack/keymap-layer.nvim',
     config = function()
       require('_hydra')
