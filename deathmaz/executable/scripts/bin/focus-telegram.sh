@@ -1,3 +1,7 @@
 #!/bin/bash
 
-wmctrl -i -a $(wmctrl -l | grep Telegram | tail -1)
+line=$(ps -aux | grep telegram | head -1)
+words=($line)
+window=$( wmctrl -lp | grep ${words[1]} )
+
+wmctrl -i -a $window
