@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo pacman -S \
+  jq \
   yay \
   pass \
   lynx \
