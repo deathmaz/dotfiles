@@ -55,9 +55,17 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm(
+      {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }
+    ),
     -- ["<Right>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
+      --[[ if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      elseif cmp.visible() then ]]
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -80,6 +88,7 @@ cmp.setup {
     end, { "i", "s" }),
   },
   sources = {
+    { name = "copilot", group_index = 2 },
     { name = "nvim_lsp", group_index = 2 },
     { name = 'luasnip', group_index = 2 },
     { name = "nvim_lua", group_index = 2 },

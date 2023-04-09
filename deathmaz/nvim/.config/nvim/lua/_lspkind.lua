@@ -5,4 +5,7 @@ end
 
 lspkind.init({
   preset = 'codicons',
+    symbol_map = {
+    Copilot = "",
+  },
 })

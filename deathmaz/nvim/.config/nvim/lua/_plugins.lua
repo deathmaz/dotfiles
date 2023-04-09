@@ -10,6 +10,15 @@ return {
   },
 
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require('_copilot')
+    end,
+  },
+
+  {
     'gaoDean/autolist.nvim',
     ft = {
       "markdown",
@@ -82,7 +91,7 @@ return {
     config = function()
       require('_navic')
     end,
-    enabled = false,
+    enabled = true,
   },
 
   {
@@ -103,6 +112,7 @@ return {
       require('_lsp-saga')
     end,
     event = 'VeryLazy',
+    enabled = false,
   },
 
   {
@@ -282,6 +292,7 @@ return {
     config = function()
       require('_splitjoin')
     end,
+    enabled = false,
   },
 
   {
@@ -310,6 +321,12 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lua',
+      {
+        'zbirenbaum/copilot-cmp',
+        config = function ()
+          require("copilot_cmp").setup()
+        end
+      }
     }
   },
   {
@@ -371,7 +388,17 @@ return {
     config = function()
       require('_feline')
     end,
-    dependencies = { 'kyazdani42/nvim-web-devicons' }
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
+  },
+  {
+    'Wansmer/treesj',
+    keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({
+        max_join_length = 300,
+      })
+    end,
   },
   {
     'wincent/ferret',

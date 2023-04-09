@@ -4,13 +4,41 @@ if not ok then
 end
 
 catppuccin.setup({
+  custom_highlights = function()
+    return {
+      DiagnosticUnderlineError = {
+        style = {
+          gui = 'undercurl',
+        },
+      },
+      DiagnosticUnderlineWarn = {
+        style = {
+          gui = 'undercurl',
+        },
+      },
+      DiagnosticUnderlineInfo = {
+        style = {
+          gui = 'undercurl',
+        },
+      },
+      DiagnosticUnderlineHint = {
+        style = {
+          gui = 'undercurl',
+        },
+      },
+    }
+  end,
   flavour = "macchiato",
   compile = {
     enable = true,
   },
   integrations = {
     lsp_saga = true,
+    mason = true,
     cmp = true,
+    harpoon = true,
+    markdown = true,
+    semantic_tokens = true,
     gitsigns = true,
     nvimtree = true,
     indent_blankline = {
@@ -23,7 +51,7 @@ catppuccin.setup({
       enabled = true,
     },
     navic = {
-      enabled = false,
+      enabled = true,
       custom_bg = "NONE",
     },
   }
