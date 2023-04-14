@@ -1,3 +1,8 @@
 #!/bin/bash
 
-wmctrl -i -a $(wmctrl -l | grep Brave)
+if pgrep -x "brave" > /dev/null
+then
+    wmctrl -xa "brave"
+else
+    /usr/bin/brave
+fi

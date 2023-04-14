@@ -1,11 +1,8 @@
 #!/bin/bash
 
-line=$(ps -aux | grep kitty | head -1)
-if [[ -z "$line" ]]; then
-  /usr/bin/kitty /usr/bin/ncmpcpp
+if pgrep -x "kitty" > /dev/null
+then
+  wmctrl -xa "kitty"
 else
-  words=($line)
-  window=$( wmctrl -lp | grep ${words[1]} )
-
-  wmctrl -i -a $window
+  /usr/bin/kitty
 fi

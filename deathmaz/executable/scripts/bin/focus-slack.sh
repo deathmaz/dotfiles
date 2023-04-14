@@ -1,9 +1,8 @@
 #!/bin/bash
 
-window=$(wmctrl -l | grep Slack)
-
-if [[ -z "$window" ]]; then
-  /usr/bin/slack
+if pgrep -x "slack" > /dev/null
+then
+  wmctrl -xa "slack"
 else
-  wmctrl -i -a $window
+  /usr/bin/slack
 fi
