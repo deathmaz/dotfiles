@@ -18,6 +18,7 @@ copilot.setup({
     vue = true,
     scss = true,
     typescript = true,
+    markdown = true,
     ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
   },
 })

@@ -54,7 +54,8 @@ catppuccin.setup({
       enabled = true,
       custom_bg = "NONE",
     },
-  }
+  },
+  no_italic = true,
 })
 
 vim.cmd [[colorscheme catppuccin]]

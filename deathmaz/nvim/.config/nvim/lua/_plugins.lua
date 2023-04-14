@@ -336,7 +336,14 @@ return {
     end
   },
 
-  { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
+  {
+    'psliwka/vim-dirtytalk',
+    build = ':DirtytalkUpdate',
+    config = function()
+      -- https://github.com/psliwka/vim-dirtytalk/issues/25#issuecomment-1399267808
+      vim.opt.rtp:append(vim.fn.stdpath 'data' .. '/site')
+    end,
+  },
 
   {
     'gbprod/substitute.nvim',
