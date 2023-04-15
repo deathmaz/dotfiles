@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+[ -f $HOME/.env ] && export $(envsubst < $HOME/.env)
 export EDITOR='nvim'
 export VISUAL="nvim"
 export HOMEBREW_BUNDLE_NO_LOCK='1'
