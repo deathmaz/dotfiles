@@ -10,6 +10,51 @@ return {
   },
 
   {
+    'jakewvincent/mkdnflow.nvim',
+    config = true,
+    opts = {
+      mappings = {
+        MkdnFoldSection = false,
+        MkdnUnfoldSection = false,
+        MkdnToggleToDo = {{'n', 'v'}, '<M-f>'},
+        MkdnDestroyLink = {'n', '<M-d>'},
+      },
+      perspective = {
+        priority = 'current',
+      }
+    },
+    enabled = true,
+  },
+
+  {
+    'SidOfc/mkdx',
+    ft = 'markdown',
+    init = function()
+      vim.g['mkdx#settings'] = {
+        map = {
+          enable = 0,
+        },
+        toc = {
+          update_on_write = 0,
+        },
+        checkbox = {
+          toggles = {' ', 'x'}
+        }
+      }
+    end,
+    enabled = true
+  },
+
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    event = "VeryLazy",
+    opts = {
+      minimumBufferNum = 5,
+    }
+  },
+
+  {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
@@ -315,15 +360,15 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-buffer', -- buffer completions,
-      'hrsh7th/cmp-path', -- path completions,
+      'hrsh7th/cmp-buffer',  -- buffer completions,
+      'hrsh7th/cmp-path',    -- path completions,
       'hrsh7th/cmp-cmdline', -- cmdline completions,
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lua',
       {
         'zbirenbaum/copilot-cmp',
-        config = function ()
+        config = function()
           require("copilot_cmp").setup()
         end
       }
@@ -441,7 +486,8 @@ return {
     }
   },
 
-  { 'ibhagwan/fzf-lua',
+  {
+    'ibhagwan/fzf-lua',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('_fzf-lua')

@@ -422,6 +422,7 @@ nmap ga <Plug>(EasyAlign)
 let g:table_mode_corner = '+'
 let g:table_mode_corner_corner='+'
 let g:table_mode_header_fillchar='='
+let g:table_mode_syntax=0
 "}}}
 
 "{{{ floaterm
