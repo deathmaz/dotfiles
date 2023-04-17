@@ -12,6 +12,7 @@ copilot.setup({
     enabled = false,
   },
   filetypes = {
+    go = true,
     lua = true,
     php = true,
     javascript = true,

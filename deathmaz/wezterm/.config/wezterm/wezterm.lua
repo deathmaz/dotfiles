@@ -11,6 +11,7 @@ config.tab_max_width = 80
 config.window_decorations = 'NONE'
 config.use_fancy_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
+config.check_for_updates = false
 
 config.window_padding = {
   left = '0.5cell',
@@ -30,7 +31,7 @@ config.cell_width = 0.9
 config.color_scheme = 'Catppuccin Macchiato'
 -- config.font = wezterm.font('Source Code Pro', { weight = 'Medium' })
 config.font = wezterm.font('SauceCodePro Nerd Font Mono', {
-  weight = 'Regular',
+  weight = 'Medium',
 })
 config.font_rules = {
   {

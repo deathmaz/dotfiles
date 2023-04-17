@@ -33,7 +33,7 @@ catppuccin.setup({
     enable = true,
   },
   integrations = {
-    lsp_saga = true,
+    lsp_saga = false,
     mason = true,
     cmp = true,
     harpoon = true,
