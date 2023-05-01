@@ -54,6 +54,8 @@ vim.keymap.set('n', '\\f', fzf_lua.git_status, opts)
 
 vim.keymap.set('n', '\\h', fzf_lua.help_tags, opts)
 
+vim.keymap.set('n', '\\c', fzf_lua.command_history, opts)
+
 vim.keymap.set('n', '<leader>o', fzf_lua.oldfiles, opts)
 
 vim.keymap.set('n', '<leader>ag', fzf_lua.grep_cword, opts)

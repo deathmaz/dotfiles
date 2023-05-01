@@ -3,7 +3,16 @@ if not ok then
   return
 end
 project.setup({
-  detection_methods = { "pattern", "lsp" },
+  detection_methods = {
+    "pattern",
+    "lsp",
+  },
+  exclude_dirs = {
+    "node_modules",
+    "build",
+    "dist",
+    "vendor",
+  },
   patterns = {
     ".git",
     ".hg",

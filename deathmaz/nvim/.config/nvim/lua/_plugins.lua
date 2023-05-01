@@ -16,12 +16,16 @@ return {
       mappings = {
         MkdnFoldSection = false,
         MkdnUnfoldSection = false,
-        MkdnToggleToDo = {{'n', 'v'}, '<M-f>'},
-        MkdnDestroyLink = {'n', '<M-d>'},
+        MkdnToggleToDo = { { 'n', 'v' }, '<M-f>' },
+        MkdnDestroyLink = { 'n', '<M-d>' },
       },
       perspective = {
         priority = 'current',
-      }
+      },
+      to_do = {
+        symbols = { ' ', '-', 'x' },
+        complete = 'x'
+      },
     },
     enabled = true,
   },
@@ -38,11 +42,21 @@ return {
           update_on_write = 0,
         },
         checkbox = {
-          toggles = {' ', 'x'}
+          toggles = { ' ', 'x' }
         }
       }
     end,
     enabled = true
+  },
+
+  {
+    'chrisbra/csv.vim',
+    ft = 'csv',
+    init = function()
+      vim.g.csv_default_delim = ';'
+      vim.g.csv_delim = ';'
+    end,
+    enabled = true,
   },
 
   {
@@ -216,7 +230,6 @@ return {
       })
     end,
   },
-  'windwp/nvim-ts-autotag',
   {
     'arthurxavierx/vim-caser',
     event = 'VeryLazy'
@@ -232,6 +245,17 @@ return {
     cmd = { 'Pantran' }
   },
 
+  {
+    "dnlhc/glance.nvim",
+    cmd = "Glance",
+    config = true,
+  },
+  {
+    "danymat/neogen",
+    cmd = { 'Neogen' },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+  },
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -259,6 +283,10 @@ return {
     cmd = 'TableModeToggle',
   },
   {
+    "MTDL9/vim-log-highlighting",
+    ft = "log",
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = 'VeryLazy',
@@ -270,11 +298,7 @@ return {
         'nvim-treesitter/nvim-treesitter-textobjects'
       },
       {
-        'abecodes/tabout.nvim',
-        config = function()
-          require('_tabout')
-        end,
-        enabled = false,
+        'windwp/nvim-ts-autotag',
       },
       {
         'nvim-treesitter/nvim-treesitter-context',
@@ -283,6 +307,16 @@ return {
         end
       },
     },
+  },
+  {
+    'abecodes/tabout.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter'
+    },
+    config = function()
+      require('_tabout')
+    end,
+    enabled = false,
   },
   {
     'RRethy/nvim-treesitter-endwise',
@@ -586,11 +620,15 @@ return {
     enabled = false,
   },
   {
-    'lukas-reineke/headlines.nvim',
-    config = function()
-      require('headlines').setup()
-    end,
-    enabled = false,
+    "lukas-reineke/headlines.nvim",
+    ft = "markdown",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      markdown = {
+        fat_headlines = false,
+      },
+    },
+    enabled = true,
   },
   {
     'whatyouhide/vim-textobj-xmlattr',

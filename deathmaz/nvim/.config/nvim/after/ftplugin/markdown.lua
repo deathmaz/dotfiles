@@ -1,5 +1,7 @@
 local fzf_lua_ok, fzf_lua = pcall(require, 'fzf-lua')
 
+vim.opt_local.spell = true
+
 local opts = { buffer = true }
 vim.keymap.set('n', '<leader>lc', '<cmd>:call mkdx#ToggleChecklist()<CR>', opts)
 vim.keymap.set('n', '<leader>ll', '<cmd>:call mkdx#ToggleList()<CR>', opts)
