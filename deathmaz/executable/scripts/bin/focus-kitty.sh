@@ -4,5 +4,5 @@ if pgrep -x "kitty" > /dev/null
 then
   wmctrl -xa "kitty"
 else
-  /usr/bin/kitty
+  /home/maz/.local/kitty.app/bin/kitty
 fi

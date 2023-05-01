@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 sudo pacman -S \
   jq \
   yay \
@@ -9,16 +11,16 @@ sudo pacman -S \
   zsh \
   redshift \
   docker \
-  kitty \
   feh \
   bat \
   newsboat \
-  node \
   npm \
   ripgrep \
   stow \
   tmux \
   vifm \
+  noto-fonts-emoji \
+  mpv \
   w3m \
   yarn \
   youtube-dl \
@@ -38,6 +40,8 @@ sudo pacman -S \
   fzf \
   flameshot \
   wmctrl \
+  zsh-theme-powerlevel10k \
+  xorg-xwininfo \
   brave-browser \
   docker-compose \
   the_silver_searcher \
@@ -45,8 +49,8 @@ sudo pacman -S \
   streamlink \
   xdotool \
   wmctrl \
-  yt-dlp \
   python-pynvim \
+  signal-desktop \
   thefuck \
   git-delta \
   telegram-desktop \
@@ -56,8 +60,6 @@ sudo pacman -S \
   ncmpcpp \
   mpc \
   tree-sitter \
-  simplescreenrecorder \
-  # see https://stackoverflow.com/a/71189742, comment
   libxcrypt-compat \
   --noconfirm \
   --needed
@@ -83,7 +85,6 @@ yay -S \
   tuir \
   viddy \
   urlview \
-  zsh-theme-powerlevel10k-git \
   autojump \
   docker-credential-pass-bin \
   birdtray \
