@@ -1,6 +1,6 @@
 return {
   'nvim-lua/plenary.nvim',
-  'kyazdani42/nvim-web-devicons',
+  'nvim-tree/nvim-web-devicons',
   {
     'ibhagwan/smartyank.nvim',
     config = function()
@@ -28,6 +28,28 @@ return {
       },
     },
     enabled = true,
+  },
+
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      columns = {
+        "icon",
+        "permissions"
+      },
+      view_options = {
+        show_hidden = true,
+      },
+      keymaps = {
+        ["<C-s>"] = false,
+        ["<C-v>"] = "actions.select_vsplit",
+        ["-"] = false,
+        ["<BS>"] = "actions.parent",
+      }
+    },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
   },
 
   {
@@ -95,11 +117,12 @@ return {
     'kyazdani42/nvim-tree.lua',
     event = 'VeryLazy',
     dependencies = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       require('_nvim-tree')
-    end
+    end,
+    enabled = false,
   },
 
   {
@@ -110,6 +133,7 @@ return {
   },
   {
     'deathmaz/fzf-lua-asynctasks',
+    dependencies = { 'ibhagwan/fzf-lua' },
     config = function()
       require('_fzf-lua-asynctasks')
     end,
@@ -448,7 +472,7 @@ return {
   },
 
   -- due to https://github.com/neovim/neovim/issues/12587
-  --  'antoinemadec/FixCursorHold.nvim'
+  -- 'antoinemadec/FixCursorHold.nvim',
 
   {
     'neoclide/coc.nvim',
@@ -474,7 +498,7 @@ return {
     config = function()
       require('_feline')
     end,
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
     'Wansmer/treesj',
@@ -522,7 +546,7 @@ return {
 
   {
     'ibhagwan/fzf-lua',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('_fzf-lua')
     end,
