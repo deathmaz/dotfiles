@@ -23,6 +23,7 @@ local servers = {
   "stylelint_lsp",
   "gopls",
   "rust_analyzer",
+  "tailwindcss",
 }
 
 local settings = {

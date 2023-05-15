@@ -587,6 +587,16 @@ return {
   },
   {
     'mattn/emmet-vim',
+    init = function()
+      vim.cmd [[
+        let g:user_emmet_install_global = 0
+        augroup Emmet
+            autocmd!
+            autocmd FileType blade EmmetInstall
+        augroup END
+      ]]
+    end,
+    enabled = false,
   },
   {
     'windwp/nvim-autopairs',

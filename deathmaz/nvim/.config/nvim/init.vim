@@ -91,16 +91,6 @@ let g:limelight_paragraph_span = 1
 "
 "}}}
 
-"---- EMMET {{{
-let g:user_emmet_install_global = 0
-augroup Emmet
-    autocmd!
-    autocmd FileType html,css,scss,vue,blade EmmetInstall
-augroup END
-
-" let g:user_emmet_leader_key = '<C-x>'
-"}}}
-
 "---- GITGUTTER{{{
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_grep = 'rg'

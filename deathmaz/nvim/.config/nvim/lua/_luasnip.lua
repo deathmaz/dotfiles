@@ -8,6 +8,12 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 
+ls.setup({
+  history = true,
+  region_check_events = "InsertEnter",
+  delete_check_events = "TextChanged,InsertLeave",
+})
+
 ls.add_snippets('vue', {
   s('vue:setup', {
     t({
