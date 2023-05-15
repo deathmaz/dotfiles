@@ -103,4 +103,6 @@ yay -S \
 systemctl enable keymapperd
 systemctl start keymapperd
 
+source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.sh
+
 npm install -g eslint eslint-plugin-vue prettier prettier-eslint
