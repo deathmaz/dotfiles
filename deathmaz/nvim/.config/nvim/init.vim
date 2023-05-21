@@ -738,7 +738,7 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
 " https://bluz71.github.io/2019/03/11/find-replace-helpers-for-vim.html
-nnoremap <leader>s :%s/<C-r><C-w>//<Left>
-xnoremap <leader>s "sy:%s/<C-r>s//<Left>
+nnoremap <leader>s :%s#<C-r><C-w>##<Left>
+xnoremap <leader>s "sy:%s#<C-r>s##<Left>
 
 lua require('_neovide')
