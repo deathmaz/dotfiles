@@ -13,7 +13,9 @@ configs.setup {
   highlight = {
     enable = true, -- false will disable the whole extension
     use_languagetree = false,
-    disable = {},
+    disable = {
+      'css'
+    },
     -- additional_vim_regex_highlighting = true
   },
   indent = {
@@ -61,7 +63,7 @@ configs.setup {
     'tsx',
     'html',
     'php',
-    'css',
+    -- 'css',
     'python',
     'regex',
     'json',
