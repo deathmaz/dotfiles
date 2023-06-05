@@ -97,6 +97,7 @@ return {
     config = function()
       require('_copilot')
     end,
+    enabled = false,
   },
 
   {
@@ -174,7 +175,7 @@ return {
     config = function()
       require('_navic')
     end,
-    enabled = true,
+    enabled = false,
   },
 
   {
