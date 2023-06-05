@@ -412,6 +412,9 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    -- TODO: remove after https://github.com/hrsh7th/nvim-cmp/issues/1606 or
+    -- https://github.com/hrsh7th/nvim-cmp/issues/1608 resolved
+    commit = '950d0e3a93ba61c13b031c086d11eacf4bd48d24',
     config = function()
       require("_cmp")
     end,
