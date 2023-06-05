@@ -1,3 +1,5 @@
+local functions = require('_functions')
+
 local ok, fzf_lua = pcall(require, 'fzf-lua')
 if not ok then
   return
@@ -42,11 +44,19 @@ fzf_lua.setup {
 
 vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
-vim.keymap.set('n', '<leader>f', fzf_lua.files, opts)
+vim.keymap.set('n', '<leader>f', function()
+  fzf_lua.files({
+    cwd = functions.find_git_root(),
+  })
+end, opts)
 
 vim.keymap.set('n', '<leader><leader>l', fzf_lua.blines, opts)
 
-vim.keymap.set('n', '<leader>L', fzf_lua.grep_project, opts)
+vim.keymap.set('n', '<leader>L', function()
+  fzf_lua.live_grep_glob({
+    cwd = functions.find_git_root(),
+  })
+end, opts)
 
 vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
 
@@ -58,9 +68,17 @@ vim.keymap.set('n', '\\c', fzf_lua.command_history, opts)
 
 vim.keymap.set('n', '<leader>o', fzf_lua.oldfiles, opts)
 
-vim.keymap.set('n', '<leader>ag', fzf_lua.grep_cword, opts)
+vim.keymap.set('n', '<leader>ag', function()
+  fzf_lua.grep_cword({
+    cwd = functions.find_git_root(),
+  })
+end, opts)
 
-vim.keymap.set('x', '<leader>ag', fzf_lua.grep_visual, opts)
+vim.keymap.set('x', '<leader>ag', function()
+  fzf_lua.grep_visual({
+    cwd = functions.find_git_root(),
+  })
+end, opts)
 
 vim.keymap.set('n', '<leader>ef',
   function()

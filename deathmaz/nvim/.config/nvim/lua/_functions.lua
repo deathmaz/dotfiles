@@ -55,6 +55,16 @@ function M.get_buf_option(opt)
   end
 end
 
+function M.find_git_root()
+  local cmd_output = vim.fn.systemlist('git rev-parse --show-toplevel')
+
+  if vim.v.shell_error == 0 and #cmd_output > 0 then
+    return cmd_output[1]
+  else
+    return nil
+  end
+end
+
 function M.parseInt(str)
   return str:match("^%-?%d+$")
 end
