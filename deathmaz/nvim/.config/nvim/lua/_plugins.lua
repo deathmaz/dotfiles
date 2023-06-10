@@ -356,6 +356,8 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = 'VeryLazy',
+    -- https://github.com/hrsh7th/nvim-cmp/issues/1613
+    enabled = false,
   },
   { "b0o/SchemaStore.nvim" },
   {
@@ -413,18 +415,15 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    -- TODO: remove after https://github.com/hrsh7th/nvim-cmp/issues/1606 or
-    -- https://github.com/hrsh7th/nvim-cmp/issues/1608 resolved
-    commit = '950d0e3a93ba61c13b031c086d11eacf4bd48d24',
     config = function()
       require("_cmp")
     end,
     event = 'InsertEnter',
     dependencies = {
       'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-buffer',  -- buffer completions,
-      'hrsh7th/cmp-path',    -- path completions,
-      'hrsh7th/cmp-cmdline', -- cmdline completions,
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lua',
