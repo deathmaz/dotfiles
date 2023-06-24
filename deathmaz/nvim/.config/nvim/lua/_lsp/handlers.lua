@@ -25,10 +25,10 @@ M.setup = function()
   local icons = require "_icons"
   local signs = {
 
-    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+    { name = "DiagnosticSignError", text = icons.vscode.Error },
+    { name = "DiagnosticSignWarn", text = icons.vscode.Warning },
+    { name = "DiagnosticSignHint", text = icons.vscode.Lightbulb },
+    { name = "DiagnosticSignInfo", text = icons.vscode.Info },
   }
 
   for _, sign in ipairs(signs) do
@@ -104,17 +104,24 @@ local function lsp_keymaps(bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   local fzf_lua_ok, fzf_lua = pcall(require, 'fzf-lua')
   if fzf_lua_ok then
-    vim.keymap.set("n", "gD", function()
-      fzf_lua.lsp_definitions()
+    vim.keymap.set("n", "gd", function()
+      fzf_lua.lsp_definitions({
+        jump_to_single_result = true,
+      })
     end, bufopts)
     vim.keymap.set("n", "\\s", function()
       fzf_lua.lsp_document_symbols()
+    end, bufopts)
+    vim.keymap.set("n", "\\w", function()
+      fzf_lua.lsp_live_workspace_symbols()
     end, bufopts)
     vim.keymap.set("n", "gI", function()
       fzf_lua.lsp_implementations()
     end, bufopts)
     vim.keymap.set("n", "gr", function()
-      fzf_lua.lsp_references()
+      fzf_lua.lsp_references({
+        ignore_current_line = true
+      })
     end, bufopts)
     vim.keymap.set("n", "\\d", function()
       fzf_lua.diagnostics_document()
@@ -124,10 +131,10 @@ local function lsp_keymaps(bufnr)
     end, bufopts)
   end
 
-  vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
+  -- vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
   vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
   vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", bufopts)
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]]
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = false })' ]]
   -- vim.keymap.set("n", "gS", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
   vim.keymap.set("n", "<M-f>", "<cmd>Format<cr>", bufopts)
   -- vim.keymap.set("n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", bufopts)
@@ -145,6 +152,10 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   -- lsp_highlight_document(client)
   attach_navic(client, bufnr)
+
+  if client.server_capabilities.inlayHintProvider then
+    vim.lsp.buf.inlay_hint(bufnr, true)
+  end
 end
 
 function M.enable_format_on_save()

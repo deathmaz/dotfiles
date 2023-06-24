@@ -4,7 +4,7 @@ if not ok then
 end
 
 catppuccin.setup({
-  custom_highlights = function()
+  custom_highlights = function(colors)
     return {
       DiagnosticUnderlineError = {
         style = {
@@ -25,6 +25,9 @@ catppuccin.setup({
         style = {
           gui = 'undercurl',
         },
+      },
+      LspInlayHint = {
+        bg = colors.none,
       },
     }
   end,

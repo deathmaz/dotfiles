@@ -349,7 +349,37 @@ return {
 
   { "folke/neodev.nvim" },
   {
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function ()
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        on_attach = function(client, bufnr)
+          if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = {
+                "*.md",
+              },
+              group = augroup,
+              -- buffer = bufnr,
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
+          end
+        end,
+        sources = {
+          null_ls.builtins.formatting.rustywind,
+          null_ls.builtins.code_actions.gitsigns,
+          null_ls.builtins.formatting.markdown_toc,
+        },
+      })
+    end
+  },
+  {
     "williamboman/mason.nvim",
+    build = ":MasonUpdate",
   },
   { "williamboman/mason-lspconfig.nvim" },
   { "neovim/nvim-lspconfig" },
@@ -502,6 +532,7 @@ return {
       require('_feline')
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    enabled = false,
   },
   {
     'Wansmer/treesj',
@@ -788,6 +819,16 @@ return {
     end,
   },
 
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    event = 'VeryLazy',
+    config = function ()
+      require('_lualine')
+    end
+  },
   {
     'Lokaltog/vim-monotone',
     enabled = false,

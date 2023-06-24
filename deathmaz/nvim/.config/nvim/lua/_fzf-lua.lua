@@ -28,7 +28,7 @@ fzf_lua.setup {
     height  = 0.95,
     width   = 0.95,
     preview = {
-      default = 'bat',
+      default = 'bat_native',
       horizontal = 'right:40%'
     },
   },
@@ -37,16 +37,22 @@ fzf_lua.setup {
       pager = "delta",
     },
   },
-  -- fzf_opts = {
-  --   ['--layout'] = 'reverse-list',
-  -- }
+  fzf_opts = {
+    -- ['--layout'] = 'reverse-list',
+    -- ['--ansi'] = false
+  }
 }
 
 vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
+vim.keymap.set('n', '<leader>w', fzf_lua.files, opts)
+
 vim.keymap.set('n', '<leader>f', function()
   fzf_lua.files({
     cwd = functions.find_git_root(),
+    fzf_opts = {
+      ['--ansi'] = false,
+    }
   })
 end, opts)
 
@@ -104,12 +110,12 @@ if project_ok then
     function()
       local history = require("project_nvim.utils.history")
       fzf_lua.fzf_exec(function(cb)
-        local results = history.get_recent_projects()
-        for _, e in ipairs(results) do
-          cb(e)
-        end
-        cb()
-      end,
+          local results = history.get_recent_projects()
+          for _, e in ipairs(results) do
+            cb(e)
+          end
+          cb()
+        end,
         {
           actions = {
             ['default'] = {

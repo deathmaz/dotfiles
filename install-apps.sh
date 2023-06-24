@@ -3,6 +3,7 @@
 set -e
 
 sudo pacman -S \
+  fd \
   jq \
   yay \
   pass \
@@ -81,6 +82,8 @@ gh extension install seachicken/gh-poi
 
 yay -S \
   nodejs-readability-cli \
+  nodejs-markdown-toc \
+  rustywind \
   keymapper \
   tuir \
   viddy \
@@ -104,5 +107,3 @@ systemctl enable keymapperd
 systemctl start keymapperd
 
 source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.sh
-
-npm install -g eslint eslint-plugin-vue prettier prettier-eslint
