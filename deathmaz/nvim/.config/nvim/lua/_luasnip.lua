@@ -7,6 +7,8 @@ local ls = luasnip
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
 
 ls.setup({
   history = true,
@@ -15,28 +17,112 @@ ls.setup({
 })
 
 ls.add_snippets('vue', {
-  s('vue:setup', {
-    t({
-      '<script setup lang="ts">',
-      '  ',
+  s('vue:setup',
+    fmt([[
+<script setup lang="ts">
+{}
+</script>
+
+<template>
+  <div>
+    {}
+  </div>
+</template>
+    ]], {
+      i(1),
+      i(2)
+    }))
+})
+
+ls.add_snippets('typescript', {
+  s('test:setup',
+    fmta([[
+import {
+  it,
+  expect,
+  describe,
+} from 'vitest';
+import {
+  mount,
+} from '@vue/test-utils';
+
+describe('<>', () =>> {
+  <>
+});
+    ]], {
+      i(1),
+      i(2),
+    })),
+  s('test:setup-api',
+    fmta([[
+import {
+  expect,
+  SpyInstance,
+  it,
+  describe,
+  afterEach,
+  vi,
+  beforeEach,
+} from 'vitest';
+import {
+  defineComponent,
+  onBeforeUnmount,
+  PropType,
+} from 'vue';
+import {
+  mount,
+  enableAutoUnmount,
+  flushPromises,
+} from '@vue/test-utils';
+import {
+  api,
+} from '@/api/api';
+<>
+
+let getHandler: SpyInstance;
+const apiHandlers: SpyInstance[] = [];
+const prepareApiCalls = () =>> {
+  apiHandlers.push(
+    getHandler = vi.spyOn(api, 'get').mockImplementation((url) =>> {
+      switch (url) {
+        case 'url':
+          return Promise.resolve();
+        default:
+          return Promise.reject();
+      }
     }),
-    i(1),
-    t({
-      '',
-      '</script>',
-      '',
-      '<template>',
-      '  <div>',
-      '    ',
-    }),
-    i(2),
-    t({
-      '',
-      '  </div>',
-      '</template>',
-      '',
-    }),
+  );
+};
+beforeEach(async () =>> {
+  prepareApiCalls();
+});
+
+afterEach(async () =>> {
+  apiHandlers.forEach((handler) =>> handler.mockReset());
+});
+
+enableAutoUnmount(afterEach);
+
+describe('<>', () =>> {
+  it('<>', async() =>> {
+    <>
   })
+})
+    ]], {
+      i(1),
+      i(2),
+      i(3),
+      i(4),
+    })),
+  s('test:it',
+    fmta([[
+it('<>', async () =>> {
+  <>
+})
+    ]], {
+      i(1),
+      i(2),
+    })),
 })
 
 ls.add_snippets('markdown', {
