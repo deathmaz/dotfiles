@@ -35,6 +35,32 @@ ls.add_snippets('vue', {
 })
 
 ls.add_snippets('typescript', {
+  s('test:elem',
+    fmta([[
+const <> = (wrapper: VueWrapper) =>> wrapper.find('<>');
+    ]], {
+      i(1),
+      i(2),
+    })),
+  s('test:factory',
+    fmta([[
+function factory(payload?: {
+  props?: Record<<string, any>>,
+  slots?: Record<<string, any>>,
+}) {
+  return mount(<>, {
+    attachTo: document.body,
+    props: {
+      ...payload?.props,
+    },
+    slots: {
+      ...payload?.slots,
+    },
+  });
+}
+    ]], {
+      i(1),
+    })),
   s('test:setup',
     fmta([[
 import {
@@ -44,6 +70,7 @@ import {
 } from 'vitest';
 import {
   mount,
+  VueWrapper,
 } from '@vue/test-utils';
 
 describe('<>', () =>> {
@@ -73,6 +100,7 @@ import {
   mount,
   enableAutoUnmount,
   flushPromises,
+  VueWrapper,
 } from '@vue/test-utils';
 import {
   api,
