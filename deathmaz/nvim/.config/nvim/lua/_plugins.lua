@@ -346,6 +346,14 @@ return {
   {
     'RRethy/nvim-treesitter-endwise',
   },
+  {
+    'lukas-reineke/lsp-format.nvim',
+    config = function()
+      require("lsp-format").setup({
+        debug = true,
+      })
+    end
+  },
 
   { "folke/neodev.nvim" },
   {
@@ -355,7 +363,8 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
+          require('lsp-format').on_attach(client)
+          --[[ if client.supports_method("textDocument/formatting") then
             vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
             vim.api.nvim_create_autocmd("BufWritePre", {
               pattern = {
@@ -367,10 +376,10 @@ return {
                 vim.lsp.buf.format({ async = false })
               end,
             })
-          end
+          end ]]
         end,
         sources = {
-          null_ls.builtins.formatting.rustywind,
+          -- null_ls.builtins.formatting.rustywind,
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.formatting.markdown_toc,
         },
