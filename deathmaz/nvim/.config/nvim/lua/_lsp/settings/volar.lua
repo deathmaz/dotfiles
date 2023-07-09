@@ -6,7 +6,7 @@ return {
     'typescriptreact',
     'vue',
   },
-  init_options = {
+  --[[ init_options = {
     typescript = {
       inlayHints = {
         parameterNames = {
@@ -24,5 +24,5 @@ return {
         dotValue = false,
       }
     }
-  }
+  } ]]
 }
