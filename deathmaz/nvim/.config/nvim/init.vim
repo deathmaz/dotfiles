@@ -13,23 +13,6 @@ let s:signes = {
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" https://github.com/vim/vim/issues/4738
-function! OpenURLUnderCursor()
-  let s:uri = expand('<cWORD>')
-  let s:uri = matchstr(s:uri, '[a-z]*:\/\/[^ >,;()]*')
-  let s:uri = substitute(s:uri, '?', '\\?', '')
-  let s:uri = shellescape(s:uri, 1)
-  if s:uri != ''
-    if has('macunix')
-      silent exec "!open '".s:uri."'"
-    else
-      silent exec "!xdg-open '".s:uri."'"
-    endif
-    :redraw!
-  endif
-endfunction
-nnoremap gx :call OpenURLUnderCursor()<CR>
-
 augroup GoLang
   autocmd!
   autocmd FileType go setlocal tabstop=4 shiftwidth=4
