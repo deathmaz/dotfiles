@@ -29,7 +29,8 @@ fzf_lua.setup {
     width   = 0.95,
     preview = {
       default = 'bat_native',
-      horizontal = 'right:40%'
+      horizontal = 'right:40%',
+      layout = 'vertical',
     },
   },
   previewers = {
@@ -45,9 +46,15 @@ fzf_lua.setup {
 
 vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
-vim.keymap.set('n', '<leader>w', fzf_lua.files, opts)
-
 vim.keymap.set('n', '<leader>f', function()
+  fzf_lua.files({
+    fzf_opts = {
+      ['--ansi'] = false,
+    }
+  })
+end, opts)
+
+vim.keymap.set('n', '<leader>w', function()
   fzf_lua.files({
     cwd = functions.find_git_root(),
     fzf_opts = {
