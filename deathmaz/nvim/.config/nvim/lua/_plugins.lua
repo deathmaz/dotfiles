@@ -283,10 +283,12 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
+    branch = 'v3',
     config = function()
       require('_indent-blankline')
     end,
-    event = 'VeryLazy'
+    event = 'VeryLazy',
+    enabled = false,
   },
 
   --[[  {
@@ -329,7 +331,7 @@ return {
         'nvim-treesitter/nvim-treesitter-context',
         config = function()
           require('_nvim-treesitter-context')
-        end
+        end,
       },
     },
   },
@@ -358,6 +360,7 @@ return {
   { "folke/neodev.nvim" },
   {
     "jose-elias-alvarez/null-ls.nvim",
+    enabled = false,
     config = function ()
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local null_ls = require("null-ls")
@@ -466,11 +469,13 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-emoji',
       'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       {
         'zbirenbaum/copilot-cmp',
         config = function()
           require("copilot_cmp").setup()
-        end
+        end,
+        enabled = false,
       }
     }
   },

@@ -4,5 +4,6 @@ if not ok then
 end
 
 treesitter_context.setup({
+  multiline_threshold = 1,
   throttle = true,
 })

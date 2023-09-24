@@ -66,9 +66,7 @@ end, opts)
 vim.keymap.set('n', '<leader><leader>l', fzf_lua.blines, opts)
 
 vim.keymap.set('n', '<leader>L', function()
-  fzf_lua.live_grep_glob({
-    cwd = functions.find_git_root(),
-  })
+  fzf_lua.grep_project()
 end, opts)
 
 vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
