@@ -98,6 +98,7 @@ yay -S \
   protonmail-bridge-bin \
   aur/teams \
   gofumpt \
+  golines \
   vscode-codicons-git \
   indicator-sound-switcher \
   --noconfirm \
@@ -107,3 +108,6 @@ systemctl enable keymapperd
 systemctl start keymapperd
 
 source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.sh
+
+go install golang.org/x/tools/cmd/goimports@latest
+go install github.com/deathmaz/go-replace-youtube
