@@ -132,11 +132,10 @@ local function lsp_keymaps(bufnr)
   end
 
   -- vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", bufopts)
-  vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", bufopts)
   vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", bufopts)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format({ async = false })' ]]
   -- vim.keymap.set("n", "gS", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
-  vim.keymap.set("n", "<M-f>", "<cmd>Format<cr>", bufopts)
+  -- vim.keymap.set("n", "<M-f>", "<cmd>Format<cr>", bufopts)
   -- vim.keymap.set("n", "<M-a>", "<cmd>lua vim.lsp.buf.code_action()<cr>", bufopts)
   -- vim.keymap.set("n", "<M-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", bufopts)
   vim.keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.rename()<CR>", bufopts)
@@ -164,7 +163,7 @@ function M.enable_format_on_save()
     augroup format_on_save
       autocmd! 
       " autocmd BufWritePre * lua vim.lsp.buf.format({ async = true }) 
-      autocmd BufWritePre *.rs lua vim.lsp.buf.format() 
+      autocmd BufWritePre *.rs,*.go lua vim.lsp.buf.format() 
       autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js,*.vue EslintFixAll
     augroup end
   ]]

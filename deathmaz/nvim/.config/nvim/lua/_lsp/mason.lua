@@ -24,6 +24,7 @@ local servers = {
   "gopls",
   "rust_analyzer",
   "tailwindcss",
+  "efm",
 }
 
 local settings = {
@@ -64,6 +65,39 @@ for _, server in pairs(servers) do
     on_attach = require("_lsp.handlers").on_attach,
     capabilities = require("_lsp.handlers").capabilities,
   }
+
+  if server == "efm" then
+    opts = vim.tbl_deep_extend("force", {
+      init_options = {
+        documentFormatting = true,
+      },
+      settings = {
+        rootMarkers = {".git/"},
+        languages = {
+          go = {
+            {
+              formatCommand = 'gofumpt',
+              formatStdin = true,
+            },
+            {
+              formatCommand = 'golines',
+              formatStdin = true,
+            },
+            {
+              formatCommand = 'goimports',
+              formatStdin = true,
+            }
+          },
+          markdown = {
+            {
+              formatCommand = 'markdown-toc -i ${INPUT}',
+              formatStdin = false,
+            },
+          },
+        }
+      }
+    }, opts)
+  end
 
   if server == "jsonls" then
     local jsonls_opts = require "_lsp.settings.jsonls"
