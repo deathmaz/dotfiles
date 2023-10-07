@@ -41,7 +41,7 @@
 
 [alias]
   elog = ! git log --oneline --all --color | emojify | less
-  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=relative
     # list all aliases
   la = "!git config -l | grep alias | cut -c 7-"
   wdiff = diff --word-diff
