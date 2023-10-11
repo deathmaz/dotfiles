@@ -66,37 +66,14 @@ for _, server in pairs(servers) do
     capabilities = require("_lsp.handlers").capabilities,
   }
 
+  if server == "gopls" then
+    local gopls_opts = require "_lsp.settings.gopls"
+    opts = vim.tbl_deep_extend("force", gopls_opts, opts)
+  end
+
   if server == "efm" then
-    opts = vim.tbl_deep_extend("force", {
-      init_options = {
-        documentFormatting = true,
-      },
-      settings = {
-        rootMarkers = {".git/"},
-        languages = {
-          go = {
-            {
-              formatCommand = 'gofumpt',
-              formatStdin = true,
-            },
-            {
-              formatCommand = 'golines',
-              formatStdin = true,
-            },
-            {
-              formatCommand = 'goimports',
-              formatStdin = true,
-            }
-          },
-          markdown = {
-            {
-              formatCommand = 'markdown-toc -i ${INPUT}',
-              formatStdin = false,
-            },
-          },
-        }
-      }
-    }, opts)
+    local efm_opts = require "_lsp.settings.efm"
+    opts = vim.tbl_deep_extend("force", efm_opts, opts)
   end
 
   if server == "jsonls" then
