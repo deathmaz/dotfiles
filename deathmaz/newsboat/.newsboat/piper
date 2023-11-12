@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source $HOME/dotfiles/deathmaz/executable/scripts/bin/fulltext-rss.sh
+
 w3m_tab() {
   kitty @ launch --type=tab w3m "$1" \
     && kitty @ launch \
@@ -31,115 +33,118 @@ Open() {
     # *reddit.com*) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "tuir -l $1 && tmux kill-pane " 'Enter';;
     # *i.imgur.com*\.gifv) tmux split-window -h -e MAZ_DISABLE_EXTENSION=1 && tmux send-keys "mpv-custom ${1/gifv/mp4} && tmux kill-pane" 'Enter';;
     *life.pravda.com.ua*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *politico*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
+      ;;
+    *nv.ua*)
+      read_fulltext "$LINK"
       ;;
     *economist.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *theguardian.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *tverezo.info*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *defence-ua.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *reuters*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *nypost*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *news.yahoo*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *polygraph*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *pics.livejournal.com*)
       image "$LINK"
       ;;
     *livejournal.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *ndtv.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *nytimes.com*)
-      w3m_tab "$LINK"
+      read_fulltext "$LINK"
       ;;
     *19fortyfive.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *images.jpost.com*)
       image "$LINK"
       ;;
     *jpost.com*)
-      w3m_tab "$LINK"
+      read_fulltext "$LINK"
       ;;
     *radiosvoboda.org*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *pravda.com.ua*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *zn.ua*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *focus.ua*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *wsj.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *usnews.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *dw.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *aljazeera.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *dailymail.co*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *telegraph.co*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *forbes.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *19fortyfive.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *bbc.co*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *washingtonpost.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *rbc.ua*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *independent.co*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *huffpost.com*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *unian*)
-      read_w3m "$LINK"
+      read_fulltext "$LINK"
       ;;
     *liga.net*)
-      w3m_tab "$LINK"
+      read_fulltext "$LINK"
       ;;
     *rusi.org*)
-      w3m_tab "$LINK"
+      read_fulltext "$LINK"
       ;;
     *preview.redd.it*)
       image "$LINK"
@@ -194,9 +199,9 @@ Open() {
     *.jpg|*.png|*.jpeg|*nitter.*/pic*|*pbs.twimg.com/media*)
       image "$LINK"
       ;;
-    *nitter.*)
-      w3m_tab "$LINK"
-      ;;
+    # *nitter.*)
+    #   w3m_tab "$LINK"
+    #   ;;
     # *) readable "$1" -p html-title,html-content > /tmp/readable.html ; $MAZ_CLI_BROWSER -no-connect /tmp/readable.html;
     *)
     xdg-open "$LINK"
