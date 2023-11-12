@@ -159,3 +159,5 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 vim.g.mapleader = ','
+
+vim.keymap.set("n", "<C-i>", "<C-I>")
