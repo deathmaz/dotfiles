@@ -154,6 +154,19 @@ it('<>', async () =>> {
 })
 
 ls.add_snippets('markdown', {
+  s('detsum',
+    fmta([[
+<<details>>
+  <<summary>>
+    <>
+  <</summary>>
+
+
+
+<</details>>
+    ]], {
+      i(1),
+    })),
   s('sec', {
     i(1, '####'),
     t(' '),
