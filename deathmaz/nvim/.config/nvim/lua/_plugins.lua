@@ -511,6 +511,7 @@ return {
 
   {
     'gbprod/substitute.nvim',
+    enabled = false,
     event = 'VeryLazy',
     config = function()
       require('substitute').setup()
