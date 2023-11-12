@@ -11,6 +11,9 @@
 [branch]
   autosetuprebase = always
 
+[commit]
+  template = ~/.gitmessage
+
 [delta]
   features = side-by-side line-numbers decorations styles
   hyperlinks = true
@@ -21,6 +24,10 @@
 
 [push]
   autoSetupRemote = true
+
+[rebase]
+  autosquash = true
+  autoStash = true
 
 [color "status"]
   added = yellow
