@@ -96,7 +96,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- vim.opt.foldmethod = "marker"
-vim.opt.foldtext = "v:lua.require'_folds'.folds()"
+-- vim.opt.foldtext = "v:lua.require'_folds'.folds()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.opt.foldopen = vim.opt.foldopen + 'search'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldmethod = 'expr'
