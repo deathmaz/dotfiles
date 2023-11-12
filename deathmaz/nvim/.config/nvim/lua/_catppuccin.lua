@@ -45,7 +45,7 @@ catppuccin.setup({
     gitsigns = true,
     nvimtree = true,
     indent_blankline = {
-      enabled = true,
+      enabled = false,
       colored_indent_levels = false,
     },
     treesitter_context = true,
@@ -54,7 +54,7 @@ catppuccin.setup({
       enabled = true,
     },
     navic = {
-      enabled = true,
+      enabled = false,
       custom_bg = "NONE",
     },
   },
