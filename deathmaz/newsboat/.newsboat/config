@@ -13,8 +13,7 @@ text-width 80
 feedlist-format " %n %4i %11u %t -- %T"
 reload-only-visible-feeds yes
 
-# rigth now newsboat panics with this option enabled due to utf-8 char issue
-prepopulate-query-feeds no
+prepopulate-query-feeds yes
 
 keep-articles-days 120
 reload-threads 4
