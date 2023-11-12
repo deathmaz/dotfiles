@@ -222,7 +222,21 @@ return {
   },
   {
     'ThePrimeagen/harpoon',
-    event = 'VeryLazy'
+    event = 'VeryLazy',
+    config = function()
+      require("harpoon").setup({
+        menu = {
+          width = 80,
+        }
+      })
+      vim.keymap.set('n', '<leader>ha', require("harpoon.mark").add_file)
+      vim.keymap.set('n', '<leader>hm', require("harpoon.ui").toggle_quick_menu)
+      vim.keymap.set('n', '<leader>h1', function() require("harpoon.ui").nav_file(1) end)
+      vim.keymap.set('n', '<leader>h2', function() require("harpoon.ui").nav_file(2) end)
+      vim.keymap.set('n', '<leader>h3', function() require("harpoon.ui").nav_file(3) end)
+      vim.keymap.set('n', '<leader>h4', function() require("harpoon.ui").nav_file(4) end)
+    end,
+    enabled = true,
   },
   {
     'bfredl/nvim-miniyank',

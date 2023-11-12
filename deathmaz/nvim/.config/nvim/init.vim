@@ -426,18 +426,6 @@ let g:go_highlight_diagnostic_errors = 0
 let g:go_highlight_diagnostic_warnings = 0
 "}}}
 
-"{{{ Harpoon
-lua <<EOF
-require'harpoon'.setup{}
-EOF
-nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
-nnoremap <leader>hm :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
-"}}}
-
 " {{{ nvim-miniyank
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
