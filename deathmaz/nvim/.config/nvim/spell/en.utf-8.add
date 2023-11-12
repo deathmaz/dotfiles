@@ -19,3 +19,5 @@ e2e
 backend
 lerna
 scss
+params
+reusability
