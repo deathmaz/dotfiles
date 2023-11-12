@@ -359,7 +359,7 @@ augroup AsyncRun
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
     autocmd FileType rust nnoremap <F8> :AsyncRun -mode=term cargo run<CR>
     autocmd FileType go nnoremap <F8> :AsyncRun -mode=term -focus=0 go run .<CR>
-    autocmd FileType go nnoremap <F10> :AsyncRun -mode=term -focus=1 go run %<CR>
+    autocmd FileType go nnoremap <F10> :AsyncRun -focus=0 go install<CR>
     " autocmd FileType c noremap <F8> :AsyncRun gcc "%" -o "%<" <cr>
     " autocmd FileType cpp noremap <F8> :AsyncRun g++ "%" -o "%<" <cr>
     " autocmd FileType cpp noremap <F7> :AsyncRun "./%<" <cr>
