@@ -146,6 +146,9 @@ Open() {
     *rusi.org*)
       read_fulltext "$LINK"
       ;;
+    *ain.ua*)
+      read_fulltext "$LINK"
+      ;;
     *preview.redd.it*)
       image "$LINK"
       ;;
@@ -168,7 +171,7 @@ Open() {
     *giphy.com*)
       media "$LINK"
       ;;
-    *imgur.com/*.gifv|*imgur.com/*.mp4|*imgur.com/*.webm|*imgur.com/*.gif)
+    *imgur.com/*.gifv|*imgur.com/*.mp4|*imgur.com/*.webm|*imgur.com/*.gif|*.webp)
       media "$LINK"
       ;;
     *v.redd.it/*)
@@ -177,14 +180,14 @@ Open() {
     *.mp3)
       media "$LINK"
       ;;
-    *telegram-cdn.org/file*)
+    *telegram-cdn.org/file*|*cdn-telegram.org/file*)
       media "$LINK"
       ;;
     *video.twimg.com*)
       media "$LINK"
       ;;
     *.mp4|*.mkv|*.avi|*.wmv|*.m4v|*.mpg|*.mpeg|*.flv|*.ogm|*.ogv|*.gifv)
-      media_queue "$LINK"
+      media "$LINK"
       ;;
     *instagram.com/p/*)
       media "$LINK"
@@ -194,7 +197,7 @@ Open() {
     #   image "$LINK"
     #   ;;
     *youtube.com*|*twitch.tv*|*youtu.be*|*vodlocker.com*|*.webm*)
-      media_queue "$LINK"
+      media "$LINK"
       ;;
     *.jpg|*.png|*.jpeg|*nitter.*/pic*|*pbs.twimg.com/media*)
       image "$LINK"
