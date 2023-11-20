@@ -753,19 +753,23 @@ return {
     cmd = { 'AsyncRun', 'AsyncStop' }
   },
 
-  --  'b3nj5m1n/kommentary'
-  --  'JoosepAlviste/nvim-ts-context-commentstring'
   {
     'numToStr/Comment.nvim',
     event = { 'BufWinEnter', 'BufNewFile' },
     config = function()
-      require('Comment').setup()
+    require('Comment').setup({
+      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+    })
     end,
     dependencies = {
       {
         'JoosepAlviste/nvim-ts-context-commentstring',
-        -- TODO: check if this is still working
-        -- module = 'ts_context_commentstring',
+        config  = function()
+          require('ts_context_commentstring').setup {
+            enable_autocmd = false,
+            skip_ts_context_commentstring_module = true,
+          }
+        end
       },
     },
   },
