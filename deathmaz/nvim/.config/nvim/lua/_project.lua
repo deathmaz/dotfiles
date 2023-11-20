@@ -21,5 +21,8 @@ project.setup({
     "Makefile",
     "package.json",
     "vite.config.js",
+    "vite.config.mjs",
+    "vite.config.ts",
+    "vite.config.mts",
   },
 })
