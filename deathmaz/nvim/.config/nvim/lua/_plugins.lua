@@ -27,7 +27,7 @@ return {
         complete = 'x'
       },
     },
-    enabled = true,
+    enabled = false,
   },
 
   {
@@ -281,13 +281,15 @@ return {
   },
   {
     'potamides/pantran.nvim',
-    cmd = { 'Pantran' }
+    cmd = { 'Pantran' },
+    enabled = false,
   },
 
   {
     "dnlhc/glance.nvim",
     cmd = "Glance",
     config = true,
+    enabled = false,
   },
   {
     "danymat/neogen",
@@ -566,7 +568,6 @@ return {
   {
     'Wansmer/treesj',
     keys = { '<space>m', '<space>j', '<space>s' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('treesj').setup({
         max_join_length = 300,
