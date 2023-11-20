@@ -19,7 +19,11 @@ M.capabilities.textDocument.foldingRange = {
 
 M.capabilities = lsp_status.update_capabilities(M.capabilities)
 
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+-- https://github.com/hrsh7th/cmp-nvim-lsp/issues/42#issuecomment-1283825572
+M.capabilities = vim.tbl_deep_extend("force",
+  { capabilities = M.capabilities },
+  cmp_nvim_lsp.default_capabilities()
+)
 
 M.setup = function()
   local icons = require "_icons"
