@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd $HOME/dotfiles/deathmaz/mpv/.config/mpv/scripts
+curl -L https://raw.githubusercontent.com/4e6/mpv-reload/master/reload.lua -O
