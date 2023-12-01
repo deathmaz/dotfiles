@@ -1,4 +1,9 @@
-vim.keymap.set('', '\\gs', '<Cmd>Git<CR>')
+vim.keymap.set('', '\\gs', function() vim.cmd.Git({
+  mods = {
+    vertical = true,
+    split = 'topleft',
+  },
+}) end)
 
 -- Makes it possible for `:GBrowse` to work with netrw plugin disabled
 -- The idea was taken from https://github.com/kyazdani42/nvim-tree.lua/issues/559#issuecomment-962593611
