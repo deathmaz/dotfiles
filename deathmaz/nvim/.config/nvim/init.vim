@@ -22,18 +22,26 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://www.reddit.com/r/vim/comments/17vpwyw/where_do_the_fugitive_folders_come_from_and_how/k9cura3
+function! s:mkdir(path)
+  if a:path =~? '^fugitive://'
+    return
+  endif
+  if a:path =~? '^oil://'
+    return
+  endif
+  if a:path =~? '^diffview://'
+    return
+  endif
+  call mkdir(a:path, 'p')
+endfunction
+
 augroup Mkdir
   autocmd!
   autocmd BufWritePre *
     \ if !isdirectory(expand("<afile>:p:h")) |
-        \ call mkdir(expand("<afile>:p:h"), "p") |
+        \ call s:mkdir(expand("<afile>:p:h")) |
     \ endif
-augroup END
-
-augroup WincentAutocmds
-  if exists('##TextYankPost')
-    au TextYankPost * silent! lua vim.highlight.on_yank {higroup="Substitute", timeout=200}
-  endif
 augroup END
 
 " Autoread will automatically update an open buffer if it has been changed outside the current
