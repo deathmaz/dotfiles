@@ -218,6 +218,14 @@ function downloadAudio() {
   yt-dlp -x --audio-format mp3 --audio-quality 1 -o "%(title)s.%(ext)s" $1
 }
 
+function fsr() {
+  elvi=$(sr -elvi | tail -n +2 | awk '{print $1}' | fzf)
+  [[ "$elvi" = "" ]] && exit
+  echo "Search for:"
+  read query
+  sr "$elvi" "$query"
+}
+
 function downloadAudioPlaylist() {
   yt-dlp -x --audio-format mp3 --audio-quality 1 -o "%(playlist_index)s %(title)s.%(ext)s" $1
 }
