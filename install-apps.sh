@@ -111,3 +111,15 @@ source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.
 
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/deathmaz/go-replace-youtube
+
+echo 'export EDITOR="nvim"
+export BROWSER="/usr/bin/brave"
+export VISUAL="nvim"
+export HOMEBREW_BUNDLE_NO_LOCK="1"
+export MAZ_SCRIPTS_BIN="$HOME/dotfiles/deathmaz/executable/scripts/bin"
+export MAZ_CLI_BROWSER="w3m"
+export FZF_DEFAULT_OPTS="--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6,marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob \!.git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--bind ctrl-j:preview-down,ctrl-l:preview-up --preview '\''(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'\''"' \
+  | sudo tee -a /etc/profile
