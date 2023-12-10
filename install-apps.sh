@@ -39,6 +39,7 @@ sudo pacman -S \
   rofi \
   xclip \
   fzf \
+  sxhkd \
   flameshot \
   wmctrl \
   zsh-theme-powerlevel10k \
@@ -72,6 +73,9 @@ sudo systemctl start docker.service
 sudo systemctl enable docker.service
 sudo usermod -aG docker $USER
 
+sudo systemctl enable paccache.timer
+sudo systemctl start paccache.timer
+
 # https://unix.stackexchange.com/a/343582
 systemctl --user start mpd.service
 systemctl --user enable mpd.service
@@ -80,11 +84,12 @@ systemctl --user enable mpd.service
 gh extension install dlvhdr/gh-dash
 gh extension install seachicken/gh-poi
 
+# keymapper \
 yay -S \
   nodejs-readability-cli \
   nodejs-markdown-toc \
   rustywind \
-  keymapper \
+  mouseless-bin \
   tuir \
   viddy \
   urlview \
@@ -104,8 +109,8 @@ yay -S \
   --noconfirm \
   --needed
 
-systemctl enable keymapperd
-systemctl start keymapperd
+# systemctl enable keymapperd
+# systemctl start keymapperd
 
 source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.sh
 
