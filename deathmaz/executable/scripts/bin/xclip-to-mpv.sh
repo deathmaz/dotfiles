@@ -2,4 +2,4 @@
 
 content=$(xclip -selection clipboard -o)
 notify-send -i gnome-mpv -t 5000 "Starting video:" "$content"
-$HOME/dotfiles/deathmaz/executable/scripts/bin/mpv-custom "$content" &> /tmp/xclip-to-mpv
+$MAZ_SCRIPTS_BIN/mpv-custom "$content"

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $HOME/dotfiles/deathmaz/executable/scripts/bin/fulltext-rss.sh
+source $MAZ_SCRIPTS_BIN/fulltext-rss.sh
 
 w3m_tab() {
   kitty @ launch --type=tab w3m "$1" \
@@ -14,7 +14,7 @@ read_w3m() {
 }
 
 media() {
-  nohup mpv-custom "$1" > /dev/null 2>&1 &
+  nohup $MAZ_SCRIPTS_BIN/mpv-custom "$1" > /dev/null 2>&1 &
 }
 
 media_queue() {
@@ -147,6 +147,9 @@ Open() {
       read_fulltext "$LINK"
       ;;
     *ain.ua*)
+      read_fulltext "$LINK"
+      ;;
+    *ctrana.news*)
       read_fulltext "$LINK"
       ;;
     *preview.redd.it*)
