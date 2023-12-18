@@ -1,1 +1,4 @@
-@theme "./theme.rasi"
+configuration {
+    font:				"SauceCodePro Nerd Font Mono 13";
+    show-icons:				true;
+}
