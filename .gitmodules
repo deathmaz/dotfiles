@@ -1,0 +1,3 @@
+[submodule "deathmaz/vifm/.vifm/vifm_devicons"]
+	path = deathmaz/vifm/.vifm/vifm_devicons
+	url = https://github.com/thimc/vifm_devicons

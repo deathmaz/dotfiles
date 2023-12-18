@@ -15,7 +15,7 @@ nmap df :!df . -BM 1>&2 &<cr>
 
 set syscalls
 
-set vicmd=nvim
+set vicmd=$EDITOR
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -26,7 +26,7 @@ set vicmd=nvim
 " I recommend not changing this until you are familiar with vifm.
 " This probably shouldn't be an option.
 
-set trash
+set notrash
 
 " This is how many directories to store in the directory history.
 
@@ -125,6 +125,7 @@ mark h ~/
 " %D the other window directory name.
 " %m run the command in a menu window
 
+command sizeof du -csh %m 2> /dev/null
 command df df -h %m 2> /dev/null
 command diff vim -d %f %F
 command zip zip -r %f.zip %f
@@ -184,13 +185,9 @@ fileviewer *.mp3 mp3info
 " Video
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.webm
         \ {view using mpv}
-        \ mpv %f,
+        \ nohup mpv --profile=vifm %f > /dev/null 2>&1 &,
         \ {View using ffplay}
         \ ffplay -fs %c,
-        \ {View using Dragon}
-        \ dragon %f,
-        \ {View using mplayer}
-        \ mplayer %f,
 fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
          \ ffprobe -pretty %c 2>&1
 
@@ -337,3 +334,5 @@ nmap DD :!trash-empty <cr>
 
 " show hidden files https://github.com/vifm/vifm/issues/5#issuecomment-12752408
 windo normal zo
+
+source $HOME/dotfiles/deathmaz/vifm/.vifm/vifm_devicons/favicons.vifm
