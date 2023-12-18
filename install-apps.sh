@@ -7,6 +7,8 @@ sudo pacman -S \
   jq \
   yay \
   pass \
+  playerctl\
+  mpv-mpris \
   lynx \
   go \
   zsh \
@@ -91,6 +93,7 @@ yay -S \
   rustywind \
   mouseless-bin \
   tuir \
+  mpd-mpris-bin \
   viddy \
   urlview \
   autojump \
@@ -117,9 +120,14 @@ source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/deathmaz/go-replace-youtube
 
-echo 'export EDITOR="nvim"
+systemctl --user enable mpd-mpris.service
+systemctl --user start mpd-mpris.service
+
+git submodule update --init --recursive
+
+echo 'export EDITOR="$HOME/execs/neovim/bin/nvim"
 export BROWSER="/usr/bin/brave"
-export VISUAL="nvim"
+export VISUAL="$HOME/execs/neovim/bin/nvim"
 export HOMEBREW_BUNDLE_NO_LOCK="1"
 export MAZ_SCRIPTS_BIN="$HOME/dotfiles/deathmaz/executable/scripts/bin"
 export MAZ_CLI_BROWSER="w3m"
