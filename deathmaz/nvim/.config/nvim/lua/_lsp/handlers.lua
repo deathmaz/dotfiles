@@ -27,17 +27,6 @@ M.capabilities = vim.tbl_deep_extend("force",
 
 M.setup = function()
   local icons = require "_icons"
-  local signs = {
-
-    { name = "DiagnosticSignError", text = icons.vscode.Error },
-    { name = "DiagnosticSignWarn", text = icons.vscode.Warning },
-    { name = "DiagnosticSignHint", text = icons.vscode.Lightbulb },
-    { name = "DiagnosticSignInfo", text = icons.vscode.Info },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
 
   local config = {
     -- disable virtual text
@@ -57,7 +46,12 @@ M.setup = function()
 
     -- show signs
     signs = {
-      active = signs,
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.vscode.Error,
+        [vim.diagnostic.severity.WARN] = icons.vscode.Warning,
+        [vim.diagnostic.severity.INFO] = icons.vscode.Info,
+        [vim.diagnostic.severity.HINT] = icons.vscode.Lightbulb,
+      }
     },
     update_in_insert = true,
     underline = true,
