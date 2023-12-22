@@ -26,7 +26,7 @@ layers:
 # the first layer is active at start
 - name: initial
   bindings:
-    tab: tap-hold-next tab ; toggle-layer mouse ; 1000
+    grave: tap-hold-next grave ; toggle-layer mouse ; 1000
     rightmeta: rightctrl
     f2: volumedown
     f3: volumeup
@@ -38,7 +38,7 @@ layers:
     # quit mouse layer
     q: layer initial
     # keep the mouse layer active
-    grave: layer mouse
+    tab: layer mouse
     r: reload-config
     l: move  1  0
     j: move  0  1
