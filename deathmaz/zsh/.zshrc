@@ -5,6 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+setopt autocd                                                   # if only directory path is entered, cd there.
+
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
@@ -13,7 +15,6 @@ zstyle ':completion:*' rehash true                              # automatically 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
-
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -26,13 +27,6 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
 [ -f $HOME/.env ] && export $(envsubst < $HOME/.env)
-export EDITOR='nvim'
-export VISUAL="nvim"
-export HOMEBREW_BUNDLE_NO_LOCK='1'
-export MAZ_CLI_BROWSER='w3m'
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--bind ctrl-h:preview-down,ctrl-l:preview-up --preview '(bat --style=numbers --color=always --line-range :500 {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
 
 # From `delta` docs to prevent long lines from being truncated, also requires `width=250` or similar
 # in .gitconfig
@@ -64,6 +58,9 @@ fi
 
 # Autostart tmux
 # [[ -z "$TMUX" ]] && exec tmux -2
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -234,11 +231,14 @@ alias music-kill='TS_SOCKET=/tmp/yt-music $MAZ_TASK_SPOOLER_COMMAND -k'
 alias music-Kill='music-kill && TS_SOCKET=/tmp/yt-music $MAZ_TASK_SPOOLER_COMMAND -K'
 alias music-watch='viddy TS_SOCKET=/tmp/yt-music $MAZ_TASK_SPOOLER_COMMAND'
 
-# filters all the audio to compress the dynamic range (i.e. make the loud stuff quieter and the quiet stuff louder)
+# filters all the audio to compress the dynamic range (i.e. make the loud stuff
+# quieter and the quiet stuff louder)
 alias mpv-drc='mpv --af="acompressor=ratio=4,loudnorm"'
 alias mpv-plain='/usr/bin/mpv --af=""'
 
-# focuses the audio on the center (where most of the dialog comes from) and reduces more of the background noise. Great for late night movies when you have sleeping kids or thin walls
+# focuses the audio on the center (where most of the dialog comes from) and
+# reduces more of the background noise. Great for late night movies when you
+# have sleeping kids or thin walls
 alias mpv-nightmode='mpv --af="pan=stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE"'
 
 # is a combination of the two.
