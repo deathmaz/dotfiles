@@ -1,0 +1,23 @@
+#!/bin/bash
+
+check_focused_st() {
+  TARGET_PROGRAM="/usr/local/bin/st"
+
+  FOCUSED_WINDOW_ID=$(xdotool getwindowfocus)
+
+  FOCUSED_WINDOW_PID=$(xprop -id $FOCUSED_WINDOW_ID | awk '/_NET_WM_PID/ {print $3}')
+
+  COMMAND_LINE=$(tr -d '\0' </proc/$FOCUSED_WINDOW_PID/cmdline 2>/dev/null)
+
+  if [[ $COMMAND_LINE == *"$TARGET_PROGRAM"* ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+if check_focused_st; then
+  tmux display-popup -w 80% -h 60% -E "$1"
+else
+  st -G 1000x600 "$1"
+fi
