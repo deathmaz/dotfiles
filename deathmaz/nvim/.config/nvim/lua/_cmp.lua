@@ -22,6 +22,7 @@ end
 local luasnip = require("luasnip")
 
 cmp.setup {
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -58,7 +59,7 @@ cmp.setup {
     ["<CR>"] = cmp.mapping.confirm(
       {
         behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+        select = false,
       }
     ),
     -- ["<Right>"] = cmp.mapping.confirm { select = true },
