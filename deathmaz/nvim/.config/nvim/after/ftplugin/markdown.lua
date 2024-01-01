@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>lc', '<cmd>:call mkdx#ToggleChecklist()<CR>', opts)
 vim.keymap.set('n', '<leader>ll', '<cmd>:call mkdx#ToggleList()<CR>', opts)
 vim.keymap.set('n', '<leader>j', '<cmd>:call mkdx#JumpToHeader()<CR>', opts)
 vim.keymap.set('n', '<leader><leader>i', '<cmd>:call mkdx#GenerateOrUpdateTOC()<CR>', opts)
+vim.keymap.set('n', '<f8>', '<cmd>:!markdown-toc -i %<CR>', opts)
 vim.keymap.set('n', '<leader>I', '<cmd>:call mkdx#QuickfixHeaders()<CR>', opts)
 vim.keymap.set('n', '<leader>D', '<cmd>:call mkdx#QuickfixDeadLinks()<CR>', opts)
 
