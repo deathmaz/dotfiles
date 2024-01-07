@@ -179,7 +179,7 @@ filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
 "       \ {Play using mp3blaster}
 "       \ mp3blaster
        \ {Play using Mpv}
-       \ mpv %f,
+       \ nohup mpv %f >/dev/null 2>&1 &,
 fileviewer *.mp3 mp3info
 
 " Video
