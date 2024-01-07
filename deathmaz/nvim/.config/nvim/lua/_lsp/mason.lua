@@ -95,6 +95,9 @@ for _, server in pairs(servers) do
     local lua_ls_opts = require "_lsp.settings.lua_ls"
     opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
   end
+  if server == "tailwindcss" then
+    opts = vim.tbl_deep_extend("force", require"_lsp.settings.tailwind", opts)
+  end
 
   if server == "rust_analyzer" then
     -- local rust_opts = require "user.lsp.settings.rust"
