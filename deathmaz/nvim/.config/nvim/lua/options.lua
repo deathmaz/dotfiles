@@ -161,3 +161,9 @@ end
 vim.g.mapleader = ','
 
 vim.keymap.set("n", "<C-i>", "<C-I>")
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {
+  expr = true,
+})
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", {
+  expr = true,
+})

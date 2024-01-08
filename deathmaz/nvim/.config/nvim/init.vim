@@ -502,12 +502,6 @@ lua require('_lsp/init')
 
 lua require('_autocmd')
 
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-
-" Enable filetype plugins
-
 set langmap=
   \ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Є\\",ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,
   \йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\\;,є',яz,чx,сc,мv,иb,тn,ьm
@@ -707,9 +701,6 @@ noremap gV `[v`]
 " vnoremap \y "+y
 " nnoremap \yy "+yy
 " nnoremap \p "+p
-
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
