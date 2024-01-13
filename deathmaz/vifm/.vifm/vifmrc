@@ -219,6 +219,8 @@ filetype *.zip,*.jar,*.war,*.ear
        \ tar -xf %c,
 fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
 
+fileviewer *.html, w3m %c
+
 " ArchiveMount
 filetype *.tar.bz2,*.tbz2,*.tgz,*.tar.gz
        \ {Mount with archivemount}
