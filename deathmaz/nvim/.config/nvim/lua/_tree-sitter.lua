@@ -75,6 +75,9 @@ configs.setup {
     'gitignore',
     'markdown_inline',
     'markdown',
+    'c',
+    'vimdoc',
+    'query',
     -- 'scss',
   } -- one of 'all', 'language', or a list of languages
 }
