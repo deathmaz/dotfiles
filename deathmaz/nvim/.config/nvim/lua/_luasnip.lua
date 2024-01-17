@@ -84,7 +84,7 @@ describe('<>', () =>> {
     fmta([[
 import {
   expect,
-  SpyInstance,
+  MockInstance,
   it,
   describe,
   afterEach,
@@ -107,8 +107,8 @@ import {
 } from '@/api/api';
 <>
 
-let getHandler: SpyInstance;
-const apiHandlers: SpyInstance[] = [];
+let getHandler: MockInstance;
+const apiHandlers: MockInstance[] = [];
 const prepareApiCalls = () =>> {
   apiHandlers.push(
     getHandler = vi.spyOn(api, 'get').mockImplementation((url) =>> {
