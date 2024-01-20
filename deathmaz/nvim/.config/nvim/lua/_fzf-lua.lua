@@ -30,7 +30,7 @@ fzf_lua.setup {
     preview = {
       default = 'bat_native',
       horizontal = 'right:40%',
-      layout = 'vertical',
+      layout = 'horizontal',
     },
   },
   previewers = {
