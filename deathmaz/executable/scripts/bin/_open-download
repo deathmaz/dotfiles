@@ -1,0 +1,10 @@
+#!/bin/bash
+
+selected=$(TS_SOCKET=/tmp/download tsp | grep '^[0-9]' | sort -gr | fzf \
+  --bind "ctrl-k:execute:TS_SOCKET=/tmp/download tsp -k {1}" \
+  --bind "ctrl-r:reload:TS_SOCKET=/tmp/download tsp | grep -v 'ID' | sort -gr" \
+  --header 'C-k:kill C-r:reload' \
+  | awk '{print $1}')
+[ -z "$selected" ] && exit
+tmux new-window; tmux send-keys "TS_SOCKET=/tmp/download tsp -t "$selected"" 'Enter'  \
+  && $MAZ_SCRIPTS_BIN/focus-st
