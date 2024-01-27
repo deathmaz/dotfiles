@@ -52,5 +52,14 @@ read_fulltext() {
       <br>
       $result
     </div></body></html>"
-    echo $html > /tmp/fulltext.html && /usr/bin/brave /tmp/fulltext.html
+    last_part=$(basename "$1")
+    mkdir -p ~/Downloads/articles
+    destination="${HOME}/Downloads/articles/${last_part}.html"
+    echo $html > "$destination"
+    tmux new-window
+    tmux split-window -h
+    tmux select-pane -t 1
+    tmux resize-pane -x 80
+    tmux send-keys "$MAZ_CLI_BROWSER "$destination"" 'Enter'
+    $MAZ_SCRIPTS_BIN/focus-st
 }
