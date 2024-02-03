@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ~/dotfiles
+selected=$(fzf --print0 --reverse)
+[ -z "$selected" ] && exit 1
+/usr/bin/tmux new-window $EDITOR "$selected" && $MAZ_SCRIPTS_BIN/focus-st
