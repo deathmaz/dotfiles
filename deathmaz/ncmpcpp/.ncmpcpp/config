@@ -1,13 +1,30 @@
 user_interface = "alternative"
 visualizer_output_name = "my_fifo"
-visualizer_in_stereo = "yes"
-visualizer_type = "wave_filled"
+visualizer_in_stereo = "no"
+visualizer_type = "spectrum"
 # visualizer_look = "+|"
-# visualizer_look = "▊▊"
-visualizer_look = "◆│"
+visualizer_look = "▊▊"
+# visualizer_look = "◆▊"
+# visualizer_look = "◆│"
 mpd_music_dir = "~/music-lib"
 colors_enabled = "yes"
 visualizer_spectrum_smooth_look = yes
+header_visibility = no
+statusbar_visibility = no
+lyrics_fetchers = tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, zeneszoveg, internet
+
+startup_screen = visualizer
+screen_switcher_mode = playlist, visualizer
+startup_slave_screen = playlist
+startup_slave_screen_focus = yes
+locked_screen_width_part = 40
+
+ask_for_locked_screen_width_part = no
+progressbar_look = "▄▄▄"
+playlist_separate_albums = "yes"
+autocenter_mode = yes
+display_remaining_time = "no"
+display_bitrate = yes
 
 ##############################################################
 ## This is an example configuration file. Copy it to        ##
@@ -346,7 +363,6 @@ visualizer_color = blue, cyan, green, yellow, magenta, red
 #
 #playlist_shorten_total_times = no
 #
-playlist_separate_albums = "yes"
 #
 ##
 ## Note: Possible display modes: classic, columns.
@@ -379,7 +395,6 @@ playlist_separate_albums = "yes"
 ##
 #progressbar_look = =>
 #progressbar_look = "▊▊▊"
-progressbar_look = "▄▄▄"
 #
 ## Available values: database, playlist.
 ##
@@ -418,7 +433,6 @@ progressbar_look = "▄▄▄"
 #
 #cyclic_scrolling = no
 #
-lyrics_fetchers = tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, zeneszoveg, internet
 #
 #follow_now_playing_lyrics = no
 #
@@ -472,9 +486,6 @@ lyrics_fetchers = tekstowo, azlyrics, genius, musixmatch, sing365, metrolyrics, 
 ## Default width of locked screen (in %).  Acceptable values are from 20 to 80.
 ##
 #
-locked_screen_width_part = 60
-#
-ask_for_locked_screen_width_part = no
 #
 #jump_to_now_playing_song_at_start = yes
 #
@@ -484,7 +495,6 @@ ask_for_locked_screen_width_part = no
 #
 #display_volume_level = yes
 #
-display_bitrate = yes
 #
 #display_remaining_time = no
 #
