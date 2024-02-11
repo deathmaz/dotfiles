@@ -1,0 +1,9 @@
+#! /bin/bash
+
+elvi=$(/usr/bin/sr -elvi | grep -v 'LOCAL\|GLOBAL' | awk '{print $1}' | fzf --prompt="surfraw: ")
+[[ "$elvi" = "" ]] && exit
+echo "$elvi:"
+read query
+[ -z "$query" ] && exit
+/usr/bin/sr "$elvi" $query
+sleep 0.3
