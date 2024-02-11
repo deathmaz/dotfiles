@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if pgrep -x "st" > /dev/null
+then
+  wmctrl -xa "st"
+else
+  tmux has 2>/dev/null
+
+  if [ $? != 0 ]; then
+    /usr/local/bin/st /usr/bin/tmux
+  else
+    /usr/local/bin/st /usr/bin/tmux a
+  fi
+fi
