@@ -1,0 +1,5 @@
+#! /bin/bash
+
+selected=$(wmctrl -l | grep -v '\-1' | awk '{for (i=1; i<=3; i++) $i=""; sub(/^ * /, ""); print}' | fzf)
+[ -z "$selected" ] && exit
+wmctrl -a "$selected"
