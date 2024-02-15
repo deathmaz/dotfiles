@@ -67,3 +67,11 @@ augroup('ActiveWinCursorLine', function(g)
     command = 'if &cursorline && ! &pvw | setlocal nocursorline | endif'
   })
 end)
+
+augroup('Dotfiles', function(g)
+  aucmd({'BufWritePost'}, {
+    group = g,
+    pattern = 'sxhkdrc',
+    command = '!pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded"'
+  })
+end)
