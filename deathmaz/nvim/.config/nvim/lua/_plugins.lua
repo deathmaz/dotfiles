@@ -27,7 +27,7 @@ return {
         complete = 'x'
       },
     },
-    enabled = false,
+    enabled = true,
   },
 
   {
@@ -179,24 +179,10 @@ return {
   },
 
   {
-    'simrat39/rust-tools.nvim',
-  },
-
-  {
     "ahmedkhalf/project.nvim",
     config = function()
       require('_project')
     end,
-  },
-
-  {
-    "glepnir/lspsaga.nvim",
-    branch = "main",
-    config = function()
-      require('_lsp-saga')
-    end,
-    event = 'VeryLazy',
-    enabled = false,
   },
 
   {
@@ -349,6 +335,9 @@ return {
           require('_nvim-treesitter-context')
         end,
       },
+      {
+        'RRethy/nvim-treesitter-endwise',
+      },
     },
   },
   {
@@ -361,9 +350,24 @@ return {
     end,
     enabled = false,
   },
+
+  { "folke/neodev.nvim" },
+
+-- LSP
   {
-    'RRethy/nvim-treesitter-endwise',
+    'simrat39/rust-tools.nvim',
   },
+
+  {
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      require('_lsp-saga')
+    end,
+    event = 'VeryLazy',
+    enabled = false,
+  },
+
   {
     'lukas-reineke/lsp-format.nvim',
     config = function()
@@ -373,7 +377,6 @@ return {
     end
   },
 
-  { "folke/neodev.nvim" },
   {
     "jose-elias-alvarez/null-ls.nvim",
     enabled = false,
@@ -595,6 +598,7 @@ return {
   'tpope/vim-surround',
   'tpope/vim-eunuch',
   'tpope/vim-unimpaired',
+  'tpope/vim-dispatch',
   {
     'tpope/vim-rsi'
   },
@@ -869,6 +873,7 @@ return {
   },
 
   {
+    enabled = false,
     'cranberry-clockworks/coal.nvim',
   },
 
