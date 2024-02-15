@@ -31,6 +31,12 @@ ls.add_snippets('vue', {
     ]], {
       i(1),
       i(2)
+    })),
+  s('html:todo',
+    fmt([[
+<!-- TODO: {} -->
+    ]], {
+      i(1),
     }))
 })
 
