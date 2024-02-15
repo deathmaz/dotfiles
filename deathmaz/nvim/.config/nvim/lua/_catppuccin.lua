@@ -38,16 +38,33 @@ catppuccin.setup({
   integrations = {
     lsp_saga = false,
     mason = true,
+    dap = false,
+    dap_ui = false,
+    alpha = false,
+    dashboard = false,
+    flash = false,
     cmp = true,
     harpoon = true,
     markdown = true,
     semantic_tokens = true,
     gitsigns = true,
-    nvimtree = true,
+    nvimtree = false,
+    ufo = false,
+    rainbow_delimiters = false,
+    telescope = {
+      enabled = false,
+    },
+    illuminate = {
+      enabled = false,
+    },
     indent_blankline = {
       enabled = false,
       colored_indent_levels = false,
     },
+    mini = {
+      enabled = false,
+    },
+    neogit = false,
     treesitter_context = true,
     treesitter = true,
     native_lsp = {
