@@ -97,9 +97,10 @@ vim.opt.relativenumber = true
 
 -- vim.opt.foldmethod = "marker"
 -- vim.opt.foldtext = "v:lua.require'_folds'.folds()"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+vim.opt.foldtext = ""
 vim.opt.foldopen = vim.opt.foldopen + 'search'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldmethod = 'expr'
 vim.opt.foldlevelstart = 99
 
@@ -111,7 +112,7 @@ vim.opt.pumblend = 10
 
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2"
-vim.wo.showbreak = "↪ " -- '…', '↳ ', '→','↪ '
+vim.wo.showbreak = "↳ " -- '…', '↳ ', '→','↪ '
 
 vim.opt.swapfile = false
 
