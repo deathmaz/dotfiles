@@ -37,13 +37,13 @@ catppuccin.setup({
   },
   integrations = {
     lsp_saga = false,
-    mason = true,
+    mason = false,
     dap = false,
     dap_ui = false,
     alpha = false,
     dashboard = false,
     flash = false,
-    cmp = true,
+    cmp = false,
     harpoon = true,
     markdown = true,
     semantic_tokens = true,
@@ -51,6 +51,7 @@ catppuccin.setup({
     nvimtree = false,
     ufo = false,
     rainbow_delimiters = false,
+    coc_nvim = true,
     telescope = {
       enabled = false,
     },

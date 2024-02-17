@@ -84,6 +84,7 @@ lualine.setup {
       },
     },
     lualine_x = {
+      'g:coc_status',
       'filetype',
     },
   },

@@ -1,97 +1,16 @@
 {
-  "intelephense.progress.enable": false,
-  "sumneko-lua.enableNvimLuaDev": true,
-  "diagnostic.enable": true,
-  "diagnostic.displayByAle": false,
-  "rust-analyzer.inlayHints.refreshOnInsertMode": true,
-  "blade.bladeLinter.enable": false,
-  "blade.bladeFormatter.optIndentSize": 2,
-  "blade.bladeFormatter.optWrapAttributes": "force",
-  "vetur.useWorkspaceDependencies": true,
-  "coc.preferences.extensionUpdateCheck": "daily",
-  "coc.preferences.rootPatterns": [
-    ".git",
-    ".hg",
-    ".projections.json",
-    "package.json",
-    "tsconfig.json",
-    "jsconfig.json",
-    "vite.config.ts",
-    "nuxt.config.ts"
-  ],
-  "workspace.bottomUpFiletypes": [
-    "typescript",
-    "html",
-    "vue",
-    "scss",
-    "css"
-  ],
-  "html.autoClosingTags": true,
-  "codeLens.enable": false,
-  "codeLens.position": "eol",
-  "codeLens.separator": "‣",
-  "diagnostic.separateRelatedInformationAsDiagnostics": true,
-  "diagnostic.virtualTextPrefix": "",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
+  "volar.takeOverMode.enabled": true,
+  "tsserver.enable": false,
   "eslint.autoFixOnSave": true,
-  "eslint.format.enable": true,
   "eslint.run": "onSave",
-  "tsserver.enable": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "scss"],
-  "prettier.disableLanguages": [],
-  "suggest.enablePreselect": true,
+  "sumneko-lua.enableNvimLuaDev": true,
+  "semanticTokens.enable": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.optionsWrapper": true,
   "suggest.noselect": true,
-  "suggest.floatConfig": {
-    "border": false,
-    "borderhighlight": "CocFloating",
-    "highlight": "CocFloating"
-  },
-  "suggest.completionItemKindLabels": {
-    "keyword": "\uf1de",
-    "variable": "\ue79b",
-    "value": "\uf89f",
-    "operator": "\u03a8",
-    "function": "\u0192",
-    "reference": "\ufa46",
-    "constant": "\uf8fe",
-    "method": "\uf09a",
-    "struct": "\ufb44",
-    "class": "\uf0e8",
-    "interface": "\uf417",
-    "text": "\ue612",
-    "enum": "\uf435",
-    "enumMember": "\uf02b",
-    "module": "\uf40d",
-    "color": "\ue22b",
-    "property": "\ue624",
-    "field": "\uf9be",
-    "unit": "\uf475",
-    "event": "\ufacd",
-    "file": "\uf723",
-    "folder": "\uf114",
-    "snippet": "\ue60b",
-    "typeParameter": "\uf728",
-    "default": "\uf29c"
-  },
-  "languageserver": {
-    "cquery": {
-      "command": "cquery",
-      "args": ["--log-file=/tmp/cq.log"],
-      "filetypes": ["c", "cpp"],
-      "initializationOptions": {
-        "cacheDirectory": "/tmp/cquery"
-      }
-    },
-    "golang": {
-      "command": "gopls",
-      "disableWorkspaceFolders": true,
-      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "usePlaceholders": true
-      }
-    }
-  },
-  "Lua.telemetry.enable": false
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "dart"
+  ],"
 }

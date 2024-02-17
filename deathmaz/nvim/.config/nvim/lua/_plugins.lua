@@ -355,7 +355,15 @@ return {
 
 -- LSP
   {
+    'https://gitlab.com/yorickpeterse/nvim-dd.git',
+    config = function()
+      require('dd').setup()
+    end,
+    enabled = false,
+  },
+  {
     'simrat39/rust-tools.nvim',
+    enabled = false,
   },
 
   {
@@ -374,7 +382,8 @@ return {
       require("lsp-format").setup({
         debug = true,
       })
-    end
+    end,
+    enabled = false,
   },
 
   {
@@ -411,22 +420,33 @@ return {
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
+    enabled = false,
   },
-  { "williamboman/mason-lspconfig.nvim" },
-  { "neovim/nvim-lspconfig" },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    enabled = false,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    enabled = false,
+  },
   {
     "ray-x/lsp_signature.nvim",
     event = 'VeryLazy',
     -- https://github.com/hrsh7th/nvim-cmp/issues/1613
     enabled = false,
   },
-  { "b0o/SchemaStore.nvim" },
+  {
+    "b0o/SchemaStore.nvim",
+    enabled = false,
+  },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
     config = function()
       require('_lsp-lines')
     end,
     event = 'VeryLazy',
+        enabled = false,
   },
   {
     "j-hui/fidget.nvim",
@@ -441,6 +461,7 @@ return {
       require('_lspkind')
     end,
     event = 'VeryLazy',
+    enabled = false,
   },
   {
     'nvim-lua/lsp-status.nvim',
@@ -466,13 +487,15 @@ return {
     'L3MON4D3/LuaSnip',
     config = function()
       require('_luasnip')
-    end
+    end,
+    enabled = false,
   },
   {
     'rafamadriz/friendly-snippets',
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
-    end
+    end,
+    enabled = false,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -496,13 +519,15 @@ return {
         end,
         enabled = false,
       }
-    }
+    },
+    enabled = false,
   },
   {
     'https://gitlab.com/yorickpeterse/nvim-dd.git',
     config = function()
       require('dd').setup()
-    end
+    end,
+    enabled = false,
   },
 
   {
@@ -543,9 +568,12 @@ return {
 
   {
     'neoclide/coc.nvim',
-    branch = 'pum',
-    build = 'yarn install --frozen-lockfile',
-    enabled = false,
+    branch = 'release',
+    -- build = 'yarn install --frozen-lockfile',
+    enabled = true,
+    config = function()
+      require('_coc')
+    end
   },
   {
     'antoinemadec/coc-fzf',

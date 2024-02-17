@@ -498,7 +498,7 @@ lua require('_winbar')
 
 lua require('_lorem-picsum')
 
-lua require('_lsp/init')
+" lua require('_lsp/init')
 
 lua require('_autocmd')
 
