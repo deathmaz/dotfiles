@@ -86,3 +86,103 @@ export ${1:default} interface $2 {
 	$0
 }
 endsnippet
+
+snippet test:elem "test element" b
+const ${1} = (wrapper: VueWrapper) => wrapper.find('${2}');
+endsnippet
+
+snippet test:factory "test factory" b
+function factory(payload?: {
+  props?: Record<string, any>,
+  slots?: Record<string, any>,
+}) {
+  return mount(${1}, {
+    attachTo: document.body,
+    props: {
+      ...payload?.props,
+    },
+    slots: {
+      ...payload?.slots,
+    },
+  });
+}
+endsnippet
+
+snippet test:setup "test setup" b
+import {
+  it,
+  expect,
+  describe,
+} from 'vitest';
+import {
+  mount,
+  VueWrapper,
+} from '@vue/test-utils';
+
+describe('${1}', () => {
+  ${2}
+});
+endsnippet
+
+snippet test:setup-api "test setup with api" b
+import {
+  expect,
+  MockInstance,
+  it,
+  describe,
+  afterEach,
+  vi,
+  beforeEach,
+} from 'vitest';
+import {
+  defineComponent,
+  onBeforeUnmount,
+  PropType,
+} from 'vue';
+import {
+  mount,
+  enableAutoUnmount,
+  flushPromises,
+  VueWrapper,
+} from '@vue/test-utils';
+import {
+  api,
+} from '@/api/api';
+${1}
+
+let getHandler: MockInstance;
+const apiHandlers: MockInstance[] = [];
+const prepareApiCalls = () => {
+  apiHandlers.push(
+    getHandler = vi.spyOn(api, 'get').mockImplementation((url) => {
+      switch (url) {
+        case 'url':
+          return Promise.resolve();
+        default:
+          return Promise.reject();
+      }
+    }),
+  );
+};
+beforeEach(async () => {
+  prepareApiCalls();
+});
+
+afterEach(async () => {
+  apiHandlers.forEach((handler) => handler.mockReset());
+});
+
+enableAutoUnmount(afterEach);
+
+describe('${2}', () => {
+  it('${3}', async() => {
+    ${4}
+  })
+})
+endsnippet
+
+snippet test:setup "test setup" b
+it('${1}', async () => {
+  ${2}
+})
+endsnippet

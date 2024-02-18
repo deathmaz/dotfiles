@@ -488,14 +488,14 @@ return {
     config = function()
       require('_luasnip')
     end,
-    enabled = false,
+    enabled = true,
   },
   {
     'rafamadriz/friendly-snippets',
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end,
-    enabled = false,
+    enabled = true,
   },
   {
     "hrsh7th/nvim-cmp",
