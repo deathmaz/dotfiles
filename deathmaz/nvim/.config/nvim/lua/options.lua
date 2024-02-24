@@ -135,16 +135,16 @@ vim.g.markdown_fenced_languages = {
   'html=html',
 }
 
-vim.opt.pumheight = 15
-vim.opt.confirm = true
-vim.opt.autowriteall = true -- automatically :write before running commands and changing files
+vim.opt.pumheight               = 15
+vim.opt.confirm                 = true
+vim.opt.autowriteall            = true -- automatically :write before running commands and changing files
 
-vim.g.loaded_python_provider = 0
-vim.g.loaded_ruby_provider   = 0
-vim.g.loaded_perl_provider   = 0
-vim.g.loaded_node_provider   = 0
+vim.g.loaded_python_provider    = 0
+vim.g.loaded_ruby_provider      = 0
+vim.g.loaded_perl_provider      = 0
+vim.g.loaded_node_provider      = 0
 
-local disabled_built_ins = {
+local disabled_built_ins        = {
   'netrw',
   'netrwPlugin',
   'netrwSettings',
