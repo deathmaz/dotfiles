@@ -369,7 +369,7 @@ return {
 
   { "folke/neodev.nvim" },
 
--- LSP
+  -- LSP
   {
     'https://gitlab.com/yorickpeterse/nvim-dd.git',
     config = function()
@@ -405,7 +405,7 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     enabled = false,
-    config = function ()
+    config = function()
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local null_ls = require("null-ls")
       null_ls.setup({
@@ -462,7 +462,7 @@ return {
       require('_lsp-lines')
     end,
     event = 'VeryLazy',
-        enabled = false,
+    enabled = false,
   },
   {
     "j-hui/fidget.nvim",
@@ -806,14 +806,14 @@ return {
     'numToStr/Comment.nvim',
     event = { 'BufWinEnter', 'BufNewFile' },
     config = function()
-    require('Comment').setup({
-      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-    })
+      require('Comment').setup({
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      })
     end,
     dependencies = {
       {
         'JoosepAlviste/nvim-ts-context-commentstring',
-        config  = function()
+        config = function()
           require('ts_context_commentstring').setup {
             enable_autocmd = false,
             skip_ts_context_commentstring_module = true,
@@ -907,7 +907,7 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     event = 'VeryLazy',
-    config = function ()
+    config = function()
       require('_lualine')
     end
   },
