@@ -689,7 +689,10 @@ return {
     'junegunn/vim-easy-align',
     event = 'VeryLazy',
   },
-  'junegunn/vim-slash',
+  {
+    'junegunn/vim-slash',
+    enabled = false,
+  },
   {
     'junegunn/vim-emoji',
   },
