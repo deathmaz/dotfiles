@@ -8,6 +8,15 @@ return {
     end,
     event = 'VeryLazy',
   },
+  {
+    -- remove after
+    -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4945 resolved
+
+    'dart-lang/dart-vim-plugin',
+    ft = {
+      'dart'
+    }
+  },
 
   {
     'jakewvincent/mkdnflow.nvim',
