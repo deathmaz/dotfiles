@@ -14,10 +14,17 @@ return {
     config = true,
     opts = {
       mappings = {
+        -- conflicts with coc.nvim
+        MkdnNextLink = false,
+        MkdnPrevLink = false,
+        MkdnTableNextCell = false,
+        MkdnTablePrevCell = false,
+
+        MkdnEnter = { { 'n', 'v', 'i' }, '<CR>' },
         MkdnFoldSection = false,
         MkdnUnfoldSection = false,
-        MkdnToggleToDo = { { 'n', 'v' }, '<M-f>' },
-        MkdnDestroyLink = { 'n', '<M-d>' },
+        MkdnToggleToDo = { { 'n', 'v', 'i' }, '<M-f>' },
+        MkdnDestroyLink = { { 'n', 'v' }, '<M-d>' },
       },
       perspective = {
         priority = 'current',
