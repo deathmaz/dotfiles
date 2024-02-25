@@ -504,14 +504,16 @@ return {
     config = function()
       require('_luasnip')
     end,
-    enabled = true,
-  },
-  {
-    'rafamadriz/friendly-snippets',
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
-    enabled = true,
+    dependencies = {
+      {
+        'rafamadriz/friendly-snippets',
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+        enabled = false,
+      },
+    },
+    enabled = false,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -589,11 +591,17 @@ return {
     enabled = true,
     config = function()
       require('_coc')
-    end
-  },
-  {
-    'antoinemadec/coc-fzf',
-    enabled = false,
+    end,
+    dependencies = {
+      {
+        'rafamadriz/friendly-snippets',
+        enabled = true,
+      },
+      {
+        'antoinemadec/coc-fzf',
+        enabled = false,
+      },
+    },
   },
 
   {
