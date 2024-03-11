@@ -29,7 +29,7 @@ return {
         MkdnTableNextCell = false,
         MkdnTablePrevCell = false,
 
-        MkdnEnter = { { 'n', 'v', 'i' }, '<CR>' },
+        MkdnEnter = { { 'n', 'v', 'i' }, '<C-\\>' },
         MkdnFoldSection = false,
         MkdnUnfoldSection = false,
         MkdnToggleToDo = { { 'n', 'v', 'i' }, '<M-f>' },
