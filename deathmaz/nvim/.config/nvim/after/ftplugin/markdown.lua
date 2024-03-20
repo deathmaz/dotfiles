@@ -13,6 +13,7 @@ vim.keymap.set('n', '<f8>', '<cmd>:!markdown-toc -i %<CR>', opts)
 vim.keymap.set('n', '<leader>D', '<cmd>:call mkdx#QuickfixDeadLinks()<CR>', opts)
 vim.keymap.set('n', "<leader>'", '<Plug>(mkdx-toggle-quote-n)', opts)
 vim.keymap.set('v', "<leader>'", '<Plug>(mkdx-toggle-quote-v)', opts)
+vim.keymap.set('n', "<leader>[", '<cmd>:call mkdx#ToggleHeader()<CR>', opts)
 
 if fzf_lua_ok then
   vim.keymap.set('n', '<leader>H',
