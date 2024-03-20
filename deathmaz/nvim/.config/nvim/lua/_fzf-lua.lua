@@ -30,7 +30,7 @@ fzf_lua.setup {
     preview = {
       default = 'bat_native',
       horizontal = 'right:40%',
-      layout = 'horizontal',
+      layout = 'vertical',
     },
   },
   previewers = {
@@ -67,6 +67,12 @@ vim.keymap.set('n', '<leader><leader>l', fzf_lua.blines, opts)
 
 vim.keymap.set('n', '<leader>L', function()
   fzf_lua.grep_project()
+end, opts)
+
+vim.keymap.set('n', '\\L', function()
+  fzf_lua.grep_project({
+    cwd = functions.find_git_root(),
+  })
 end, opts)
 
 vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
