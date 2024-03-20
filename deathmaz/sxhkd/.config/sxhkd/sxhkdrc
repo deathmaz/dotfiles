@@ -1,0 +1,95 @@
+alt + ctrl + w
+  $MAZ_SCRIPTS_BIN/focus-brave.sh
+
+shift + ctrl + alt + grave
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_browser-history
+
+shift + alt + greater
+  mpc next
+
+shift + alt + less
+  mpc prev
+
+super + alt + p
+  mpc toggle
+
+ctrl + shift + p
+  playerctl -p $(tail -1 /tmp/player-last) play-pause
+
+alt + super + {h,j,k,l}
+  playerctl -p $(tail -1 /tmp/player-last) position {5-,10-,10+,5+}
+
+#  playerctl --all-players pause
+
+ctrl + space
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/fzf-nova
+
+super + alt + slash
+  $MAZ_SCRIPTS_BIN/now-playing
+
+ctrl + alt + f
+  $MAZ_SCRIPTS_BIN/focus-firefox.sh
+
+ctrl + alt + v
+  $MAZ_SCRIPTS_BIN/focus-mpv.sh
+
+super + alt + v
+  playerctl --player=mpv play-pause
+
+ctrl + alt + c
+  $MAZ_SCRIPTS_BIN/focus-signal.sh
+
+ctrl + alt + s
+  $MAZ_SCRIPTS_BIN/focus-slack.sh
+
+ctrl + alt + i
+  $MAZ_SCRIPTS_BIN/focus-st
+
+ctrl + alt + t
+  $MAZ_SCRIPTS_BIN/focus-telegram.sh
+
+ctrl + alt + m
+  $MAZ_SCRIPTS_BIN/focus-thunderbird.sh
+
+ctrl + alt + Right
+  $MAZ_SCRIPTS_BIN/move-to-next-monitor
+
+ctrl + alt + backslash
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_bookmarks
+
+ctrl + shift + o
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_projects
+
+ctrl + shift + d
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_dotfiles
+
+ctrl + alt + n
+  $MAZ_SCRIPTS_BIN/st-ncmpcpp
+
+ctrl + alt + BackSpace
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_sr
+
+ctrl + alt + equal
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_tmux-find-panes
+
+ctrl + alt + minus
+  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_window
+
+shift + ctrl + space
+  $MAZ_SCRIPTS_BIN/toggle-mic.sh
+
+alt + super + F12
+  $MAZ_SCRIPTS_BIN/xclip-to-mpv.sh
+
+ctrl + shift + alt + greater
+  $MAZ_SCRIPTS_BIN/move-mouse-to-top-left-edge.sh
+
+super + alt + Next
+  $MAZ_SCRIPTS_BIN/resize-and-stick-mpv
+
+ctrl + alt + 8
+  dmenu_run
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded"
