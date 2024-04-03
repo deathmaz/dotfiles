@@ -1,0 +1,13 @@
+#! /bin/bash
+
+selected=$(cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n | fzf --reverse \
+  --prompt="Search bookmarks: " \
+  --bind "ctrl-e:execute:$EDITOR ~/.config/surfraw/bookmarks > /dev/tty" \
+  --bind "ctrl-r:reload:cat ~/.config/surfraw/bookmarks | sed '/^$/d' | sort -n" \
+  --bind "ctrl-y:execute:nohup $MAZ_SCRIPTS_BIN/copy-bookmark-link {} > /dev/null 2>&1" \
+  --header 'C-e:edit-file C-r:reload C-y:copy' \
+  | awk '{print $2}')
+
+[ -z "$selected" ] && exit
+
+/usr/bin/sr "$selected"
