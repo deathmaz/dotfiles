@@ -24,5 +24,6 @@ project.setup({
     "vite.config.mjs",
     "vite.config.ts",
     "vite.config.mts",
+    "pubspec.yaml",
   },
 })
