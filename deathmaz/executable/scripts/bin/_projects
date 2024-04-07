@@ -1,0 +1,9 @@
+#!/bin/bash
+
+project=$( ls -d ~/projects/*/ | fzf --reverse)
+[[ "$project" = "" ]] && exit 1
+cd "$project"
+
+file=$(fzf --print0)
+[ -z "$file" ] && exit 1
+/usr/bin/tmux new-window "$EDITOR" "$file" && $MAZ_SCRIPTS_BIN/focus-st
