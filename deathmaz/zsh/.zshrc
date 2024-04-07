@@ -33,6 +33,7 @@ export LESS=-R
 # export LESS=-RS
 
 export BROWSER='xdg-open'
+export CHROME_EXECUTABLE='/usr/bin/brave'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zsh/plugins/history.zsh ] && source ~/.zsh/plugins/history.zsh
@@ -209,6 +210,10 @@ path+=$HOME/execs/bin
 path+=$HOME/.gem/ruby/2.6.0/bin
 path+=/usr/local/opt/node@12/bin
 path+=$HOME/.cargo/bin
+path+=$HOME/flutter/bin
+path+=$HOME/flutter/bin
+path+=$HOME/.pub-cache/bin
+path+=$HOME/.yarn/bin
 
 alias download-video='yt-dlp -S "height:1080"'
 function downloadAudio() {
