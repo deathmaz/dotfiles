@@ -36,6 +36,16 @@ vim.opt.backspace = {
   'start',
   'indent',
 }
+
+-- TODO: setting via vim.opt.errorformat:append doesn't work
+-- see https://github.com/neovim/neovim/discussions/28151
+vim.cmd [[
+" tsc
+set efm+=%E%f\ %#(%l\\,%c):\ %trror\ TS%n:\ %m,%W%f\ %#(%l\\,%c):\ %tarning\ TS%n:\ %m
+" eslint
+set efm+=%-P%f,%\\s%#%l:%c\ %#\ %trror\ \ %m,%\\s%#%l:%c\ %#\ %tarning\ \ %m
+]]
+
 vim.opt.whichwrap = "<,>,h,l"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
