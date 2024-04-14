@@ -270,7 +270,7 @@ return {
     ft = 'qf',
     config = function()
       require('bqf').setup({
-        auto_resize_height = false,
+        auto_resize_height = true,
         preview = {
           auto_preview = false,
         }
