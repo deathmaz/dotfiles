@@ -360,6 +360,12 @@ return {
       {
         'RRethy/nvim-treesitter-endwise',
       },
+      {
+        'axelvc/template-string.nvim',
+        config = function()
+          require('_template-string')
+        end,
+      },
     },
   },
   {
@@ -488,13 +494,6 @@ return {
   {
     'nvim-lua/lsp-status.nvim',
     enabled = false,
-  },
-
-  {
-    'axelvc/template-string.nvim',
-    config = function()
-      require('_template-string')
-    end,
   },
 
   {
