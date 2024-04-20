@@ -9,15 +9,16 @@ local project_ok, project = pcall(require, 'project_nvim')
 
 local opts = { noremap = true, silent = true }
 
-fzf_lua.setup {
+fzf_lua.setup({
   files = {
-    git_icons = false,
-    file_icons = false,
+    fzf_opts = {
+      ["--ansi"] = false,
+    }
   },
   grep = {
-    git_icons  = false,
-    file_icons = false,
-    rg_opts    = "--column --hidden --glob '!.git' --line-number --no-heading --color=always --smart-case --max-columns=512",
+    rg_glob = true,
+    rg_opts =
+    "--column --hidden --glob '!.git' --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
     --[[ winopts = {
       preview = {
         horizontal = 'hidden'
@@ -28,9 +29,9 @@ fzf_lua.setup {
     height  = 0.95,
     width   = 0.95,
     preview = {
-      default = 'bat_native',
+      default = 'bat',
       horizontal = 'right:40%',
-      layout = 'vertical',
+      layout = 'flex',
     },
   },
   previewers = {
@@ -38,28 +39,26 @@ fzf_lua.setup {
       pager = "delta",
     },
   },
+  manpages = { previewer = "man_native" },
+  helptags = { previewer = "help_native" },
   fzf_opts = {
     -- ['--layout'] = 'reverse-list',
-    -- ['--ansi'] = false
-  }
-}
+  },
+  defaults = {
+    git_icons = false,
+    file_icons = false,
+  },
+})
 
 vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
 
 vim.keymap.set('n', '<leader>f', function()
-  fzf_lua.files({
-    fzf_opts = {
-      ['--ansi'] = false,
-    }
-  })
+  fzf_lua.files()
 end, opts)
 
 vim.keymap.set('n', '<leader>w', function()
   fzf_lua.files({
     cwd = functions.find_git_root(),
-    fzf_opts = {
-      ['--ansi'] = false,
-    }
   })
 end, opts)
 
