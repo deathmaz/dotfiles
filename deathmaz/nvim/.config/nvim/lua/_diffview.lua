@@ -14,5 +14,13 @@ diffview.setup({
     file_history_panel = {
       ["gf"] = actions.goto_file_edit,
     }
+  },
+  hooks = {
+    diff_buf_read = function()
+      vim.b['coc_enabled'] = 0
+    end,
+    view_leave = function()
+      vim.b['coc_enabled'] = 1
+    end
   }
 })
