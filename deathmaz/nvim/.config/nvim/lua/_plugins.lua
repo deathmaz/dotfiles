@@ -853,6 +853,23 @@ return {
       require('_hydra')
     end
   },
+  {
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    opts = {
+      filetypes = {
+        markdown = {
+          relative_to_current_file = true,
+          dir_path = function()
+            return "asset_" .. vim.fn.expand("%:t:r")
+          end,
+        },
+      },
+    },
+  },
+  {
+    'qadzek/vim-md-link',
+  },
 
   -- Colorschemes
   --  'projekt0n/github-nvim-theme'
