@@ -18,6 +18,7 @@ sudo pacman -S \
   bat \
   newsboat \
   npm \
+  pacman-contrib \
   ripgrep \
   stow \
   tmux \
@@ -26,7 +27,6 @@ sudo pacman -S \
   mpv \
   w3m \
   yarn \
-  youtube-dl \
   ncdu \
   discord \
   ttf-sourcecodepro-nerd \
@@ -55,6 +55,9 @@ sudo pacman -S \
   wmctrl \
   python-pynvim \
   signal-desktop \
+  manjaro-settings-samba \
+  python-secretstorage \
+  thunar-shares-plugin \
   thefuck \
   git-delta \
   telegram-desktop \
@@ -64,38 +67,21 @@ sudo pacman -S \
   ncmpcpp \
   mpc \
   tree-sitter \
+  jdk-openjdk \
   libxcrypt-compat \
   --noconfirm \
   --needed
-
-rustup install stable
-rustup default stable
-
-sudo systemctl start docker.service
-sudo systemctl enable docker.service
-sudo usermod -aG docker $USER
-
-sudo systemctl enable paccache.timer
-sudo systemctl start paccache.timer
-
-# https://unix.stackexchange.com/a/343582
-systemctl --user start mpd.service
-systemctl --user enable mpd.service
-
-# github-cli extensions
-gh extension install dlvhdr/gh-dash
-gh extension install seachicken/gh-poi
 
 # keymapper \
 yay -S \
   nodejs-readability-cli \
   nodejs-markdown-toc \
-  rustywind \
   mouseless-bin \
   tuir \
   mpd-mpris-bin \
   viddy \
   urlview \
+  easystroke \
   autojump \
   docker-credential-pass-bin \
   birdtray \
@@ -108,6 +94,7 @@ yay -S \
   gofumpt \
   golines \
   vscode-codicons-git \
+  android-studio \
   indicator-sound-switcher \
   --noconfirm \
   --needed
@@ -118,10 +105,26 @@ yay -S \
 source $HOME/dotfiles/deathmaz/executable/scripts/bin/update-manually-installed.sh
 
 go install golang.org/x/tools/cmd/goimports@latest
-go install github.com/deathmaz/go-replace-youtube
+go install github.com/deathmaz/go-replace-youtube@latest
+go install github.com/x-motemen/ghq@latest
+
+# https://unix.stackexchange.com/a/343582
+# should be started after mpd config was created
+systemctl --user start mpd.service
+systemctl --user enable mpd.service
 
 systemctl --user enable mpd-mpris.service
 systemctl --user start mpd-mpris.service
+
+rustup install stable
+rustup default stable
+
+sudo systemctl start docker.service
+sudo systemctl enable docker.service
+sudo usermod -aG docker $USER
+
+sudo systemctl enable paccache.timer
+sudo systemctl start paccache.timer
 
 git submodule update --init --recursive
 
@@ -131,7 +134,7 @@ export VISUAL="$HOME/execs/neovim/bin/nvim"
 export HOMEBREW_BUNDLE_NO_LOCK="1"
 export MAZ_SCRIPTS_BIN="$HOME/dotfiles/deathmaz/executable/scripts/bin"
 export MAZ_CLI_BROWSER="w3m"
-export FZF_DEFAULT_OPTS="--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6,marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+export FZF_DEFAULT_OPTS="--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796,fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6,marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 --reverse"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob \!.git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--bind ctrl-j:preview-down,ctrl-l:preview-up --preview '\''(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'\''"' \
