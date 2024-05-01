@@ -39,8 +39,16 @@ gitsigns.setup {
   },
 }
 
-vim.keymap.set("n", "]h", function() gitsigns.next_hunk() end)
-vim.keymap.set("n", "[h", function() gitsigns.prev_hunk() end)
+vim.keymap.set("n", "]h", function()
+  gitsigns.nav_hunk('next', {}, function()
+    vim.cmd('normal zz')
+  end)
+end)
+vim.keymap.set("n", "[h", function()
+  gitsigns.nav_hunk('prev', {}, function()
+    vim.cmd('normal zz')
+  end)
+end)
 
 local fzf_lua = require 'fzf-lua'
 vim.keymap.set('n', '<space>g',

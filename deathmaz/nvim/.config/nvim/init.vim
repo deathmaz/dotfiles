@@ -666,6 +666,9 @@ nnoremap g, g,zvzz
 nnoremap } }zz
 nnoremap { {zz
 
+nnoremap ]c ]czz
+nnoremap [c [czz
+
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-f> <C-f>zz
