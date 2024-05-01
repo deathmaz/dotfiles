@@ -84,6 +84,8 @@ vim.keymap.set('n', '\\c', fzf_lua.command_history, opts)
 
 vim.keymap.set('n', '<leader>o', fzf_lua.oldfiles, opts)
 
+vim.keymap.set('n', '\\y', fzf_lua.tmux_buffers, opts)
+
 vim.keymap.set('n', '<leader>ag', function()
   fzf_lua.grep_cword({
     cwd = functions.find_git_root(),
