@@ -80,7 +80,7 @@ vim.keymap.set('n', '\\f', fzf_lua.git_status, opts)
 
 vim.keymap.set('n', '\\h', fzf_lua.help_tags, opts)
 
-vim.keymap.set('n', '\\c', fzf_lua.command_history, opts)
+vim.keymap.set({ 'n', 'v' }, '\\c', fzf_lua.commands, opts)
 
 vim.keymap.set('n', '<leader>o', fzf_lua.oldfiles, opts)
 
