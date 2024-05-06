@@ -1,0 +1,9 @@
+#! /bin/bash
+
+partitions=$(lsblk -lp | grep 'part $' | awk '{print $1,  "(" $4 ")"}')
+[[ "$partitions" = "" ]] && exit
+selected=$(echo "$partitions" | fzf --prompt="Which drive to mount?" | awk '{print $1}')
+[ -z "$selected" ] && exit
+udisksctl mount -b "$selected" \
+  | xargs -I % \
+  notify-send --icon=device "$selected" %
