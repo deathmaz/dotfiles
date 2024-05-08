@@ -12,7 +12,7 @@ local opts = { noremap = true, silent = true }
 fzf_lua.setup({
   files = {
     fzf_opts = {
-      ["--ansi"] = false,
+      ["--ansi"] = true,
     }
   },
   grep = {
@@ -47,6 +47,7 @@ fzf_lua.setup({
   defaults = {
     git_icons = false,
     file_icons = false,
+    formatter = "path.filename_first",
   },
 })
 
@@ -150,6 +151,7 @@ end
 vim.keymap.set('i', '<c-x><c-f>',
   function()
     fzf_lua.files({
+      formatter = "",
       actions = {
         ["default"] = function(selected)
           local pos = vim.api.nvim_win_get_cursor(0)[2]
