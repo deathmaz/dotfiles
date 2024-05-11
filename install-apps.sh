@@ -64,6 +64,7 @@ sudo pacman -S \
   github-cli \
   veracrypt \
   mpd \
+  zoxide \
   ncmpcpp \
   mpc \
   tree-sitter \
@@ -82,7 +83,6 @@ yay -S \
   viddy \
   urlview \
   easystroke \
-  autojump \
   docker-credential-pass-bin \
   birdtray \
   slack-desktop \
