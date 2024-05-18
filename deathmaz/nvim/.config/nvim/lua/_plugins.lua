@@ -846,14 +846,6 @@ return {
   },
 
   {
-    'anuvyklack/hydra.nvim',
-    event = 'VeryLazy',
-    dependencies = 'anuvyklack/keymap-layer.nvim',
-    config = function()
-      require('_hydra')
-    end
-  },
-  {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
     opts = {
