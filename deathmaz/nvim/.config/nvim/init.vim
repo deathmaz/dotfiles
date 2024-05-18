@@ -11,8 +11,6 @@ let s:signes = {
             \   'ok': emoji#for('+1')
             \ }
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 augroup GoLang
   autocmd!
   autocmd FileType go setlocal tabstop=4 shiftwidth=4
