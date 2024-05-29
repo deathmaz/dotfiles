@@ -124,6 +124,18 @@ fshow() {
 FZF-EOF"
 }
 
+fzf-gh-run() {
+  gh run list --json conclusion,name,databaseId,headBranch,displayTitle | \
+    jq -r '.[] | (.databaseId | tostring) + ";" + (.conclusion) + ";" + (.displayTitle) + ";" + (.name) + ";" + (.headBranch)' | \
+    column -t -s $';' -o $'\t' | \
+    fzf --ansi --delimiter='\t' --with-nth=1,2,3,4,5 \
+      --header 'C-w:watch C-v:view C-l:log failed C-y:copy' \
+      --bind "ctrl-w:execute:tmux split-window -h ; tmux send-keys 'gh run watch {1}' 'Enter'" \
+      --bind "ctrl-v:execute:tmux split-window -h ; tmux send-keys 'gh run view {1}' 'Enter'" \
+      --bind "ctrl-l:execute:tmux split-window -h -Z ; tmux send-keys 'gh run view {1} --log-failed' 'Enter'" \
+      --bind "ctrl-y:execute:echo -n {1} | xclip -selection clipboard > /dev/null 2>&1" | \
+    awk '{print $1}'
+}
 # fcoc - checkout git commit
 fcoc() {
     local commits commit
