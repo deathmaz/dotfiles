@@ -379,8 +379,6 @@ return {
     enabled = false,
   },
 
-  { "folke/neodev.nvim" },
-
   -- LSP
   {
     'https://gitlab.com/yorickpeterse/nvim-dd.git',
