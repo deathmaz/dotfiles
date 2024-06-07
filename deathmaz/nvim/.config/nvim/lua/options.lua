@@ -171,7 +171,11 @@ end
 
 vim.g.mapleader = ','
 
-vim.keymap.set("n", "<C-i>", "<C-I>")
+vim.keymap.set("n", "<space>q", "<cmd>:copen 15 <CR>")
+vim.keymap.set("n", "\\q", function()
+  vim.cmd.ccl()
+  vim.cmd.lcl()
+end)
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {
   expr = true,
 })
