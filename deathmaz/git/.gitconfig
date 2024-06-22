@@ -21,6 +21,9 @@
   navigate = true
   ; syntax-theme = Dracula
   ; width = 250
+[delta "decorations"]
+  commit-decoration-style = box ul blue
+  file-style = bold blue
 
 [push]
   autoSetupRemote = true
