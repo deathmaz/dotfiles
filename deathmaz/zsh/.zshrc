@@ -141,9 +141,10 @@ fzf-gh-pr() {
   gh pr list | \
     column -t -s $'\t' -o $'\t' |
     fzf --delimiter='\t' --with-nth=1,2,3,4 \
-      --header 'C-v:view C-d:diff C-y:copy' \
+      --header 'C-v:view C-d:diff C-y:copy C-o:open in browser' \
       --bind "ctrl-d:execute:tmux split-window -v -Z ; tmux send-keys 'gh pr diff {1}' 'Enter'" \
       --bind "ctrl-v:execute:tmux split-window -h ; tmux send-keys 'gh pr view {1}' 'Enter'" \
+      --bind "ctrl-o:execute:gh pr view -w {1}" \
       --bind "ctrl-y:execute:echo -n {1} | xclip -selection clipboard > /dev/null 2>&1" | \
     awk '{print $1}'
 }
