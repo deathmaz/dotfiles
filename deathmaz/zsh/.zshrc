@@ -308,3 +308,5 @@ fi
 
 # source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+eval "$(zoxide init --cmd j zsh)"
