@@ -32,6 +32,7 @@ fzf_lua.setup({
       default = 'bat',
       horizontal = 'right:40%',
       layout = 'flex',
+      hidden = 'hidden',
     },
   },
   previewers = {
@@ -39,15 +40,29 @@ fzf_lua.setup({
       pager = "delta",
     },
   },
-  manpages = { previewer = "man_native" },
-  helptags = { previewer = "help_native" },
+  manpages = {
+    previewer = "man_native",
+    winopts = {
+      preview = {
+        hidden = 'nohidden'
+      }
+    }
+  },
+  helptags = {
+    previewer = "help_native",
+    winopts = {
+      preview = {
+        hidden = 'nohidden'
+      }
+    }
+  },
   fzf_opts = {
     -- ['--layout'] = 'reverse-list',
   },
   defaults = {
     git_icons = false,
     file_icons = false,
-    formatter = "path.filename_first",
+    -- formatter = "path.filename_first",
   },
 })
 
