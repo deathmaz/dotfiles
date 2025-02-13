@@ -2,7 +2,7 @@ alt + ctrl + w
   $MAZ_SCRIPTS_BIN/focus-brave.sh
 
 shift + ctrl + alt + grave
-  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_browser-history
+  $MAZ_SCRIPTS_BIN/open-in-st $MAZ_SCRIPTS_BIN/_browser-history
 
 shift + alt + greater
   mpc next
@@ -13,8 +13,8 @@ shift + alt + less
 super + alt + p
   mpc toggle
 
-ctrl + shift + p
-  playerctl -p $(tail -1 /tmp/player-last) play-pause
+# ctrl + shift + p
+#  playerctl -p $(tail -1 /tmp/player-last) play-pause
 
 alt + super + {h,j,k,l}
   playerctl -p $(tail -1 /tmp/player-last) position {5-,10-,10+,5+}
@@ -55,19 +55,16 @@ ctrl + alt + Right
   $MAZ_SCRIPTS_BIN/move-to-next-monitor
 
 ctrl + alt + backslash
-  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_bookmarks
+  $MAZ_SCRIPTS_BIN/open-in-st $MAZ_SCRIPTS_BIN/_bookmarks
 
 ctrl + shift + o
-  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_projects
-
-ctrl + shift + d
-  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_dotfiles
+  $MAZ_SCRIPTS_BIN/open-in-st $MAZ_SCRIPTS_BIN/_projects
 
 ctrl + alt + n
   $MAZ_SCRIPTS_BIN/st-ncmpcpp
 
-ctrl + alt + BackSpace
-  $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_sr
+ctrl + alt + bracketright
+  $MAZ_SCRIPTS_BIN/open-in-st $MAZ_SCRIPTS_BIN/_sr
 
 ctrl + alt + equal
   $MAZ_SCRIPTS_BIN/check-focused-st $MAZ_SCRIPTS_BIN/_tmux-find-panes

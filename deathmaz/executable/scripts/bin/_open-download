@@ -1,10 +1,16 @@
 #!/bin/bash
 
-selected=$(TS_SOCKET=/tmp/download tsp | grep '^[0-9]' | sort -gr | fzf \
-  --bind "ctrl-x:execute:TS_SOCKET=/tmp/download tsp -k {1}" \
-  --bind "ctrl-r:reload:TS_SOCKET=/tmp/download tsp | grep -v 'ID' | sort -gr" \
+selected=$(tsp | grep '^[0-9]' | sort -gr | fzf \
+  --bind "ctrl-x:execute:tsp -k {1}" \
+  --bind "ctrl-r:reload:tsp | grep -v 'ID' | sort -gr" \
   --header 'C-x:kill C-r:reload' \
   | awk '{print $1}')
 [ -z "$selected" ] && exit
-tmux new-window; tmux send-keys "TS_SOCKET=/tmp/download tsp -t "$selected"" 'Enter'  \
+
+kitten @ --to unix:/tmp/mykitty \
+  launch --tab-title='open download' --type=tab --hold \
+  tsp -t "$selected" \
   && $MAZ_SCRIPTS_BIN/focus-st
+
+# tmux new-window; tmux send-keys "tsp -t "$selected"" 'Enter'  \
+#   && $MAZ_SCRIPTS_BIN/focus-st

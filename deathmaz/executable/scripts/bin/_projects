@@ -6,4 +6,5 @@ cd "$project"
 
 file=$(fzf --print0)
 [ -z "$file" ] && exit 1
-/usr/bin/tmux new-window "$EDITOR" "$file" && $MAZ_SCRIPTS_BIN/focus-st
+# /usr/bin/tmux new-window "$EDITOR" "$file" && $MAZ_SCRIPTS_BIN/focus-st
+kitten @ --to unix:/tmp/mykitty launch --cwd="$project" --tab-title=projects --type=tab $EDITOR "$file" && $MAZ_SCRIPTS_BIN/focus-st

@@ -1,4 +1,6 @@
 #!/bin/bash
 
-/usr/bin/tmux new-window /usr/bin/ncmpcpp \
-  && $MAZ_SCRIPTS_BIN/focus-st
+kitten @ --to unix:/tmp/mykitty launch --tab-title=music --type=tab /usr/bin/ncmpcpp && $MAZ_SCRIPTS_BIN/focus-st
+
+# /usr/bin/tmux new-window /usr/bin/ncmpcpp \
+#   && $MAZ_SCRIPTS_BIN/focus-st

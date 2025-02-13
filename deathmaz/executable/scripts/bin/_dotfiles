@@ -3,4 +3,5 @@
 cd ~/dotfiles
 selected=$(fzf --print0 --reverse)
 [ -z "$selected" ] && exit 1
-/usr/bin/tmux new-window $EDITOR "$selected" && $MAZ_SCRIPTS_BIN/focus-st
+# /usr/bin/tmux new-window $EDITOR "$selected" && $MAZ_SCRIPTS_BIN/focus-st
+kitten @ --to unix:/tmp/mykitty launch --cwd=~/dotfiles --tab-title=dotfiles --type=tab $EDITOR "$selected" && $MAZ_SCRIPTS_BIN/focus-st

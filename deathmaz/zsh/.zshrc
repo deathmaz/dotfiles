@@ -130,9 +130,9 @@ fzf-gh-run() {
     column -t -s $';' -o $'\t' | \
     fzf --ansi --delimiter='\t' --with-nth=1,2,3,4,5 \
       --header 'C-w:watch C-v:view C-l:log failed C-y:copy' \
-      --bind "ctrl-w:execute:tmux split-window -h ; tmux send-keys 'gh run watch {1}' 'Enter'" \
-      --bind "ctrl-v:execute:tmux split-window -h ; tmux send-keys 'gh run view {1}' 'Enter'" \
-      --bind "ctrl-l:execute:tmux split-window -h -Z ; tmux send-keys 'gh run view {1} --log-failed' 'Enter'" \
+      --bind "ctrl-w:execute:kitten @ --to unix:/tmp/mykitty launch --cwd=current --type=overlay --hold gh run watch {1}" \
+      --bind "ctrl-v:execute:kitten @ --to unix:/tmp/mykitty launch --cwd=current --type=overlay --hold gh run view {1}" \
+      --bind "ctrl-l:execute:kitten @ --to unix:/tmp/mykitty launch --cwd=current --type=overlay --hold gh run view {1} --log-failed" \
       --bind "ctrl-y:execute:echo -n {1} | xclip -selection clipboard > /dev/null 2>&1" | \
     awk '{print $1}'
 }
@@ -142,8 +142,8 @@ fzf-gh-pr() {
     column -t -s $'\t' -o $'\t' |
     fzf --delimiter='\t' --with-nth=1,2,3,4 \
       --header 'C-v:view C-d:diff C-y:copy C-o:open in browser' \
-      --bind "ctrl-d:execute:tmux split-window -v -Z ; tmux send-keys 'gh pr diff {1}' 'Enter'" \
-      --bind "ctrl-v:execute:tmux split-window -h ; tmux send-keys 'gh pr view {1}' 'Enter'" \
+      --bind "ctrl-d:execute:kitten @ --to unix:/tmp/mykitty launch --cwd=current --type=overlay --hold gh pr diff {1}" \
+      --bind "ctrl-v:execute:kitten @ --to unix:/tmp/mykitty launch --cwd=current --type=overlay --hold gh pr view {1}" \
       --bind "ctrl-o:execute:gh pr view -w {1}" \
       --bind "ctrl-y:execute:echo -n {1} | xclip -selection clipboard > /dev/null 2>&1" | \
     awk '{print $1}'

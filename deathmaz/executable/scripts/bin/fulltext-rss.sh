@@ -56,10 +56,13 @@ read_fulltext() {
     mkdir -p ~/Downloads/articles
     destination="${HOME}/Downloads/articles/${last_part}.html"
     echo $html > "$destination"
-    tmux new-window
-    tmux split-window -h
-    tmux select-pane -t 1
-    tmux resize-pane -x 80
-    tmux send-keys "$MAZ_CLI_BROWSER "$destination"" 'Enter'
-    $MAZ_SCRIPTS_BIN/focus-st
+    kitten @ --to unix:/tmp/mykitty launch --tab-title=article --cwd=~/Downloads/articles --type=tab \
+      $MAZ_CLI_BROWSER "$destination" && $MAZ_SCRIPTS_BIN/focus-st
+    # kitten @ --to unix:/tmp/mykitty launch --tab-title=article --cwd=~/Downloads/articles --type=tab $MAZ_CLI_BROWSER "$destination" && $MAZ_SCRIPTS_BIN/focus-st
+    # tmux new-window
+    # tmux split-window -h
+    # tmux select-pane -t 1
+    # tmux resize-pane -x 80
+    # tmux send-keys "$MAZ_CLI_BROWSER "$destination"" 'Enter'
+    # $MAZ_SCRIPTS_BIN/focus-st
 }
