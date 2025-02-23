@@ -44,6 +44,7 @@ catppuccin.setup({
     dashboard = false,
     flash = false,
     cmp = false,
+    diffview = true,
     harpoon = true,
     markdown = true,
     semantic_tokens = true,
