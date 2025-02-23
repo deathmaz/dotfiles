@@ -110,14 +110,18 @@ endsnippet
 
 snippet test:setup "test setup" b
 import {
-  it,
-  expect,
-  describe,
+	it,
+	expect,
+	describe,
+	afterEach,
 } from 'vitest';
 import {
-  mount,
-  VueWrapper,
+	enableAutoUnmount,
+	mount,
+	VueWrapper,
 } from '@vue/test-utils';
+
+enableAutoUnmount(afterEach);
 
 describe('${1}', () => {
   ${2}
@@ -151,9 +155,9 @@ import {
 ${1}
 
 let getHandler: MockInstance;
-const apiHandlers: MockInstance[] = [];
+let apiHandlers: MockInstance[] = [];
 const prepareApiCalls = () => {
-  apiHandlers.push(
+	apiHandlers = [
     getHandler = vi.spyOn(api, 'get').mockImplementation((url) => {
       switch (url) {
         case 'url':
@@ -162,7 +166,7 @@ const prepareApiCalls = () => {
           return Promise.reject();
       }
     }),
-  );
+  ];
 };
 beforeEach(async () => {
   prepareApiCalls();
@@ -185,4 +189,21 @@ snippet test:setup "test setup" b
 it('${1}', async () => {
   ${2}
 })
+endsnippet
+
+snippet test:it:each "it each" b
+it.each([
+	{
+		name: '${1}',
+		expected: async (wrapper: VueWrapper) => {
+			${2}
+		},
+	},
+])('$name', async ({
+	expected,
+}) => {
+	const wrapper = factory();
+
+	await expected(wrapper);
+});
 endsnippet
