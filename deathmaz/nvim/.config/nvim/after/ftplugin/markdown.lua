@@ -1,6 +1,8 @@
 local fzf_lua_ok, fzf_lua = pcall(require, 'fzf-lua')
 
 vim.opt_local.spell = true
+vim.opt_local.textwidth = 80
+vim.b.link_heading = ''
 
 local opts = { buffer = true }
 vim.keymap.set('n', '<leader>lc', '<Plug>(mkdx-toggle-checklist-n)', opts)
@@ -14,6 +16,7 @@ vim.keymap.set('n', '<leader>D', '<cmd>:call mkdx#QuickfixDeadLinks()<CR>', opts
 vim.keymap.set('n', "<leader>'", '<Plug>(mkdx-toggle-quote-n)', opts)
 vim.keymap.set('v', "<leader>'", '<Plug>(mkdx-toggle-quote-v)', opts)
 vim.keymap.set('n', "<leader>[", '<cmd>:call mkdx#ToggleHeader()<CR>', opts)
+vim.keymap.set('n', "\\l", vim.cmd.LinkConvertSingle, opts)
 
 if fzf_lua_ok then
   vim.keymap.set('n', '<leader>H',
