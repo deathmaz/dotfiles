@@ -25,6 +25,7 @@ playlist_separate_albums = "yes"
 autocenter_mode = yes
 display_remaining_time = "no"
 display_bitrate = yes
+connected_message_on_startup = no
 
 ##############################################################
 ## This is an example configuration file. Copy it to        ##
@@ -424,8 +425,6 @@ visualizer_color = blue, cyan, green, yellow, magenta, red
 #
 #statusbar_visibility = yes
 #
-## Show the "Connected to ..." message on startup
-#connected_message_on_startup = yes
 #
 #titles_visibility = yes
 #
