@@ -36,7 +36,7 @@ vim.keymap.set("n", "[h", function()
 end)
 
 local fzf_lua = require 'fzf-lua'
-vim.keymap.set('n', '<space>g',
+vim.keymap.set({ 'n', 'v' }, '<space>g',
   function()
     local actions = gitsigns.get_actions()
     fzf_lua.fzf_exec(function(cb)
