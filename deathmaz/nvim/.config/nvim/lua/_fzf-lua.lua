@@ -16,9 +16,10 @@ fzf_lua.setup({
     }
   },
   grep = {
+    hidden = true,
     rg_glob = true,
-    rg_opts =
-    "--column --hidden --glob '!.git' --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+    -- rg_opts =
+    -- "--column --hidden --glob '!.git' --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
     --[[ winopts = {
       preview = {
         horizontal = 'hidden'
@@ -94,6 +95,9 @@ vim.keymap.set('n', '<leader>v', fzf_lua.buffers, opts)
 
 vim.keymap.set('n', '\\f', fzf_lua.git_status, opts)
 
+vim.keymap.set('n', '\\\\', fzf_lua.quickfix_stack, opts)
+vim.keymap.set('n', '\\l', fzf_lua.loclist_stack, opts)
+
 vim.keymap.set('n', '\\h', fzf_lua.help_tags, opts)
 
 vim.keymap.set({ 'n', 'v' }, '\\c', fzf_lua.commands, opts)
@@ -168,7 +172,7 @@ vim.keymap.set('i', '<c-x><c-f>',
     fzf_lua.files({
       formatter = "",
       actions = {
-        ["default"] = function(selected)
+        ["enter"] = function(selected)
           local pos = vim.api.nvim_win_get_cursor(0)[2]
           local line = vim.api.nvim_get_current_line()
           local nline = line:sub(0, pos) .. selected[1] .. line:sub(pos + 1)
