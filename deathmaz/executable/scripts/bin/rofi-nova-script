@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+mydir="${0%/*}"
+
+if [[ -z $@ ]]; then
+  find "$mydir" -type f -name '_*' -exec basename {} \; \
+    | sort | sed 's@\.@ @g'
+else
+    TAB=$*
+
+    coproc ($MAZ_SCRIPTS_BIN/focus-st && kitten @ --to unix:/tmp/mykitty launch --type=tab "${mydir}/${TAB}" && > /dev/null  2>&1 )
+fi
