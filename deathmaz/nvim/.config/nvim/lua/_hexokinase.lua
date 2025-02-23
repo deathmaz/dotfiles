@@ -6,4 +6,5 @@ vim.g.Hexokinase_ftDisabled = {
   'packer',
   'GV',
   'git',
+  'lazy',
 }
