@@ -340,7 +340,8 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    event = 'VeryLazy',
+    branch = 'main',
+    lazy = false,
     config = function()
       require('_tree-sitter')
     end,
