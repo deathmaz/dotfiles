@@ -10,6 +10,7 @@
 
 [branch]
   autosetuprebase = always
+  sort = -committerdate
 
 [commit]
   template = ~/.gitmessage
@@ -32,6 +33,7 @@
 [rebase]
   autosquash = true
   autoStash = true
+  ; updateRefs = true
 
 [color "status"]
   added = yellow
@@ -63,3 +65,23 @@
   delete-temp-branches = !git branch --list 'temp*' | xargs -r git branch -D
 [init]
   defaultBranch = main
+[absorb]
+  oneFixupPerCommit = true
+[status]
+  showStash = true
+[rerere]
+  enabled = true
+
+# from https://github.com/jessfraz/dotfiles/blob/main/.gitconfig
+[url "git@github.com:github"]
+  insteadOf = "https://github.com/github"
+  insteadOf = "github:github"
+  insteadOf = "git://github.com/github"
+
+[url "git@github.com:"]
+  pushInsteadOf = "https://github.com/"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+  insteadOf = "github:"
