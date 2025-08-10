@@ -6,6 +6,7 @@ read_fulltext() {
     <html lang=\"en\">
     <head>
     <meta charset=\"UTF-8\">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       :root {
         --text-color: #000;
@@ -25,18 +26,26 @@ read_fulltext() {
         height: auto;
       }
       body {
-        padding: 32px;
+        padding: 0.75rem;
         font-family: \"OpenSans\", \"Cantarell\", \"Helvetica\", \"Arial\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif;
-        font-size: 25px;
+        font-size: 1.3rem;
         line-height: 1.5;
         color: var(--text-color);
         background-color: var(--bg-color);
       }
+
+      @media (min-width: 48rem) {
+        body {
+          padding: 2rem;
+          font-size: 1.5625rem;
+        }
+      }
+
       a {
         color: var(--link-color);
       }
       .content-wrapper {
-        max-width: 800px;
+        max-width: 50rem;
         width: 100%;
         margin: auto;
       }
@@ -53,10 +62,16 @@ read_fulltext() {
       $result
     </div></body></html>"
     last_part=$(basename "$1")
-    mkdir -p ~/Downloads/articles
-    destination="${HOME}/Downloads/articles/${last_part}.html"
+    network_share="$HOME/rpi/articles"
+    if [ -d "$network_share" ]; then
+      download_dir="$network_share"
+    else
+      download_dir="${HOME}/Downloads/articles"
+    fi
+    mkdir -p "$download_dir"
+    destination="$download_dir/${last_part}.html"
     echo $html > "$destination"
-    kitten @ --to unix:/tmp/mykitty launch --tab-title=article --cwd=~/Downloads/articles --type=tab \
+    kitten @ --to unix:/tmp/mykitty launch --tab-title=article --cwd="$download_dir" --type=tab \
       $MAZ_CLI_BROWSER "$destination" && $MAZ_SCRIPTS_BIN/focus-st
     # kitten @ --to unix:/tmp/mykitty launch --tab-title=article --cwd=~/Downloads/articles --type=tab $MAZ_CLI_BROWSER "$destination" && $MAZ_SCRIPTS_BIN/focus-st
     # tmux new-window
