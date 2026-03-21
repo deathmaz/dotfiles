@@ -1,4 +1,5 @@
 vim.keymap.set('', '\\gs', function()
+  vim.cmd.Gcd()
   vim.cmd.Git({
     mods = {
       vertical = true,

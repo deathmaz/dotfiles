@@ -35,7 +35,8 @@ local mode_map = {
 }
 lualine.setup {
   options = {
-    theme = "catppuccin",
+    -- theme = "catppuccin",
+    -- theme = "alabaster",
     section_separators = '',
     component_separators = '',
   },

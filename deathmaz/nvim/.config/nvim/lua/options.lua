@@ -107,10 +107,8 @@ vim.opt.relativenumber = true
 
 -- vim.opt.foldmethod = "marker"
 -- vim.opt.foldtext = "v:lua.require'_folds'.folds()"
--- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.opt.foldtext = ""
 vim.opt.foldopen = vim.opt.foldopen + 'search'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldmethod = 'expr'
 vim.opt.foldlevelstart = 99
 
@@ -171,8 +169,8 @@ end
 
 vim.g.mapleader = ','
 
-vim.keymap.set("n", "<space>q", "<cmd>:copen 15 <CR>")
-vim.keymap.set("n", "\\q", function()
+vim.keymap.set("n", "<space>q", "<cmd>:copen 15 | norm G <CR>")
+vim.keymap.set("n", "<space><space>q", function()
   vim.cmd.ccl()
   vim.cmd.lcl()
 end)

@@ -1,23 +1,48 @@
 {
-  "volar.takeOverMode.enabled": true,
-  "tsserver.enable": false,
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "tsserver.enable": true,
   "eslint.autoFixOnSave": true,
+  "tsserver.useLocalTsdk": true,
+  "typescript.inlayHints.variableTypes.enabled": false,
+  "typescript.inlayHints.parameterNames.enabled": "none",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "astro.disableResolveCompletionItem": true,
   "eslint.run": "onSave",
   "sumneko-lua.enableNvimLuaDev": true,
   "semanticTokens.enable": true,
   "vue.inlayHints.missingProps": true,
   "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.hover.rich": true,
   "vue.inlayHints.optionsWrapper": true,
   "suggest.noselect": true,
   "suggest.enablePreselect": true,
   "snippets.extends": {
     "vue": ["html"]
   },
-  "flutter.openDevLogSplitCommand": "botright 10split",
-  "flutter.autoOpenDevLog": true,
-  "coc.preferences.extensionUpdateCheck": "weekly",
+  "flutter.autoOpenDevLog": false,
+  "workspace.rootPatterns": [
+    ".git",
+    ".hg",
+    ".projections.json",
+    "package.json",
+    "vite.config.js",
+    "vite.config.mjs",
+    "vite.config.ts",
+    "vite.config.mts",
+    "tailwind.config.ts",
+    "tailwind.config.js",
+  ],
   "[dart][lua]": {
     "inlayHint.enable": false,
-    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSave": true
   },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "list.insertMappings": {
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k",
+  }
 }

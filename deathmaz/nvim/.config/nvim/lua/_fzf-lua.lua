@@ -8,6 +8,7 @@ end
 local project_ok, project = pcall(require, 'project_nvim')
 
 local opts = { noremap = true, silent = true }
+local actions = require "fzf-lua.actions"
 
 fzf_lua.setup({
   files = {
@@ -25,6 +26,8 @@ fzf_lua.setup({
         horizontal = 'hidden'
       },
     }, ]]
+    -- multiline = 1, -- Display as: PATH:LINE:COL\nTEXT
+    -- multiline = 2,      -- Display as: PATH:LINE:COL\nTEXT\n
   },
   winopts = {
     height  = 0.95,
@@ -65,6 +68,12 @@ fzf_lua.setup({
     file_icons = false,
     -- formatter = "path.filename_first",
   },
+  -- FIXME: enabling below disables <CR> from working when selecting files
+  --[[ actions = {
+    files = {
+      -- ["ctrl-l"] = actions.file_sel_to_ll,
+    }
+  } ]]
 })
 
 vim.keymap.set("n", "\\b", fzf_lua.git_branches, opts)
@@ -170,7 +179,6 @@ end
 vim.keymap.set('i', '<c-x><c-f>',
   function()
     fzf_lua.files({
-      formatter = "",
       actions = {
         ["enter"] = function(selected)
           local pos = vim.api.nvim_win_get_cursor(0)[2]

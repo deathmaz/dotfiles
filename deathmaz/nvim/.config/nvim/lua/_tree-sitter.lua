@@ -5,11 +5,12 @@ end
 
 local ensureInstalled = {
   'javascript',
+  'astro',
   'typescript',
   'tsx',
   'html',
   'php',
-  -- 'css',
+  'css',
   'python',
   'regex',
   'json',
@@ -32,6 +33,8 @@ local ensureInstalled = {
   'git_config',
   'sxhkdrc',
   'tmux',
+  'dart',
+  'sql',
 }
 local alreadyInstalled = require("nvim-treesitter.config").get_installed()
 local parsersToInstall = vim.iter(ensureInstalled)

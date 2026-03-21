@@ -2,7 +2,20 @@
 
 lua require('options')
 lua require('_lazy')
+if exists('g:vscode')
+  lua require('_vscode')
+endif
 
+
+if exists('g:vscode')
+let s:signes = {
+            \   'branch': '',
+            \   'lock':  '',
+            \   'error': '',
+            \   'warning': '',
+            \   'ok': '',
+\}
+else
 let s:signes = {
             \   'branch': emoji#available() ? emoji#for('trident') : '',
             \   'lock': emoji#available() ? emoji#for('lock') : '',
@@ -10,6 +23,7 @@ let s:signes = {
             \   'warning': emoji#for('zap'),
             \   'ok': emoji#for('+1')
             \ }
+endif
 
 augroup GoLang
   autocmd!
@@ -489,7 +503,7 @@ let g:matchup_matchparen_deferred = 1
 
 lua require('_fugitive')
 
-lua require('_winbar')
+" lua require('_winbar')
 
 " see https://github.com/neovim/neovim/issues/19458
 " lua require('_winbar-gps')
@@ -643,7 +657,7 @@ inoremap kj <esc>
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Select entire buffer
-nnoremap vaa ggvGg_
+nnoremap vaa gg0vGg_o
 " nnoremap Vaa ggVG
 
 " Source
