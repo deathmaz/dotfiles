@@ -3,6 +3,7 @@ if not ok then
   return
 end
 
+local provider = require('_provider')
 local icons = require('_icons')
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -84,10 +85,9 @@ lualine.setup {
         }
       },
     },
-    lualine_x = {
-      'g:coc_status',
-      'filetype',
-    },
+    lualine_x = provider.is_coc()
+      and { 'g:coc_status', 'filetype' }
+      or { 'filetype' },
   },
   extensions = {
     'fugitive'

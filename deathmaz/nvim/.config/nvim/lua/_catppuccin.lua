@@ -3,6 +3,8 @@ if not ok then
   return
 end
 
+local provider = require('_provider')
+
 catppuccin.setup({
   custom_highlights = function(colors)
     return {
@@ -52,7 +54,7 @@ catppuccin.setup({
     nvimtree = false,
     ufo = false,
     rainbow_delimiters = false,
-    coc_nvim = true,
+    coc_nvim = provider.is_coc(),
     telescope = {
       enabled = false,
     },

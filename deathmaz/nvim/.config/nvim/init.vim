@@ -646,7 +646,9 @@ augroup filetype_vue
     autocmd!
     autocmd FileType vue syntax sync fromstart
     autocmd FileType vue let b:ale_fix_on_save=0
-    au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'nuxt.config.ts']
+    if g:lsp_provider == 'coc'
+      au FileType vue let b:coc_root_patterns = ['.git', '.env', 'package.json', 'tsconfig.json', 'jsconfig.json', 'vite.config.ts', 'nuxt.config.ts']
+    endif
 augroup END
 
 " ==============================

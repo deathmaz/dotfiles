@@ -1,3 +1,6 @@
+-- LSP/completion provider: "coc" or "native"
+vim.g.lsp_provider = "coc"
+
 vim.opt.history = 700
 vim.opt.mousefocus = true
 -- vim.o.cmdheight = 0

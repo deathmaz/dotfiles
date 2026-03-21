@@ -3,6 +3,8 @@ if not ok then
   return
 end
 
+local provider = require('_provider')
+
 local actions = require("diffview.actions")
 diffview.setup({
   enhanced_diff_hl = true,
@@ -15,12 +17,12 @@ diffview.setup({
       ["gf"] = actions.goto_file_edit,
     }
   },
-  hooks = {
+  hooks = provider.is_coc() and {
     diff_buf_read = function()
       vim.b['coc_enabled'] = 0
     end,
     view_leave = function()
       vim.b['coc_enabled'] = 1
-    end
-  }
+    end,
+  } or {}
 })

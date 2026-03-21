@@ -1,3 +1,5 @@
+local provider = require('_provider')
+
 return {
   'nvim-lua/plenary.nvim',
   'nvim-tree/nvim-web-devicons',
@@ -157,7 +159,7 @@ return {
             -- model = "claude-sonnet-4",
           },
           opts = {
-            completion_provider = "coc", -- blink|cmp|coc|default
+            completion_provider = provider.is_coc() and "coc" or "default", -- blink|cmp|coc|default
           }
         },
         inline = {
@@ -168,7 +170,7 @@ return {
             model = "claude-sonnet-4",
           },
           opts = {
-            completion_provider = "coc", -- blink|cmp|coc|default
+            completion_provider = provider.is_coc() and "coc" or "default", -- blink|cmp|coc|default
           }
         },
       },
@@ -666,30 +668,30 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     build = ":MasonUpdate",
     enabled = false,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     enabled = false,
   },
   {
     "neovim/nvim-lspconfig",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     enabled = false,
   },
   {
     "ray-x/lsp_signature.nvim",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     event = 'VeryLazy',
     -- https://github.com/hrsh7th/nvim-cmp/issues/1613
     enabled = false,
   },
   {
     "b0o/SchemaStore.nvim",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     enabled = false,
   },
   {
@@ -734,7 +736,7 @@ return {
 
   {
     'L3MON4D3/LuaSnip',
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     config = function()
       require('_luasnip')
     end,
@@ -751,7 +753,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_native(),
     config = function()
       require("_cmp")
     end,
@@ -822,7 +824,7 @@ return {
 
   {
     'neoclide/coc.nvim',
-    cond = not vim.g.vscode,
+    cond = not vim.g.vscode and provider.is_coc(),
     branch = 'master',
     build = 'npm ci',
     enabled = true,
