@@ -723,6 +723,13 @@ return {
   },
 
   {
+    dir = '~/projects/joplin-nvim',
+    opts = {},
+    config = function ()
+      vim.keymap.set("n", "\\j", "<cmd>Joplin<cr>", { desc = "Browse joplin notes and todos" })
+    end
+  },
+  {
     'kevinhwang91/nvim-ufo',
     cond = not vim.g.vscode,
     dependencies = 'kevinhwang91/promise-async',
