@@ -19,6 +19,13 @@ vim.keymap.set('v', "<leader>'", '<Plug>(mkdx-toggle-quote-v)', opts)
 vim.keymap.set('n', "<leader>[", '<cmd>:call mkdx#ToggleHeader()<CR>', opts)
 vim.keymap.set('n', "\\l", vim.cmd.LinkConvertSingle, opts)
 
+vim.api.nvim_buf_create_user_command(0, 'SortChecklist', function(cmd)
+  require('_functions').sort_checklist(cmd.line1, cmd.line2)
+end, { range = '%' })
+
+vim.keymap.set('n', '<leader>ls', '<cmd>SortChecklist<CR>', opts)
+vim.keymap.set('v', '<leader>ls', ':SortChecklist<CR>', opts)
+
 if fzf_lua_ok then
   vim.keymap.set('n', '<leader>H',
     function()
