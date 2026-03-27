@@ -10,6 +10,8 @@ local project_ok, project = pcall(require, 'project_nvim')
 local opts = { noremap = true, silent = true }
 local actions = require "fzf-lua.actions"
 
+fzf_lua.register_ui_select()
+
 fzf_lua.setup({
   files = {
     fzf_opts = {
