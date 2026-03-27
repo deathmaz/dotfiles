@@ -1,7 +1,8 @@
 local fzf_lua_ok, fzf_lua = pcall(require, 'fzf-lua')
 
 vim.opt_local.spell = true
-vim.opt_local.textwidth = 80
+vim.opt_local.textwidth = 0
+vim.opt_local.wrap = true
 vim.b.link_heading = ''
 
 local opts = { buffer = true }
