@@ -1,0 +1,248 @@
+{
+  "Add store module": {
+    "prefix": "storem",
+    "body": [
+      "import $1 from '@store/modules/$2';"
+    ],
+    "description": "Add store module"
+  },
+  "Create store module index": {
+    "prefix": "storei",
+    "body": [
+      "import $1Actions from '@store/modules/$2/actions.ts';",
+      "import $1Getters from '@store/modules/$2/getters.ts';",
+      "import $1Mutations from '@store/modules/$2/mutations.ts';",
+      "import {",
+      "\tModule, createMapper,",
+      "} from 'vuex-smart-module';",
+      "import $1 from '@store/modules/$2/$3.ts';",
+      "",
+      "export class $1State {",
+      "\titems: $1[] = [];",
+      "}",
+      "",
+      "const module = new Module({",
+      "\tnamespaced: false,",
+      "\tstate: $1State,",
+      "\tgetters: $1Getters,",
+      "\tmutations: $1Mutations,",
+      "\tactions: $1Actions,",
+      "});",
+      "export default module;",
+      "export const $4Mapper = createMapper(module);"
+    ],
+    "description": "Create store module index"
+  },
+  "Create store getter": {
+    "prefix": "storeg",
+    "body": [
+      "import {",
+      "\t$1State,",
+      "} from '@store/modules/$2/index.ts';",
+      "import {",
+      "\tGetters,",
+      "} from 'vuex-smart-module';",
+      "",
+      "export default class $1Getters extends Getters<$1State> {",
+      "\t$3",
+      "}"
+    ],
+    "description": "Create store getter"
+  },
+  "Create store module mutations": {
+    "prefix": "mut",
+    "body": [
+      "import {",
+      "\tMutations,",
+      "} from 'vuex-smart-module';",
+      "import {",
+      "\t$1State,",
+      "} from '@store/modules/$2/index.ts';",
+      "import $1 from '@store/modules/$2/$3.ts';",
+      "import {",
+      "\tupdateOrCreate, guardModel, remove,",
+      "} from '@store/helper.js';",
+      "import I$1Resource from '@api-resources/$4.ts';",
+      "",
+      "export default class $1Mutations extends Mutations<$1State> {",
+      "\t$5",
+      "}"
+    ],
+    "description": "Create store module mutations"
+  },
+  "Create store module actions": {
+    "prefix": "act",
+    "body": [
+      "import $1Getters from '@store/modules/$2/getters.ts';",
+      "import {",
+      "\t$1State,",
+      "} from '@store/modules/$2/index.ts';",
+      "import $1Mutations from '@store/modules/$2/mutations.ts';",
+      "import {",
+      "\tlogError,",
+      "} from '@utility/log-error.js';",
+      "import {",
+      "\tActions,",
+      "} from 'vuex-smart-module';",
+      "import I$1Resource from '@api-resources/$3.ts';",
+      "",
+      "export default class $1Actions extends Actions<",
+      "\t$1State,",
+      "\t$1Getters,",
+      "\t$1Mutations,",
+      "\t$1Actions",
+      "> {",
+      "\t$4",
+      "}"
+    ],
+    "description": "Create store module actions"
+  },
+  "Create interface": {
+    "prefix": "inter",
+    "body": [
+      "export ${1:default} interface $2 {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Create interface"
+  },
+  "Test element": {
+    "prefix": "test:elem",
+    "body": [
+      "const ${1} = (wrapper: VueWrapper) => wrapper.find('${2}');"
+    ],
+    "description": "Test element"
+  },
+  "Test factory": {
+    "prefix": "test:factory",
+    "body": [
+      "function factory(payload?: {",
+      "  props?: Record<string, any>,",
+      "  slots?: Record<string, any>,",
+      "}) {",
+      "  return mount(${1}, {",
+      "    attachTo: document.body,",
+      "    props: {",
+      "      ...payload?.props,",
+      "    },",
+      "    slots: {",
+      "      ...payload?.slots,",
+      "    },",
+      "  });",
+      "}"
+    ],
+    "description": "Test factory"
+  },
+  "Test setup": {
+    "prefix": "test:setup",
+    "body": [
+      "import {",
+      "\tit,",
+      "\texpect,",
+      "\tdescribe,",
+      "\tafterEach,",
+      "} from 'vitest';",
+      "import {",
+      "\tenableAutoUnmount,",
+      "\tmount,",
+      "\tVueWrapper,",
+      "} from '@vue/test-utils';",
+      "",
+      "enableAutoUnmount(afterEach);",
+      "",
+      "describe('${1}', () => {",
+      "  ${2}",
+      "});"
+    ],
+    "description": "Test setup"
+  },
+  "Test setup with api": {
+    "prefix": "test:setup-api",
+    "body": [
+      "import {",
+      "  expect,",
+      "  MockInstance,",
+      "  it,",
+      "  describe,",
+      "  afterEach,",
+      "  vi,",
+      "  beforeEach,",
+      "} from 'vitest';",
+      "import {",
+      "  defineComponent,",
+      "  onBeforeUnmount,",
+      "  PropType,",
+      "} from 'vue';",
+      "import {",
+      "  mount,",
+      "  enableAutoUnmount,",
+      "  flushPromises,",
+      "  VueWrapper,",
+      "} from '@vue/test-utils';",
+      "import {",
+      "  api,",
+      "} from '@/api/api';",
+      "${1}",
+      "",
+      "let getHandler: MockInstance;",
+      "let apiHandlers: MockInstance[] = [];",
+      "const prepareApiCalls = () => {",
+      "\tapiHandlers = [",
+      "    getHandler = vi.spyOn(api, 'get').mockImplementation((url) => {",
+      "      switch (url) {",
+      "        case 'url':",
+      "          return Promise.resolve();",
+      "        default:",
+      "          return Promise.reject();",
+      "      }",
+      "    }),",
+      "  ];",
+      "};",
+      "beforeEach(async () => {",
+      "  prepareApiCalls();",
+      "});",
+      "",
+      "afterEach(async () => {",
+      "  apiHandlers.forEach((handler) => handler.mockReset());",
+      "});",
+      "",
+      "enableAutoUnmount(afterEach);",
+      "",
+      "describe('${2}', () => {",
+      "  it('${3}', async() => {",
+      "    ${4}",
+      "  })",
+      "})"
+    ],
+    "description": "Test setup with api"
+  },
+  "Test it": {
+    "prefix": "test:it",
+    "body": [
+      "it('${1}', async () => {",
+      "  ${2}",
+      "})"
+    ],
+    "description": "Single test case"
+  },
+  "Test it each": {
+    "prefix": "test:it:each",
+    "body": [
+      "it.each([",
+      "\t{",
+      "\t\tname: '${1}',",
+      "\t\texpected: async (wrapper: VueWrapper) => {",
+      "\t\t\t${2}",
+      "\t\t},",
+      "\t},",
+      "])('\\$name', async ({",
+      "\texpected,",
+      "}) => {",
+      "\tconst wrapper = factory();",
+      "",
+      "\tawait expected(wrapper);",
+      "});"
+    ],
+    "description": "Test it each"
+  }
+}

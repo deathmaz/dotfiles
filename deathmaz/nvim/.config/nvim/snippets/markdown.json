@@ -1,0 +1,44 @@
+{
+  "Checkbox": {
+    "prefix": "ch",
+    "body": [
+      "- [ ] ${0}"
+    ],
+    "description": "Create a checkbox"
+  },
+  "Section": {
+    "prefix": "sec",
+    "body": [
+      "#### ${1}",
+      "${2}",
+      "",
+      "---"
+    ],
+    "description": "Add a section"
+  },
+  "Details with summary": {
+    "prefix": "detsum",
+    "body": [
+      "<details>",
+      "  <summary>",
+      "    ${1}",
+      "  </summary>",
+      "",
+      "",
+      "",
+      "</details>"
+    ],
+    "description": "Details and summary"
+  },
+  "Details": {
+    "prefix": "details",
+    "body": [
+      "<details>",
+      "",
+      "${1}",
+      "",
+      "</details>"
+    ],
+    "description": "Details block"
+  }
+}

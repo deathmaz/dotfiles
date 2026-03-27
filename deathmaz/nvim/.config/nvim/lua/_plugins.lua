@@ -562,8 +562,7 @@ return {
     dependencies = {
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        -- throws error after recent treesitter update
-        enabled = false,
+        enabled = provider.is_native(),
       },
       {
         'nvim-treesitter/nvim-treesitter-context',
@@ -597,193 +596,68 @@ return {
     enabled = false,
   },
 
-  -- LSP
+  -- Native LSP stack
   {
-    'https://gitlab.com/yorickpeterse/nvim-dd.git',
-    cond = not vim.g.vscode,
+    "neovim/nvim-lspconfig",
+    cond = not vim.g.vscode and provider.is_native(),
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "b0o/SchemaStore.nvim",
+    },
     config = function()
-      require('dd').setup()
+      require("_native-lsp")
     end,
-    enabled = false,
-  },
-  {
-    'simrat39/rust-tools.nvim',
-    cond = not vim.g.vscode,
-    enabled = false,
-  },
-
-  {
-    "glepnir/lspsaga.nvim",
-    cond = not vim.g.vscode,
-    branch = "main",
-    config = function()
-      require('_lsp-saga')
-    end,
-    event = 'VeryLazy',
-    enabled = false,
-  },
-
-  {
-    'lukas-reineke/lsp-format.nvim',
-    cond = not vim.g.vscode,
-    config = function()
-      require("lsp-format").setup({
-        debug = true,
-      })
-    end,
-    enabled = false,
-  },
-
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    cond = not vim.g.vscode,
-    enabled = false,
-    config = function()
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        on_attach = function(client, bufnr)
-          require('lsp-format').on_attach(client)
-          --[[ if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              pattern = {
-                "*.md",
-              },
-              group = augroup,
-              -- buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format({ async = false })
-              end,
-            })
-          end ]]
-        end,
-        sources = {
-          -- null_ls.builtins.formatting.rustywind,
-          null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.formatting.markdown_toc,
-        },
-      })
-    end
   },
   {
     "williamboman/mason.nvim",
     cond = not vim.g.vscode and provider.is_native(),
     build = ":MasonUpdate",
-    enabled = false,
+    opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
     cond = not vim.g.vscode and provider.is_native(),
-    enabled = false,
+    opts = {},
   },
   {
-    "neovim/nvim-lspconfig",
+    "L3MON4D3/LuaSnip",
     cond = not vim.g.vscode and provider.is_native(),
-    enabled = false,
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    cond = not vim.g.vscode and provider.is_native(),
-    event = 'VeryLazy',
-    -- https://github.com/hrsh7th/nvim-cmp/issues/1613
-    enabled = false,
-  },
-  {
-    "b0o/SchemaStore.nvim",
-    cond = not vim.g.vscode and provider.is_native(),
-    enabled = false,
-  },
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    cond = not vim.g.vscode,
+    version = "v2.*",
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
-      require('_lsp-lines')
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets" })
     end,
-    event = 'VeryLazy',
+  },
+  {
+    "saghen/blink.cmp",
+    cond = not vim.g.vscode and provider.is_native(),
+    version = "1.*",
+    event = "InsertEnter",
+    dependencies = {
+      "L3MON4D3/LuaSnip",
+    },
+    config = function()
+      require("_native-cmp")
+    end,
+  },
+  -- TODO: set up formatting
+  {
+    "stevearc/conform.nvim",
+    cond = not vim.g.vscode and provider.is_native(),
+    event = "BufWritePre",
+    config = function()
+      require("_native-format")
+    end,
     enabled = false,
   },
   {
     "j-hui/fidget.nvim",
-    cond = not vim.g.vscode,
-    config = function()
-      require('_fidget')
-    end,
-    enabled = false,
-  },
-  {
-    'onsails/lspkind.nvim',
-    cond = not vim.g.vscode,
-    config = function()
-      require('_lspkind')
-    end,
-    event = 'VeryLazy',
-    enabled = false,
-  },
-  {
-    'nvim-lua/lsp-status.nvim',
-    cond = not vim.g.vscode,
-    enabled = false,
-  },
-
-  {
-    'AndrewRadev/splitjoin.vim',
-    config = function()
-      require('_splitjoin')
-    end,
-    enabled = false,
-  },
-
-  {
-    'L3MON4D3/LuaSnip',
     cond = not vim.g.vscode and provider.is_native(),
-    config = function()
-      require('_luasnip')
-    end,
-    dependencies = {
-      {
-        'rafamadriz/friendly-snippets',
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-        enabled = false,
-      },
-    },
-    enabled = false,
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    cond = not vim.g.vscode and provider.is_native(),
-    config = function()
-      require("_cmp")
-    end,
-    event = 'InsertEnter',
-    dependencies = {
-      'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-emoji',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      {
-        'zbirenbaum/copilot-cmp',
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-        enabled = false,
-      }
-    },
-    enabled = false,
-  },
-  {
-    'https://gitlab.com/yorickpeterse/nvim-dd.git',
-    cond = not vim.g.vscode,
-    config = function()
-      require('dd').setup()
-    end,
-    enabled = false,
+    opts = {},
   },
 
   {

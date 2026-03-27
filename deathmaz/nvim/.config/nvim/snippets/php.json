@@ -1,0 +1,9 @@
+{
+  "Todo reminder": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: ${1:desc}"
+    ],
+    "description": "Todo reminder"
+  }
+}

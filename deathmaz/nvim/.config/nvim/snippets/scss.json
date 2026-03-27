@@ -1,0 +1,25 @@
+{
+  "Todo reminder": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: ${1:desc}"
+    ],
+    "description": "Todo reminder"
+  },
+  "Fix reminder": {
+    "prefix": "fix",
+    "body": [
+      "// FIXME: ${1:desc}"
+    ],
+    "description": "Fix reminder"
+  },
+  "Class snippet": {
+    "prefix": "class",
+    "body": [
+      ".${1:name} {",
+      "  $2",
+      "}"
+    ],
+    "description": "Class snippet"
+  }
+}

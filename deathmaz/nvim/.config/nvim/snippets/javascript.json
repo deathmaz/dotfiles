@@ -1,0 +1,43 @@
+{
+  "Todo reminder": {
+    "prefix": "todo",
+    "body": [
+      "// TODO: ${1:desc}"
+    ],
+    "description": "Todo reminder"
+  },
+  "Fix reminder": {
+    "prefix": "fix",
+    "body": [
+      "// FIXME: ${1:desc}"
+    ],
+    "description": "Fix reminder"
+  },
+  "jQuery placeholder": {
+    "prefix": "jq",
+    "body": [
+      "\\$('${1}').${2};"
+    ],
+    "description": "jQuery placeholder"
+  },
+  "JS method": {
+    "prefix": "method",
+    "body": [
+      "${1:methodName}: function(${2:params}) {",
+      "    ${3}",
+      "},"
+    ],
+    "description": "JS method"
+  },
+  "Try catch": {
+    "prefix": "tc",
+    "body": [
+      "try {",
+      "\t${1}",
+      "} catch (error) {",
+      "\tconsole.error(error);",
+      "}"
+    ],
+    "description": "Try catch"
+  }
+}

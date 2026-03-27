@@ -21,6 +21,7 @@
   "snippets.extends": {
     "vue": ["html"]
   },
+  "snippets.textmateSnippetsRoots": ["~/.config/nvim/snippets"],
   "flutter.autoOpenDevLog": false,
   "workspace.rootPatterns": [
     ".git",

@@ -1,0 +1,94 @@
+{
+  "Vue template (class)": {
+    "prefix": "vuets",
+    "body": [
+      "<script lang=\"ts\">",
+      "import {",
+      "  Vue, Component,",
+      "} from 'vue-property-decorator';",
+      "@Component({})",
+      "export default class ${1} extends Vue {",
+      "",
+      "}",
+      "</script>",
+      "",
+      "<template>",
+      "\t${2}",
+      "</template>"
+    ],
+    "description": "Vue template"
+  },
+  "Vue composition api template": {
+    "prefix": "vuec",
+    "body": [
+      "<script lang=\"ts\">",
+      "import {",
+      "  defineComponent,",
+      "} from '@vue/composition-api';",
+      "",
+      "export default defineComponent({${2}});",
+      "</script>",
+      "",
+      "<template>",
+      "  <div>",
+      "    ${1}",
+      "  </div>",
+      "</template>"
+    ],
+    "description": "Vue composition api template"
+  },
+  "Vue setup template": {
+    "prefix": "vue:setup",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "${1}",
+      "</script>",
+      "",
+      "<template>",
+      "  <div>",
+      "    ${2}",
+      "  </div>",
+      "</template>"
+    ],
+    "description": "Vue setup template"
+  },
+  "Todo JS": {
+    "prefix": "todo:js",
+    "body": [
+      "// TODO: ${1:desc}"
+    ],
+    "description": "Todo reminder (JS)"
+  },
+  "Todo HTML": {
+    "prefix": "todo:html",
+    "body": [
+      "<!-- TODO: ${1:desc} -->"
+    ],
+    "description": "Todo reminder (HTML)"
+  },
+  "Fix JS": {
+    "prefix": "fix:js",
+    "body": [
+      "// FIXME: ${1:desc}"
+    ],
+    "description": "Fix reminder (JS)"
+  },
+  "Fix HTML": {
+    "prefix": "fix:html",
+    "body": [
+      "<!-- FIXME: ${1:desc} -->"
+    ],
+    "description": "Fix reminder (HTML)"
+  },
+  "Try catch": {
+    "prefix": "tc",
+    "body": [
+      "try {",
+      "\t${1}",
+      "} catch (error) {",
+      "\tconsole.error(error);",
+      "}"
+    ],
+    "description": "Try catch"
+  }
+}

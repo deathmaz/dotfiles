@@ -1,0 +1,36 @@
+{
+  "Todo reminder": {
+    "prefix": "todo",
+    "body": [
+      "<!-- TODO: ${1:desc} -->"
+    ],
+    "description": "Todo reminder"
+  },
+  "Fix reminder": {
+    "prefix": "fix",
+    "body": [
+      "<!-- FIXME: ${1:desc} -->"
+    ],
+    "description": "Fix reminder"
+  },
+  "Vue template": {
+    "prefix": "vue",
+    "body": [
+      "<script>",
+      "export default {};",
+      "</script>",
+      "",
+      "<template>",
+      "\t${1}",
+      "</template>"
+    ],
+    "description": "Vue template"
+  },
+  "Placeholder image": {
+    "prefix": "placehold",
+    "body": [
+      "<img src=\"http://placehold.it/${1:width}x${2:height}/${3:999999}\" alt=\"\"/>"
+    ],
+    "description": "Placeholder image"
+  }
+}

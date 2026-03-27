@@ -1,0 +1,18 @@
+{
+  "name": "custom-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "vue", "path": "./vue.json" },
+      { "language": "typescript", "path": "./typescript.json" },
+      { "language": "typescriptreact", "path": "./typescript.json" },
+      { "language": "javascript", "path": "./javascript.json" },
+      { "language": "typescript", "path": "./javascript.json" },
+      { "language": "typescriptreact", "path": "./javascript.json" },
+      { "language": "javascriptreact", "path": "./javascript.json" },
+      { "language": "html", "path": "./html.json" },
+      { "language": "scss", "path": "./scss.json" },
+      { "language": "php", "path": "./php.json" },
+      { "language": "markdown", "path": "./markdown.json" }
+    ]
+  }
+}
