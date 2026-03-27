@@ -1022,14 +1022,12 @@ return {
     },
   },
   {
-    'qadzek/vim-md-link',
+    'qadzek/link.vim',
     cond = not vim.g.vscode,
-    init = function()
-      vim.g.link_enabled_filetypes = {
-        'markdown',
-        'gitcommit',
-      }
-    end
+    ft = {
+      "markdown",
+      "mail",
+    },
   },
 
   -- Colorschemes
