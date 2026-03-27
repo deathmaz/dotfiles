@@ -424,11 +424,12 @@ return {
           enabled = false,
         },
       },
-      on_open = function()
+      on_open = function(win)
         vim.opt_local.textwidth = 0
         vim.opt_local.number = false
         vim.opt_local.relativenumber = false
         vim.opt_local.wrap = true
+        vim.wo[win].winbar = vim.o.winbar
       end,
     }
   },
