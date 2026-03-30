@@ -46,7 +46,7 @@ function M.winbar()
   local buf = api.nvim_win_get_buf(win)
   local filename = fn.expand "%:t"
   local extension = fn.expand "%:e"
-  local modified = api.nvim_buf_get_option(buf, 'modified')
+  local modified = vim.bo[buf].modified
   local icon, color = require 'nvim-web-devicons'.get_icon_color(filename, extension, { default = true })
   local hl_group = "FileIconColor" .. extension
   vim.api.nvim_set_hl(0, hl_group, { fg = color })
