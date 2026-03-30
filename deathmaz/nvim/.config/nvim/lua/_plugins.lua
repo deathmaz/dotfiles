@@ -147,6 +147,7 @@ return {
 
   {
     "olimorris/codecompanion.nvim",
+    enabled = false,
     cond = not vim.g.vscode,
     opts = {
       interactions = {
