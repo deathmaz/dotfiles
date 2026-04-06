@@ -114,7 +114,41 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- TODO: set up formatting (conform.nvim + eslint fix-on-save)
+-- ESLint: auto-fix all fixable issues before saving
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = vim.api.nvim_create_augroup("EslintFixOnSave", { clear = true }),
+  callback = function(ev)
+    local buf = ev.buf
+    local clients = vim.lsp.get_clients({ bufnr = buf, name = "eslint" })
+    if #clients == 0 then
+      return
+    end
+
+    local client = clients[1]
+    local params = {
+      textDocument = vim.lsp.util.make_text_document_params(buf),
+      range = {
+        start = { line = 0, character = 0 },
+        ["end"] = { line = vim.api.nvim_buf_line_count(buf), character = 0 },
+      },
+      context = {
+        only = { "source.fixAll.eslint" },
+        diagnostics = vim.diagnostic.get(buf, { namespace = client.id }),
+      },
+    }
+
+    local result = client:request_sync("textDocument/codeAction", params, 3000, buf)
+    if not result or not result.result then
+      return
+    end
+
+    for _, action in ipairs(result.result) do
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit, client.offset_encoding)
+      end
+    end
+  end,
+})
 
 vim.api.nvim_create_user_command("OR", function()
   vim.lsp.buf.code_action({
