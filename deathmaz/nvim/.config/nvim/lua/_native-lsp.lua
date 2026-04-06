@@ -54,10 +54,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Diagnostics
     vim.keymap.set("n", "[d", function()
-      vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
+      vim.diagnostic.jump({
+        count = -1,
+        on_jump = function()
+          vim.diagnostic.open_float({ border = "rounded" })
+        end,
+      })
     end, opts)
     vim.keymap.set("n", "]d", function()
-      vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
+      vim.diagnostic.jump({
+        count = 1,
+        on_jump = function()
+          vim.diagnostic.open_float({ border = "rounded" })
+        end,
+      })
     end, opts)
     vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "\\d", function()
